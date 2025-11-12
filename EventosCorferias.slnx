@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="EventosCorferias/EventosCorferias.csproj">
+    <Deploy />
+  </Project>
+</Solution>
