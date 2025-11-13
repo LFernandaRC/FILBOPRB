@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using EventosCorferias.Views.Usuario;
 
 namespace EventosCorferias
 {
@@ -6,12 +6,8 @@ namespace EventosCorferias
     {
         public App()
         {
-            InitializeComponent();
-        }
 
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            return new Window(new AppShell());
+            MainPage = new Splash();
         }
     }
 }

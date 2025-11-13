@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Popup:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:Popup="clr-namespace:Mopups.Pages;assembly=Mopups"
+             x:Class="EventosCorferias.Views.PopUp.AyudaPopUp"
+                  BackgroundColor="Red"
+             Title="AyudaPopUp">
+    <Frame HasShadow="False"
+            BackgroundColor="Salmon"
+            BorderColor="Transparent"
+            IsClippedToBounds="True"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Margin="20"
+            Padding="15,25,15,15"
+            CornerRadius="10">
+    </Frame>
+</Popup:PopupPage>

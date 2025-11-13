@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Popup:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="EventosCorferias.Views.PopUp.ExpositoresPopUp"
+                 xmlns:resources="clr-namespace:EventosCorferias.Resources.RecursosIdioma"
+                 xmlns:Popup="clr-namespace:Mopups.Pages;assembly=Mopups"
+                 Title="ExpositoresPopUp"
+                 BackgroundColor="{StaticResource ColorFondoPopUp}">
+    <Frame HasShadow="False"
+           BackgroundColor="White"
+           BorderColor="Transparent"
+           IsClippedToBounds="True"
+           VerticalOptions="Fill"
+           HorizontalOptions="Fill"
+           Margin="10"
+           Padding="10"
+           CornerRadius="10">
+        <ScrollView BackgroundColor="White">
+            <Grid BackgroundColor="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <CollectionView x:Name="producttablelist"
+                                SelectionMode="Single"
+                                Margin="0,40,0,0"
+                                ItemsSource="{Binding ListaExpositores}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                         Span="2"
+                                         VerticalItemSpacing="0"
+                                         HorizontalItemSpacing="0"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.Header>
+                        <StackLayout Padding="0,0,0,0"
+                                     BackgroundColor="White">
+                            <Grid Margin="0"
+                                  BackgroundColor="White"
+                                  Padding="15,18,15,20"
+                                  RowSpacing="10"
+                                  ColumnSpacing="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="35"/>
+                                    <ColumnDefinition Width="35"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="35"/>
+                                </Grid.RowDefinitions>
+                                <Frame Grid.Column="0"
+                                       Grid.Row="0"
+                                       CornerRadius="20"
+                                       BackgroundColor="White"
+                                       Padding="5"
+                                       Margin="0"
+                                       BorderColor="Gray"
+                                       HasShadow="False">
+                                    <Entry x:Name="EntryFiltro"
+                                           HeightRequest="35"
+                                           FontSize="10"
+                                           Grid.Column="1"
+                                           Margin="10,0,0,0"
+                                           HorizontalOptions="Fill"
+                                           VerticalOptions="Center"
+                                           MaxLength="50"
+                                           FontFamily="NotoMedium"
+                                           Placeholder="{Binding MascaraExpos}"
+                                           BackgroundColor="Transparent"
+                                           TextColor="{StaticResource TextoEntrada}"
+                                           PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                           Text="{Binding EntExpositor, Mode=TwoWay}"
+                                           Style="{StaticResource ERegistroGeneralTexto}"/>
+                                </Frame>
+                                <ImageButton Grid.Column="1"
+                                             CornerRadius="18"
+                                             HorizontalOptions="End"
+                                             WidthRequest="36"
+                                             HeightRequest="36"
+                                             Margin="0"
+                                             BorderColor="Gray"
+                                             Source="ic_lupa_obscuro.png"
+                                             Padding="8"
+                                             Command="{Binding BuscarExpositor}"
+                                             BackgroundColor="Transparent"/>
+                                <ImageButton Grid.Column="2"
+                                             CornerRadius="18"
+                                             HorizontalOptions="End"
+                                             WidthRequest="36"
+                                             HeightRequest="36"
+                                             Margin="0"
+                                             BorderColor="#041B3B"
+                                             Source="ic_ordenar_claro.png"
+                                             Padding="8"
+                                             Command="{Binding OrdenarExpositor}"
+                                             BackgroundColor="#041B3B"/>
+                            </Grid>
+
+                            <Label TextColor="{StaticResource TextoGeneral}"
+                                   Text="{Binding CantidadExpo}"
+                                   FontSize="12"
+                                   Padding="15,0,15,0"
+                                   FontFamily="NotoBold"/>
+                            <Label TextColor="{StaticResource TextoGeneral}"
+                                   Text="{x:Static resources:AppResources.sujetoacambios}"
+                                   FontSize="10"
+                                   Margin="20,0,20,10"
+                                   FontFamily="NotoRegular"/>
+                        </StackLayout>
+                    </CollectionView.Header>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0"
+                                  Padding="10">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal"/>
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor"
+                                                        Value="{StaticResource BordeTarjeta}"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Frame BorderColor="{StaticResource BordeTarjeta}"
+                                       IsClippedToBounds="True"
+                                       CornerRadius="15"
+                                       BackgroundColor="{StaticResource FondoTarjeta}"
+                                       Padding="1,1,1,1"
+                                       HasShadow="False">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.SeleccionarExpositorCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
+                                                              CommandParameter="{Binding .}"/>
+                                    </Frame.GestureRecognizers>
+                                    <StackLayout BackgroundColor="Transparent">
+                                        <Frame Padding="0"
+                                               Margin="5"
+                                               HeightRequest="180"
+                                               CornerRadius="10"
+                                               BackgroundColor="White"
+                                               HasShadow="False"
+                                               InputTransparent="True">
+                                            <Image Grid.Column="0"
+                                                   Source="{Binding LogoDetalle}"
+                                                   Aspect="AspectFill"
+                                                   Margin="0"
+                                                   BackgroundColor="Transparent"/>
+                                        </Frame>
+                                        <StackLayout Spacing="0"
+                                                     Padding="5,0,5,10">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label FontSize="13"
+                                                       FontFamily="NotoBold"
+                                                       Margin="5,5,5,5"
+                                                       MaxLines="2"
+                                                       LineBreakMode="TailTruncation"
+                                                       VerticalOptions="Start"
+                                                       TextColor="{StaticResource TextoTarjetas}"
+                                                       Text="{Binding NombreExpositor}"
+                                                       InputTransparent="True"/>
+                                                <ImageButton Grid.Column="1"
+                                                             Command="{Binding Path=BindingContext.PlusButtonCommand,Source={x:Reference producttablelist},Mode=TwoWay}"
+                                                             CommandParameter="{Binding .}"
+                                                             Source="{Binding ImagenFav}"
+                                                             WidthRequest="25"
+                                                             HeightRequest="25"
+                                                             HorizontalOptions="End"
+                                                             VerticalOptions="Start"
+                                                             Margin="5"
+                                                             BackgroundColor="Transparent"
+                                                             CornerRadius="15"
+                                                             InputTransparent="False"/>
+                                            </Grid>
+                                            <Label FontSize="11"
+                                                   FontFamily="NotoRegular"
+                                                   Margin="5,5,5,5"
+                                                   MaxLines="2"
+                                                   LineBreakMode="TailTruncation"
+                                                   VerticalOptions="Start"
+                                                   TextColor="{StaticResource TextoTarjetas}"
+                                                   Text="{Binding PerfilExpositor}"
+                                                   InputTransparent="True"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.Footer>
+                        <Label Margin="30"/>
+                    </CollectionView.Footer>
+                </CollectionView>
+                <Image BackgroundColor="White"
+                       Margin="0,10,10,10"
+                       Source="ic_cerrar_obscuro.png"
+                       WidthRequest="25"
+                       HeightRequest="25"
+                       VerticalOptions="Start"
+                       HorizontalOptions="End">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Button_OnClicked"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Grid BackgroundColor="{StaticResource FondoLoder}"
+                      VerticalOptions="Fill"
+                      HorizontalOptions="Fill"
+                      Margin="-20,-60"
+                      IsVisible="{Binding IsBusy}">
+                    <ActivityIndicator IsRunning="true"
+                                       Color="{StaticResource IconoLoder}"
+                                       Margin="20"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </Frame>
+</Popup:PopupPage>

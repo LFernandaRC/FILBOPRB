@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EventosCorferias.Views.Suceso.ContenidosPage"
+             xmlns:resources="clr-namespace:EventosCorferias.Resources.RecursosIdioma"
+             Title="ContenidosPage"
+             BackgroundColor="White">
+    <NavigationPage.TitleView>
+        <Label  Style="{StaticResource LMenuSup}"
+                Text="{x:Static resources:AppResources.Contenidos}"
+                TextColor="{StaticResource ColorTextoMenSup}"/>
+    </NavigationPage.TitleView>
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <CollectionView x:Name="producttablelist"
+                        SelectionMode="None"
+                        Margin="0,0,0,50"
+                        ItemsSource="{Binding ListaContenidos}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="2"
+                                 VerticalItemSpacing="0"
+                                 HorizontalItemSpacing="0"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.Header>
+                <StackLayout Margin="0,0,0,0"
+                             Spacing="0">
+                    <Grid HeightRequest="35"
+                          Padding="10,40,10,10"
+                          BackgroundColor="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="35"/>
+                            <ColumnDefinition Width="35"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame  IsClippedToBounds="True"
+                                HeightRequest="40"
+                                Grid.Column="0"
+                                CornerRadius="20"
+                                BorderColor="{StaticResource BordeEntrada}"
+                                BackgroundColor="{StaticResource FondoEntrada}"
+                                Padding="5"
+                                Margin="0,0,10,0"
+                                HasShadow="False">
+                            <Entry x:Name="EntryFiltro"
+                                   TextColor="{StaticResource TextoEntrada}"
+                                   HorizontalTextAlignment="Start"
+                                   FontSize="12"
+                                   FontFamily="NotoMedium"
+                                   MaxLength="50"
+                                   Margin="10,5,0,0"
+                                   BackgroundColor="Transparent"
+                                   Text="{Binding EntContenidos, Mode=TwoWay}"
+                                   PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                   Placeholder="{x:Static resources:AppResources.Contenidos}"/>
+                        </Frame>
+                        <ImageButton Grid.Column="1"
+                                     CornerRadius="18"
+                                     HorizontalOptions="End"
+                                     WidthRequest="36"
+                                     HeightRequest="36"
+                                     Margin="0,0,5,0"
+                                     BorderColor="{StaticResource BtnBordeIconoClaro}"
+                                     Source="ic_lupa_obscuro.png"
+                                     Padding="8"
+                                     Command="{Binding BuscarContenidos}"
+                                     BackgroundColor="{StaticResource BtnFondoIconoClaro}"/>
+                        <ImageButton Grid.Column="2"
+                                     CornerRadius="18"
+                                     HorizontalOptions="End"
+                                     WidthRequest="36"
+                                     HeightRequest="36"
+                                     Margin="0"
+                                     BorderColor="{StaticResource BtnBoderIconoObscuro}"
+                                     Source="ic_ordenar_claro.png"
+                                     Padding="8"
+                                     Command="{Binding OrdenarContenidos}"
+                                     BackgroundColor="{StaticResource BtnFondoIconoObscuro}"/>
+                    </Grid>
+                    <Label TextColor="{StaticResource TextoGeneral}"
+                           Text="{Binding CantidadContenidos}"
+                           FontSize="12"
+                           FontFamily="NotoBold"
+                           Margin="25,30,25,0"/>
+                    <Label TextColor="{StaticResource TextoGeneral}"
+                           Text="{x:Static resources:AppResources.sujetoacambios}"
+                           FontSize="10"
+                           Margin="20,0,20,10"
+                           FontFamily="NotoRegular"/>
+                </StackLayout>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid  Margin="0"
+                           Padding="10">
+                        <Frame BorderColor="{StaticResource BordeTarjeta}"
+                               IsClippedToBounds="True"
+                               CornerRadius="15"
+                               BackgroundColor="{StaticResource FondoTarjeta}"
+                               Padding="1,0,1,1"
+                               HasShadow="False">
+                            <StackLayout BackgroundColor="Transparent">
+                                <Frame Margin="10,10,10,0"
+                                       Padding="0"
+                                       CornerRadius="16"
+                                       HasShadow="False"
+                                       IsClippedToBounds="True"
+                                       BackgroundColor="{StaticResource FondoImagen}"
+                                       HeightRequest="160">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.SeleccionarModuloCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
+                                                              CommandParameter="{Binding .}"/>
+                                    </Frame.GestureRecognizers>
+                                    <Image Margin="0"
+                                           Source="{Binding ImagenPortada}"
+                                           BackgroundColor="Transparent"
+                                           Aspect="AspectFit"
+                                           InputTransparent="True"/>
+                                </Frame>
+                                <StackLayout Grid.Column="1"
+                                             Spacing="0"
+                                             Padding="5,0,5,0">
+                                    <Grid BackgroundColor="Transparent">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="70"/>
+                                        </Grid.RowDefinitions>
+                                        <Label
+                                            FontSize="13"
+                                            FontFamily="NotoBold"
+                                            VerticalOptions="Start"
+                                            Margin="0,10,0,0"
+                                            Padding="0"
+                                            TextColor="{StaticResource TextoTarjetas}"
+                                            MaxLines="3"
+                                            Text="{Binding Titulo}"
+                                            LineBreakMode="TailTruncation">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.SeleccionarModuloCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
+                                                                      CommandParameter="{Binding .}"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <ImageButton Grid.Column="1"
+                                                     BackgroundColor="Transparent"
+                                                     Command="{Binding Path=BindingContext.SeleccionarFav,Source={x:Reference producttablelist},Mode=TwoWay}"
+                                                     CommandParameter="{Binding .}"
+                                                     Source="{Binding ImagenFav}"
+                                                     WidthRequest="30"
+                                                     HorizontalOptions="End"
+                                                     VerticalOptions="Start"
+                                                     Margin="5"
+                                                     Padding="4,5,4,3"/>
+                                    </Grid>
+                                    <Label BackgroundColor="Transparent"
+                                        FontSize="12"
+                                        FontFamily="NotoBold"
+                                        VerticalOptions="Start"
+                                        Margin="0,2,0,0"
+                                        Padding="0"
+                                        TextColor="{StaticResource TextoTarjetas}"
+                                        MaxLines="2"
+                                        Text="{Binding NombreCategoria}"
+                                        LineBreakMode="TailTruncation">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.SeleccionarModuloCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
+                                                                  CommandParameter="{Binding .}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <Label
+                                        FontSize="12"
+                                        FontFamily="NotoRegular"
+                                        VerticalOptions="Start"
+                                        Margin="0,2,0,0"
+                                        Padding="0"
+                                        TextColor="{StaticResource TextoTarjetas}"
+                                        MaxLines="4"
+                                        Text="{Binding Contexto}"
+                                        LineBreakMode="TailTruncation">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.SeleccionarModuloCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
+                                                                  CommandParameter="{Binding .}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <Label
+                                        Text="">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.SeleccionarModuloCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
+                                                                  CommandParameter="{Binding .}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Grid BackgroundColor="{StaticResource FondomMenuInfe}"
+              Margin="0,0,0,-60"
+              VerticalOptions="End"
+              HorizontalOptions="Fill"
+              HeightRequest="70">
+        </Grid>
+        <Grid Grid.Row="0"
+              BackgroundColor="{StaticResource FondomMenuInfe}"
+              VerticalOptions="End"
+              HorizontalOptions="Fill"
+              ColumnSpacing="5"
+              Padding="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Frame Grid.Column="{Binding GridNotificaciones}"
+            BackgroundColor="{StaticResource FondoNotificaMenuInfe}"
+            Padding="1"
+            CornerRadius="10"
+            HasShadow="False"
+            BorderColor="{StaticResource BorderNotificaMenuInfe}"
+            IsVisible="{Binding VerNotificicaciones}"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            Margin="30,0,0,0">
+                <Label Text="{Binding CantidadNotificaciones}"
+                FontSize="11"
+                FontFamily="NotoRegular"
+                TextColor="{StaticResource TextNotificaMenuInfe}"
+                WidthRequest="20"
+                HeightRequest="20"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"/>
+            </Frame>
+            <Image x:Name="Menu1"
+                   Grid.Column="0"
+                   WidthRequest="25"
+                   Source="{Binding Icon1}"
+                   ClassId="{Binding Icon1Class}"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding Menu1}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                          CommandParameter="{x:Reference Menu1}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="Menu2"
+                   Grid.Column="1"
+                   WidthRequest="25"
+                   Source="{Binding Icon2}"
+                   ClassId="{Binding Icon2Class}"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding Menu2}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                          CommandParameter="{x:Reference Menu2}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <BoxView Grid.Column="2"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Center"
+                     WidthRequest="1"
+                     HeightRequest="25"
+                     Color="Red"/>
+            <Image x:Name="Menu3"
+                   Grid.Column="3"
+                   WidthRequest="25"
+                   Source="{Binding Icon3}"
+                   ClassId="{Binding Icon3Class}"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding Menu3}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                          CommandParameter="{x:Reference Menu3}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="Menu4"
+                   Grid.Column="4"
+                   WidthRequest="25"
+                   Source="{Binding Icon4}"
+                   ClassId="{Binding Icon4Class}"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding Menu4}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                          CommandParameter="{x:Reference Menu4}"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+        <Frame Grid.Row="0"
+               VerticalOptions="End"
+               HorizontalOptions="Center"
+               Margin="0,0,0,0"
+               Padding="0"
+               HasShadow="False"
+               BorderColor="{StaticResource BordeIconoPrin}"
+               BackgroundColor="{StaticResource FondoIconoPrin}"
+               CornerRadius="27"
+               WidthRequest="58"
+               HeightRequest="58">
+            <Image Source="{Binding ImagenSplash}"
+                   HeightRequest="40"
+                   WidthRequest="40"
+                   Aspect="AspectFill"
+                   Margin="8">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding IrHome}"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Frame>
+        <Grid BackgroundColor="{StaticResource FondoLoder}"
+              VerticalOptions="Fill"
+              HorizontalOptions="Fill"
+              Margin="-20,-60"
+              IsVisible="{Binding IsBusy}">
+            <ActivityIndicator IsRunning="true"
+                               Color="{StaticResource IconoLoder}"
+                               Margin="20"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+        </Grid>
+    </Grid>
+</ContentPage>

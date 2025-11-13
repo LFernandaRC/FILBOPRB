@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Popup:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="EventosCorferias.Views.PopUp.ListaMenuPopUp"
+                 xmlns:Popup="clr-namespace:Mopups.Pages;assembly=Mopups"
+                 xmlns:resources="clr-namespace:EventosCorferias.Resources.RecursosIdioma"
+                 Title="ListaMenuPopUp"
+                 BackgroundColor="{StaticResource ColorFondoPopUp}">
+    <Frame HasShadow="False"
+           BackgroundColor="White"
+           BorderColor="Transparent"
+           IsClippedToBounds="True"
+           VerticalOptions="Center"
+           HorizontalOptions="Fill"
+           Margin="20"
+           Padding="15,15,15,15"
+           CornerRadius="10">
+        <StackLayout BackgroundColor="Transparent"
+                     Spacing="0">
+            <Grid ColumnDefinitions="*"
+                  BackgroundColor="White"
+                  ColumnSpacing="0"
+                  RowSpacing="0">
+                <ImageButton Source="ic_cerrar_obscuro"
+                             BackgroundColor="Transparent"
+                             Padding="3"
+                             Clicked="Button_OnClicked"
+                             WidthRequest="35"
+                             HeightRequest="35"
+                             VerticalOptions="Center"
+                             HorizontalOptions="End"/>
+            </Grid>
+            <Label Text="{x:Static resources:AppResources.seleccionarIdioma}"
+                   TextColor="{StaticResource TextoEntrada}"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,0,0,20"
+                   FontFamily="NotoBold"
+                   FontSize="15"/>
+            <CollectionView x:Name="ListaMenu"
+                            VerticalOptions="Fill"
+                            SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     Span="1"
+                                     VerticalItemSpacing="10"
+                                     HorizontalItemSpacing="0"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="20"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               BorderColor="{StaticResource BordeEntrada}"
+                               Padding="20,10,20,10"
+                               Margin="0,0,0,10"
+                               HasShadow="False">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="IdiomaSeleccionado_Tapped"
+                                                      CommandParameter="{Binding}"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="{Binding Descripcion}"
+                                   TextColor="{StaticResource TextoEntrada}"
+                                   HorizontalTextAlignment="Center"
+                                   FontFamily="NotoRegular"
+                                   FontSize="12"/>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </Frame>
+</Popup:PopupPage>

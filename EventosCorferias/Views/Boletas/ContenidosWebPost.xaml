@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EventosCorferias.Views.Boletas.ContenidosWebPost"
+             xmlns:controls="clr-namespace:EventosCorferias.Controls"
+             xmlns:resources="clr-namespace:EventosCorferias.Resources.RecursosIdioma"
+             Title="ContenidosWebPost"
+             BackgroundColor="White">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal"
+                     Spacing="0"
+                     VerticalOptions="Center"
+                     BackgroundColor="Transparent">
+            <Image Grid.Column="0"
+                   Source="menu.png"
+                   WidthRequest="30"
+                   Margin="0,0,20,0"
+                   VerticalOptions="Center"
+                   BackgroundColor="Transparent"
+                   IsVisible="{OnPlatform iOS=true, Android=false, WinUI=false}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AbrirMenu}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Style="{StaticResource LMenuSup}"
+                   Text="{x:Static resources:AppResources.pagoBoleta}"
+                   TextColor="{StaticResource ColorTextoMenSup}"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <controls:CustomWebView x:Name="CustomWeb"
+                                    HorizontalOptions="Fill"
+                                    VerticalOptions="Fill"
+                                    IsVisible="{Binding IsWebViewVisible}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

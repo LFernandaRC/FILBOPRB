@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resources="clr-namespace:EventosCorferias.Resources.RecursosIdioma"
+             x:Class="EventosCorferias.Views.Suceso.CuponesView"
+             Title="CuponesView">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal"
+                     Spacing="0"
+                     VerticalOptions="Center"
+                     BackgroundColor="Transparent">
+            <Image Grid.Column="0"
+                   Source="menu.png"
+                   WidthRequest="30"
+                   Margin="0,0,20,0"
+                   VerticalOptions="Center"
+                   BackgroundColor="Transparent"
+                   IsVisible="{OnPlatform iOS=true, Android=false, WinUI=false}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AbrirMenu}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Grid.Column="0"
+                   Source="{Binding ImagenSplash}"
+                   WidthRequest="30"
+                   VerticalOptions="Center"
+                   BackgroundColor="Transparent"/>
+            <StackLayout Spacing="0"
+                         VerticalOptions="Center"
+                         Margin="10,0,0,0">
+                <Label Grid.Column="2"
+                       Grid.Row="0"
+                       FontSize="9"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       Text="{x:Static resources:AppResources.Hola}"
+                       TextColor="{StaticResource ColorTextoMenSup}"
+                       FontFamily="NotoRegular"/>
+                <Label Grid.Column="2"
+                       Grid.Row="1"
+                       FontSize="13"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       Text="{Binding NombreCompletoPerfil}"
+                       MaxLines="1"
+                       TextColor="{StaticResource ColorTextoMenSup}"
+                       FontFamily="NotoBold"/>
+            </StackLayout>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ListView x:Name="producttablelist" 
+                      Margin="0,0,0,50" 
+                      VerticalOptions="Fill" 
+                      HasUnevenRows="True" 
+                      ItemsSource="{Binding ListaCupones}" 
+                      SelectionMode="None" 
+                      SeparatorVisibility="None" 
+                      BackgroundColor="White">
+                <ListView.Header>
+                    <StackLayout Spacing="0">
+                        <StackLayout Margin="0" 
+                                     BackgroundColor="White" 
+                                     IsVisible="{Binding Filtros1}">
+                            <Grid HeightRequest="35" 
+                                  Margin="15,20,15,10" 
+                                  ColumnSpacing="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="35" />
+                                </Grid.ColumnDefinitions>
+                                <Frame Grid.Column="0" 
+                                       BackgroundColor="{StaticResource White}" 
+                                       BorderColor="{StaticResource Gray100}"
+                                       Style="{StaticResource FRegistroGeneral}">
+                                    <Grid Margin="0" 
+                                          Padding="3" 
+                                          RowSpacing="0" 
+                                          ColumnSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="26" />
+                                        </Grid.ColumnDefinitions>
+                                        <Picker HeightRequest="35"
+                                                Grid.Column="1"
+                                                FontSize="12" 
+                                                FontFamily="NotoMedium"
+                                                Title="{x:Static resources:AppResources.categoria}"
+                                                TitleColor="{StaticResource PlaceHolderEntrada}"
+                                                TextColor="{StaticResource TextoEntrada}"
+                                                Margin="25,0,0,0"
+                                                BackgroundColor="Transparent"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment="Start"
+                                                VerticalTextAlignment="Center"
+                                                ItemsSource="{Binding ListaCategoriasFiltro, Mode=TwoWay}"
+                                                ItemDisplayBinding="{Binding Descripcion, Mode=TwoWay}"
+                                                SelectedItem="{Binding SelectFiltroCuponera}"/>
+                                        <ImageButton Grid.Column="1"
+                                                     Source="ic_flechaabajo_obscuro.png" 
+                                                     HorizontalOptions="End" 
+                                                     VerticalOptions="Center" 
+                                                     Margin="3,0,9,0" 
+                                                     HeightRequest="16"
+                                                     WidthRequest="16"
+                                                     BackgroundColor="Transparent" 
+                                                     IsVisible="{Binding FlechaFiltro1}"
+                                                     Command="{Binding FocusFiltro}" />
+                                        <ImageButton Grid.Column="1" 
+                                                     Source="ic_cerrar_obscuro2.png" 
+                                                     HorizontalOptions="End" 
+                                                     VerticalOptions="Center" 
+                                                     Margin="8" 
+                                                     HeightRequest="13"
+                                                     WidthRequest="13"
+                                                     BackgroundColor="Transparent" 
+                                                     IsVisible="{Binding EquisFiltro1}"
+                                                     Command="{Binding LimpiarFiltro1}"/>
+                                    </Grid>
+                                </Frame>
+                                <Frame Grid.Column="1" 
+                                       BackgroundColor="{StaticResource White}"
+                                       BorderColor="{StaticResource Gray100}"
+                                       Style="{StaticResource FRegistroGeneral}">
+                                    <Entry HeightRequest="35" 
+                                           FontSize="12"
+                                           Grid.Column="1" 
+                                           Margin="10,0,0,0"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center" 
+                                           MaxLength="50" 
+                                           FontFamily="NotoMedium"
+                                           Placeholder="{x:Static resources:AppResources.expositor}"
+                                           BackgroundColor="{StaticResource White}"
+                                           TextColor="{Binding ColorEntryConferencista}"
+                                           PlaceholderColor="{StaticResource Gray100}"
+                                           Text="{Binding FiltroExpositor, Mode=TwoWay}"
+                                           Style="{StaticResource ERegistroGeneralTexto}" />
+                                </Frame>
+                                <ImageButton Grid.Column="2" 
+                                             CornerRadius="18" 
+                                             HorizontalOptions="End" 
+                                             WidthRequest="36" 
+                                             HeightRequest="36" 
+                                             Margin="0" 
+                                             BorderColor="{StaticResource Gray100}" 
+                                             BackgroundColor="{StaticResource White}"
+                                             Source="ic_lupa_obscuro.png" 
+                                             Padding="8" 
+                                             Command="{Binding BuscarCupon}" />
+                            </Grid>
+                            <Grid HeightRequest="35" 
+                                  Margin="15,0,15,20"
+                                  ColumnSpacing="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="35" />
+                                    <ColumnDefinition Width="35" />
+                                </Grid.ColumnDefinitions>
+                                <Frame Grid.Column="0" 
+                                       BackgroundColor="{StaticResource White}"
+                                       BorderColor="{StaticResource Gray100}"
+                                       Style="{StaticResource FRegistroGeneral}">
+                                    <Entry HeightRequest="35" 
+                                           FontSize="12"
+                                           Grid.Column="1" 
+                                           Margin="10,0,0,0"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center" 
+                                           MaxLength="50" 
+                                           FontFamily="NotoMedium"
+                                           Placeholder="{x:Static resources:AppResources.suceso}"
+                                           BackgroundColor="{StaticResource White}"
+                                           TextColor="{Binding ColorEntryConferencista}"
+                                           PlaceholderColor="{StaticResource Gray100}"
+                                           Text="{Binding FiltroSuceso, Mode=TwoWay}"
+                                           Style="{StaticResource ERegistroGeneralTexto}" />
+                                </Frame>
+                                <ImageButton Grid.Column="1" 
+                                             CornerRadius="18" 
+                                             HorizontalOptions="End" 
+                                             WidthRequest="36" 
+                                             HeightRequest="36" 
+                                             Margin="0" 
+                                             BorderColor="{StaticResource Gray100}" 
+                                             BackgroundColor="{StaticResource White}"
+                                             Source="ic_lupa_obscuro.png" 
+                                             Padding="8" 
+                                             Command="{Binding BuscarCupon}"/>
+                                <ImageButton Grid.Column="2" 
+                                             CornerRadius="18" 
+                                             HorizontalOptions="End" 
+                                             WidthRequest="36" 
+                                             HeightRequest="36" 
+                                             Margin="0" 
+                                             BorderColor="{StaticResource BtnFondoGeneralObscuro}" 
+                                             BackgroundColor="{StaticResource BtnFondoGeneralObscuro}"
+                                             Source="ic_ordenar_claro.png" 
+                                             Padding="8" 
+                                             Command="{Binding OrdenarCupones}" />
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout Margin="0" 
+                                     BackgroundColor="{StaticResource Gray100}" 
+                                     IsVisible="{Binding Filtros2}">
+                            <Grid HeightRequest="35" 
+                                  Margin="25,20,25,20" 
+                                  ColumnSpacing="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="35" />
+                                </Grid.ColumnDefinitions>
+                                <Frame Grid.Column="0" 
+                                       BackgroundColor="{StaticResource White}"   
+                                       BorderColor="{StaticResource Gray100}" 
+                                       Style="{StaticResource FRegistroGeneral}">
+                                    <Grid Margin="0" 
+                                          Padding="3" 
+                                          RowSpacing="0" 
+                                          ColumnSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="26" />
+                                        </Grid.ColumnDefinitions>
+                                        <Picker HeightRequest="35"
+                                                Grid.Column="0"
+                                                FontSize="12" 
+                                                FontFamily="NotoMedium"
+                                                Title="{x:Static resources:AppResources.categoria}"
+                                                TitleColor="{StaticResource PlaceHolderEntrada}"
+                                                TextColor="{StaticResource TextoEntrada}"
+                                                Margin="25,0,0,0"
+                                                BackgroundColor="Transparent"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment="Start"
+                                                ItemsSource="{Binding ListaCategoriasFiltro, Mode=TwoWay}"
+                                                ItemDisplayBinding="{Binding Descripcion, Mode=TwoWay}"
+                                                SelectedItem="{Binding SelectFiltroCuponera}"/>
+                                        <ImageButton Grid.Column="1" 
+                                                     Source="ic_flechaabajo_obscuro.png" 
+                                                     HorizontalOptions="End" 
+                                                     VerticalOptions="Center" 
+                                                     Margin="3,0,9,0" 
+                                                     HeightRequest="16"
+                                                     WidthRequest="16"
+                                                     BackgroundColor="Transparent" 
+                                                     IsVisible="{Binding FlechaFiltro1}" 
+                                                     Command="{Binding FocusFiltro}" />
+                                        <ImageButton Grid.Column="1" 
+                                                     Source="ic_cerrar_obscuro2.png" 
+                                                     HorizontalOptions="End" 
+                                                     VerticalOptions="Center" 
+                                                     Margin="8" 
+                                                     HeightRequest="13"
+                                                     WidthRequest="13"
+                                                     BackgroundColor="Transparent" 
+                                                     IsVisible="{Binding EquisFiltro1}" 
+                                                     Command="{Binding LimpiarFiltro1}"/>
+                                    </Grid>
+                                </Frame>
+                                <ImageButton Grid.Column="1"  
+                                             CornerRadius="18" 
+                                             HorizontalOptions="End" 
+                                             WidthRequest="35" 
+                                             HeightRequest="35" 
+                                             Margin="0" 
+                                             BorderColor="{StaticResource BtnFondoGeneralObscuro}" 
+                                             BackgroundColor="{StaticResource BtnFondoGeneralObscuro}"
+                                             Source="ic_ordenar_claro.png" 
+                                             Padding="8" 
+                                             Command="{Binding OrdenarCupones}" />
+                            </Grid>
+                        </StackLayout>
+                        <Grid Margin="28,15,28,15"
+                              BackgroundColor="White">
+                            <ImageButton HorizontalOptions="End" 
+                                         VerticalOptions="Start" 
+                                         Source="ic_admiracion_obscuro.png" 
+                                         WidthRequest="25" 
+                                         HeightRequest="25" 
+                                         Margin="0,0,0,0" 
+                                         BackgroundColor="Transparent" 
+                                         Command="{Binding AvisoGeneral}"/>
+                            <Label HorizontalOptions="Start" 
+                                   VerticalOptions="Center" 
+                                   TextColor="{StaticResource TextoGeneral}" 
+                                   Text="{Binding CantidadCupones}" 
+                                   FontSize="12"
+                                   FontFamily="NotoRegular" 
+                                   Margin="0,0,0,0"/>
+                        </Grid>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Padding="1" 
+                                   CornerRadius="10" 
+                                   BorderColor="{StaticResource Gray100}" 
+                                   Margin="25,0,25,10" 
+                                   BackgroundColor="{StaticResource White}" 
+                                   Style="{StaticResource FRegistroGeneral}">
+                                <StackLayout Margin="0" 
+                                             Padding="0">
+                                    <Grid RowSpacing="0" 
+                                          Margin="10,5,5,0"
+                                          ColumnSpacing="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="45*" />
+                                            <ColumnDefinition Width="65*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Frame Grid.Column="0" 
+                                               Padding="1" 
+                                               CornerRadius="10" 
+                                               VerticalOptions="Start" 
+                                               BackgroundColor="WhiteSmoke" 
+                                               Style="{StaticResource FRegistroGeneral}">
+                                            <Grid>
+                                                <Image Margin="0" 
+                                                       Aspect="AspectFit" 
+                                                       Source="{Binding Imagen}" 
+                                                       BackgroundColor="Transparent" 
+                                                       HeightRequest="125" 
+                                                       IsVisible="{Binding ImagenV}" />
+                                                <ImageButton Grid.Row="0" 
+                                                             Command="{Binding Path=BindingContext.PlusButtonCommand,Source={x:Reference producttablelist},Mode=TwoWay}" 
+                                                             CommandParameter="{Binding .}" 
+                                                             Source="{Binding ImagenFav}" 
+                                                             VerticalOptions="Start" 
+                                                             HorizontalOptions="End" 
+                                                             WidthRequest="25" 
+                                                             HeightRequest="25" 
+                                                             Margin="8"/>
+                                            </Grid>
+                                        </Frame>
+                                        <StackLayout Grid.Column="1" 
+                                                     Spacing="0">
+                                            <Label TextColor="{StaticResource Gray100}" 
+                                                   Margin="0,5,0,0" 
+                                                   FontSize="12" 
+                                                   FontFamily="NotoBold">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding Feria}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label TextColor="{StaticResource TextoGeneral}"  
+                                                   Margin="0,2,0,0" 
+                                                   FontSize="14" 
+                                                   FontFamily="NotoBold" 
+                                                   IsVisible="{Binding NombreExpositorV}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding Expositor}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label TextColor="{StaticResource TextoGeneral}" 
+                                                   Margin="0,0,0,0" 
+                                                   FontSize="12" 
+                                                   FontFamily="NotoRegular" 
+                                                   IsVisible="{Binding NombreCategoriaV}" >
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding NombreCategoria}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label TextColor="{StaticResource TextoGeneral}" 
+                                                   Margin="0,0,0,0" 
+                                                   FontSize="12" 
+                                                   FontFamily="NotoRegular" 
+                                                   IsVisible="{Binding NombreSubcategoriaV}" >
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding NombreSubcategoria}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
+                                            <Label TextColor="{StaticResource Key=BlackApp}" 
+                                                   Margin="0,0,0,0" 
+                                                   FontSize="12" 
+                                                   FontFamily="NotoRegular" 
+                                                   IsVisible="{Binding PrecioV}" >
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding Precio}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                    </Grid>
+                                    <StackLayout Grid.Row="1" 
+                                                 Spacing="0" 
+                                                 Padding="10,5,10,10" >
+                                        <Label Margin="0,0,0,0" 
+                                               Padding="0" 
+                                               FontSize="14" 
+                                               FontFamily="NotoBold" 
+                                               Text="{Binding NombreCupon}" 
+                                               TextColor="{StaticResource TextoGeneral}"
+                                               IsVisible="{Binding NombreCuponV}"/>
+                                        <Label Margin="0,10,0,0"
+                                               Padding="0" 
+                                               FontSize="12" 
+                                               FontFamily="NotoRegular" 
+                                               Text="{Binding DescripcionCupon}" 
+                                               TextColor="{StaticResource TextoGeneral}"
+                                               IsVisible="{Binding DescripcionCuponV}" />
+                                        <Label TextColor="{StaticResource TextoGeneral}" 
+                                               Margin="0,10,0,0" 
+                                               IsVisible="{Binding VigenciaV}" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="*" FontSize="10" FontFamily="NotoBold"/>
+                                                    <Span Text="{Binding Vigencia}" FontSize="10" FontFamily="NotoBold" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label TextColor="{StaticResource TextoGeneral}" 
+                                               Margin="0,0,0,0" 
+                                               IsVisible="{Binding ParteLegalV}" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="*" FontSize="10" FontFamily="NotoBold"/>
+                                                    <Span Text="{Binding ParteLegal}" FontSize="10" FontFamily="NotoBold" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <StackLayout HeightRequest="50" />
+                </ListView.Footer>
+            </ListView>
+            <!--INICIA MENU INFERIOR-->
+            <Grid BackgroundColor="{StaticResource FondomMenuInfe}"
+                  Margin="0,0,0,-60"
+                  VerticalOptions="End"
+                  HorizontalOptions="Fill"
+                  HeightRequest="70">
+            </Grid>
+            <Grid Grid.Row="0"
+                  BackgroundColor="{StaticResource FondomMenuInfe}"
+                  VerticalOptions="End"
+                  HorizontalOptions="Fill"
+                  ColumnSpacing="5"
+                  Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Column="{Binding GridNotificaciones}"
+            BackgroundColor="{StaticResource FondoNotificaMenuInfe}"
+            Padding="1"
+            CornerRadius="10"
+            HasShadow="False"
+            BorderColor="{StaticResource BorderNotificaMenuInfe}"
+            IsVisible="{Binding VerNotificicaciones}"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            Margin="30,0,0,0">
+                    <Label Text="{Binding CantidadNotificaciones}"
+                FontSize="11"
+                FontFamily="NotoRegular"
+                TextColor="{StaticResource TextNotificaMenuInfe}"
+                WidthRequest="20"
+                HeightRequest="20"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"/>
+                </Frame>
+                <Image x:Name="Menu1"
+                       Grid.Column="0"
+                       WidthRequest="25"
+                       Source="{Binding Icon1}"
+                       ClassId="{Binding Icon1Class}"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="Center"
+                       IsVisible="{Binding Menu1}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                              CommandParameter="{x:Reference Menu1}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="Menu2"
+                       Grid.Column="1"
+                       WidthRequest="25"
+                       Source="{Binding Icon2}"
+                       ClassId="{Binding Icon2Class}"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="Center"
+                       IsVisible="{Binding Menu2}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                              CommandParameter="{x:Reference Menu2}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <BoxView Grid.Column="2"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         WidthRequest="1"
+                         HeightRequest="25"
+                         Color="Transparent"/>
+                <Image x:Name="Menu3"
+                       Grid.Column="3"
+                       WidthRequest="25"
+                       Source="{Binding Icon3}"
+                       ClassId="{Binding Icon3Class}"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="Center"
+                       IsVisible="{Binding Menu3}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                              CommandParameter="{x:Reference Menu3}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="Menu4"
+                       Grid.Column="4"
+                       WidthRequest="25"
+                       Source="{Binding Icon4}"
+                       ClassId="{Binding Icon4Class}"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="Center"
+                       IsVisible="{Binding Menu4}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                              CommandParameter="{x:Reference Menu4}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+            <Frame Grid.Row="0"
+                   VerticalOptions="End"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,0"
+                   Padding="0"
+                   HasShadow="False"
+                   BorderColor="{StaticResource BordeIconoPrin}"
+                   BackgroundColor="{StaticResource FondoIconoPrin}"
+                   CornerRadius="27"
+                   WidthRequest="58"
+                   HeightRequest="58">
+                <Image Source="{Binding ImagenSplash}"
+                       HeightRequest="40"
+                       WidthRequest="40"
+                       Aspect="AspectFill"
+                       Margin="8">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrHome}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Frame>
+            <!--TERMINA MENU INFERIOR-->
+            <!--INICIA ISBUSY-->
+            <Grid BackgroundColor="{StaticResource FondoLoder}"
+                  VerticalOptions="Fill"
+                  HorizontalOptions="Fill"
+                  Margin="-20,-60"
+                  IsVisible="{Binding IsBusy}">
+                <ActivityIndicator IsRunning="true"
+                                   Color="{StaticResource IconoLoder}"
+                                   Margin="20"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+            </Grid>
+            <!--TERMINA ISBUSY-->
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

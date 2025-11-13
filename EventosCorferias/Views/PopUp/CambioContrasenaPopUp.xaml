@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Popup:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EventosCorferias.Views.PopUp.CambioContrasenaPopUp"
+             xmlns:Popup="clr-namespace:Mopups.Pages;assembly=Mopups"
+             xmlns:resources="clr-namespace:EventosCorferias.Resources.RecursosIdioma"
+             Title="CambioContrasenaPopUp"
+             BackgroundColor="{StaticResource ColorFondoPopUp}">
+    <Frame HasShadow="False"
+            BackgroundColor="White"
+            BorderColor="Transparent"
+            IsClippedToBounds="True"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Margin="20"
+            Padding="15,25,15,15"
+            CornerRadius="10">
+        <StackLayout BackgroundColor="White">
+            <StackLayout VerticalOptions="Center" 
+                             HorizontalOptions="Center" 
+                             Padding="0"
+                             Margin="0" 
+                             BackgroundColor="Transparent">
+                <StackLayout x:Name="seccion1" 
+                                 Spacing="0" 
+                                 Padding="0" 
+                                 BackgroundColor="White">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout BackgroundColor="White">
+                            <Label Text="{x:Static resources:AppResources.contrasena}" 
+                                       FontSize="28" 
+                                       TextColor="{StaticResource TextoGeneral}" 
+                                       FontFamily="NotoBold" 
+                                       LineHeight="0" 
+                                       Margin="0" 
+                                       Padding="0" 
+                                       HorizontalOptions="Start"/>
+                            <Label Text="{x:Static resources:AppResources.actual}" 
+                                       FontSize="28" 
+                                       TextColor="{StaticResource TextoGeneral}" 
+                                       FontFamily="NotoBold" 
+                                       LineHeight="0" 
+                                       Margin="0" 
+                                       Padding="0" 
+                                       HorizontalOptions="Start"/>
+                        </StackLayout>
+                        <Image BackgroundColor="White" 
+                                   Grid.Column="0" 
+                                   Source="ic_cerrar_obscuro.png" 
+                                   WidthRequest="25" 
+                                   VerticalOptions="Start" 
+                                   HorizontalOptions="End">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Button_OnClicked"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                    <Label FontSize="11" 
+                           TextColor="{StaticResource TextoGeneral}"
+                           HorizontalOptions="Start" 
+                           VerticalOptions="Start" 
+                           Margin="0,15,15,15" 
+                           BackgroundColor="White">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span LineHeight="3" 
+                                          Text="{x:Static resources:AppResources.contrasenaActual}" 
+                                          FontSize="11" 
+                                          FontFamily="NotoRegular"/>
+                                <Span LineHeight="3" 
+                                          Text="*" 
+                                          TextColor="{StaticResource TextoGeneral}"
+                                          FontSize="11" 
+                                          FontFamily="NotoRegular"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Frame Margin="0,0,0,0" 
+                           CornerRadius="10"
+                               Padding="7,7,7,7" 
+                               BorderColor="LightGray" 
+                               BackgroundColor="White" 
+                               HasShadow="False">
+                        <StackLayout Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" 
+                                           Source="ic_candado_obscuro.png" 
+                                           WidthRequest="20" 
+                                           Margin="10,0,5,0" 
+                                           HorizontalOptions="Start" />
+
+                                <Entry x:Name="IsPasword1" 
+                                           Grid.Column="1"
+                                           TextColor="{StaticResource TextoEntrada}" 
+                                           FontFamily="NotoMedium" 
+                                           HorizontalTextAlignment="Start" 
+                                           VerticalOptions="Center"
+                                           Margin="5,2,5,0"
+                                           BackgroundColor="White" 
+                                           Text="{Binding EntClaveAntigua, Mode=TwoWay}" 
+                                           PlaceholderColor="{StaticResource PlaceHolderEntrada}" 
+                                           Placeholder="*********" 
+                                           FontSize="12" 
+                                           Style="{StaticResource ERegistroGeneralTexto}"/>
+
+                                <ImageButton Grid.Column="2" 
+                                                 WidthRequest="20" 
+                                                 Margin="10,0,5,0" 
+                                                 HorizontalOptions="Start" 
+                                                 BackgroundColor="Transparent" 
+                                                 Clicked="ImageButton_Clicked1" 
+                                                 x:Name="ImageButton1"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Label FontSize="10" 
+                               FontFamily="NotoRegular" 
+                               Text="{x:Static resources:AppResources.contrasenaIncorrecta}" 
+                               TextColor="{StaticResource TextoGeneral}"
+                               x:Name="ClaveIncorrecta" 
+                               Margin="15,5,10,5"/>
+                    <Label FontSize="10"
+                               FontFamily="NotoRegular"
+                               Text="{x:Static resources:AppResources.ServicioMantenimiento}" 
+                               TextColor="{StaticResource TextoGeneral}"
+                               x:Name="SMante1" 
+                               Margin="15,5,10,5"/>
+                    <Label FontSize="10" 
+                               FontFamily="NotoRegular" 
+                               Text="{x:Static resources:AppResources.camposVacios}" 
+                               TextColor="{StaticResource TextoGeneral}"
+                               x:Name="campoVacio1" 
+                               Margin="15,5,10,5"/>
+                    <Button Text="Enviar" 
+                                TextColor="{StaticResource BtnTextoObscuro}"
+    BorderColor="{StaticResource BtnBoderGeneralObscuro}"
+    BackgroundColor="{StaticResource BtnFondoGeneralObscuro}"
+                                Margin="0,15,0,0"
+                                Clicked="ClaveAntigua_Mto"  
+                                Style="{StaticResource BtnGeneral}"/>
+                </StackLayout>
+                <StackLayout x:Name="seccion2" 
+                                 BackgroundColor="White">
+                    <Grid BackgroundColor="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout>
+                            <Label Grid.Column="0" 
+                                       FontSize="28" 
+                                       TextColor="{StaticResource TextoGeneral}" 
+                                       HorizontalOptions="Start" 
+                                       Margin="15,20,0,0" 
+                                       Text="{x:Static resources:AppResources.contrasena}" 
+                                       FontFamily="NotoBold" 
+                                       LineHeight="0" />
+                            <Label Grid.Column="0" 
+                                       FontSize="28" 
+                                       TextColor="{StaticResource TextoGeneral}"
+                                       HorizontalOptions="Start" 
+                                       Margin="15,0,0,5" 
+                                       Text="{x:Static resources:AppResources.nueva}" 
+                                       FontFamily="NotoBold" 
+                                       LineHeight="0" />
+                        </StackLayout>
+                        <Image BackgroundColor="White" 
+                                   Grid.Column="0" 
+                                   Source="ic_cerrar_obscuro.png" 
+                                   WidthRequest="25" 
+                                   VerticalOptions="Start" 
+                                   HorizontalOptions="End">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Button_OnClicked"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="27"/>
+                        </Grid.ColumnDefinitions>
+                        <Label FontSize="11" 
+                                   TextColor="{StaticResource TextoGeneral}"  
+                                   HorizontalOptions="Start" 
+                                   Margin="15,0,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="3" 
+                                              Text="{x:Static resources:AppResources.contrasena}" 
+                                              FontSize="11" 
+                                              FontFamily="NotoRegular"/>
+                                    <Span LineHeight="3" 
+                                              Text="*" 
+                                              TextColor="{StaticResource TextoGeneral}"  
+                                              FontSize="11" 
+                                              FontFamily="NotoRegular"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <!---->
+                        <ImageButton Source="ic_admiracion_obscuro.png" 
+                                         WidthRequest="17" 
+                                         HeightRequest="17"
+                                         Grid.Column="1" 
+                                         BackgroundColor="Transparent" 
+                                         Clicked="ImageButton_Clicked"
+                                         Margin="0,0,10,0"/>
+                    </Grid>
+                    <Frame Margin="0,0,0,0" 
+                               Padding="7,7,7,7" 
+                           CornerRadius="10"
+                               BorderColor="LightGray" 
+                               BackgroundColor="White" 
+                               HasShadow="False">
+                        <StackLayout Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" 
+                                           Source="ic_candado_obscuro.png" 
+                                           WidthRequest="20" 
+                                           Margin="10,0,5,0" 
+                                           HorizontalOptions="Start" />
+
+                                <Entry x:Name="IsPasword2" 
+                                           Grid.Column="1"
+                                           TextColor="{StaticResource TextoEntrada}" 
+                                           FontFamily="NotoMedium" 
+                                           HorizontalTextAlignment="Start" 
+                                           VerticalOptions="Start"
+                                           Margin="0,0,5,0"
+                                           BackgroundColor="White" 
+                                           Text="{Binding EntClaveNueva, Mode=TwoWay}" 
+                                           PlaceholderColor="{StaticResource PlaceHolderEntrada}" 
+                                           Placeholder="*********" 
+                                           FontSize="12" 
+                                           Style="{StaticResource ERegistroGeneralTexto}"/>
+
+                                <!---->
+                                <ImageButton Grid.Column="2" 
+                                                 WidthRequest="20" 
+                                                 Margin="10,0,5,0" 
+                                                 HorizontalOptions="Start" 
+                                                 BackgroundColor="Transparent" 
+                                                 Clicked="ImageButton_Clicked2"
+                                                 x:Name="ImageButton2"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Label FontSize="11" 
+                               TextColor="{StaticResource TextoGeneral}" 
+                               HorizontalOptions="Start" 
+                               Margin="15,15,15,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span LineHeight="3" 
+                                          Text="{x:Static resources:AppResources.confirmarContrasena}" 
+                                          FontSize="11" 
+                                          FontFamily="NotoRegular"/>
+                                <Span LineHeight="3" 
+                                          Text="*" 
+                                          TextColor="{StaticResource TextoGeneral}" 
+                                          FontSize="11" 
+                                          FontFamily="NotoRegular" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Frame Margin="0,0,0,0" 
+                           CornerRadius="10"
+                               Padding="7,7,7,7" 
+                               BorderColor="LightGray" 
+                               BackgroundColor="White" 
+                               HasShadow="False">
+                        <StackLayout Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" 
+                                           Source="ic_candado_obscuro.png" 
+                                           WidthRequest="20" 
+                                           Margin="10,0,5,0" 
+                                           HorizontalOptions="Start" />
+
+                                <Entry x:Name="IsPasword3" 
+                                           Grid.Column="1"
+                                           TextColor="{StaticResource TextoEntrada}" 
+                                           FontFamily="NotoMedium" 
+                                           HorizontalTextAlignment="Start" 
+                                           VerticalOptions="Start"
+                                           Margin="0,0,5,0"
+                                           BackgroundColor="White" 
+                                           Text="{Binding EnClaveNueva2, Mode=TwoWay}" 
+                                           PlaceholderColor="{StaticResource PlaceHolderEntrada}" 
+                                           Placeholder="*********" 
+                                           FontSize="12" 
+                                           Style="{StaticResource ERegistroGeneralTexto}"/>
+
+                                <!---->
+                                <ImageButton Grid.Column="2" 
+                                                 WidthRequest="20" 
+                                                 Margin="10,0,5,0" 
+                                                 HorizontalOptions="Start" 
+                                                 BackgroundColor="Transparent" 
+                                                 Clicked="ImageButton_Clicked3" 
+                                                 x:Name="ImageButton3"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Label FontSize="10" 
+                               FontFamily="NotoRegular" 
+                               Text="{x:Static resources:AppResources.contrasenaNoConincide}" 
+                               TextColor="{StaticResource TextoGeneral}"
+                               x:Name="ClaveNoConincide" 
+                               Margin="15,5,10,5"/>
+                    <Label FontSize="10" 
+                               FontFamily="NotoRegular" 
+                               Text="{x:Static resources:AppResources.ServicioMantenimiento}" 
+                               TextColor="{StaticResource TextoGeneral}"
+                               x:Name="SMante2" 
+                               Margin="15,5,10,5"/>
+                    <Label FontSize="10" 
+                               FontFamily="NotoRegular" 
+                               Text="{x:Static resources:AppResources.VMNoDejesCamposVacios}" 
+                               TextColor="{StaticResource TextoGeneral}" 
+                               x:Name="campoVacio2" 
+                               Margin="15,5,10,5"/>
+                    <!---->
+                    <Button Text="{x:Static resources:AppResources.Modificar}" 
+                                TextColor="{StaticResource BtnTextoObscuro}"
+    BorderColor="{StaticResource BtnBoderGeneralObscuro}"
+    BackgroundColor="{StaticResource BtnFondoGeneralObscuro}"
+                            Clicked="ClaveNueva_Mto"
+                            Margin="0,15,0,0"
+                            Style="{StaticResource BtnGeneral}"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </Frame>
+</Popup:PopupPage>

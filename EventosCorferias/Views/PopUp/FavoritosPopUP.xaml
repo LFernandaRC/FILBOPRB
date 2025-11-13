@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Popup:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:Popup="clr-namespace:Mopups.Pages;assembly=Mopups"
+                     xmlns:resources="clr-namespace:EventosCorferias.Resources.RecursosIdioma"
+             x:Class="EventosCorferias.Views.PopUp.FavoritosPopUP"
+                  BackgroundColor="{StaticResource ColorFondoPopUp}"
+             Title="FavoritosPopUP">
+    <Frame HasShadow="False"
+              BackgroundColor="White"
+              BorderColor="Transparent"
+              IsClippedToBounds="True"
+              VerticalOptions="Center"
+              HorizontalOptions="Center"
+              Margin="10"
+              Padding="10"
+              CornerRadius="10">
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout x:Name="SubGrupo" Margin="0" BackgroundColor="White" Padding="10,10,10,20" Spacing="20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="{x:Static resources:AppResources.misDestacados}" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,0,0,10" HorizontalTextAlignment="Start" TextColor="{StaticResource TextoGeneral}" FontSize="16" FontFamily="NotoBold"/>
+                    <Image Grid.Column="1" BackgroundColor="White" Source="ic_cerrar_obscuro.png" WidthRequest="25" HorizontalOptions="End">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Button_OnClicked"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+                <Frame HasShadow="False" Padding="0" Margin="0" CornerRadius="16"  BorderColor="#b7b7b7">
+                    <StackLayout ClassId="MContenido" Orientation="Horizontal"  BackgroundColor="Transparent" Spacing="10" Padding="20,8,80,8">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"  />
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="ic_noticias_obscuro.png" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent"/>
+                        <Label x:Name="MContenido" Text="{x:Static resources:AppResources.misContenidos}" VerticalOptions="Center" TextColor="{StaticResource TextoGeneral}" FontSize="13" FontFamily="NotoMedium"/>
+                    </StackLayout>
+                </Frame>
+                <Frame HasShadow="False" Padding="0" Margin="0" CornerRadius="16"  BorderColor="#b7b7b7">
+                    <StackLayout ClassId="MAgenda" Orientation="Horizontal"  BackgroundColor="Transparent" Spacing="10" Padding="20,8,80,8">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="ic_programacion_obscuro.png" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent"/>
+                        <Label x:Name="MAgenda" Text="{x:Static resources:AppResources.miAgenda}" VerticalOptions="Center" TextColor="{StaticResource TextoGeneral}" FontSize="13" FontFamily="NotoMedium"/>
+                    </StackLayout>
+                </Frame>
+                <Frame HasShadow="False" Padding="0" Margin="0" CornerRadius="16"  BorderColor="#b7b7b7">
+                    <StackLayout ClassId="MConferenciasta" Orientation="Horizontal"  BackgroundColor="Transparent" Spacing="10" Padding="20,8,80,8">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2" />
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="ic_conferencista_obscuro.png" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent"/>
+                        <Label x:Name="MConferenciasta" Text="{x:Static resources:AppResources.misInvitados}" VerticalOptions="Center" TextColor="{StaticResource TextoGeneral}" FontSize="13" FontFamily="NotoMedium"/>
+                    </StackLayout>
+                </Frame>
+                <Frame HasShadow="False" Padding="0" Margin="0" CornerRadius="16"  BorderColor="#b7b7b7">
+                    <StackLayout ClassId="MExpositor" Orientation="Horizontal"  BackgroundColor="Transparent" Spacing="10" Padding="20,8,80,8">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3" />
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="ic_expositores_obscuro.png" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent"/>
+                        <Label x:Name="MExpositor" Text="{x:Static resources:AppResources.misExpositores}" VerticalOptions="Center" TextColor="{StaticResource TextoGeneral}" FontSize="13" FontFamily="NotoMedium"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <Grid BackgroundColor="{StaticResource FondoLoder}"
+                  x:Name="isbusy"
+           VerticalOptions="Fill"
+           HorizontalOptions="Fill"
+           Margin="-20,-60">
+                <ActivityIndicator IsRunning="true"
+                            Color="{StaticResource IconoLoder}"
+                            Margin="20"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"/>
+            </Grid>
+        </Grid>
+    </Frame>
+</Popup:PopupPage>

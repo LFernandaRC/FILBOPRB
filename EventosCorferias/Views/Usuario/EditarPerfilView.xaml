@@ -1,0 +1,1516 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EventosCorferias.Views.Usuario.EditarPerfilView"
+             xmlns:controls="clr-namespace:EventosCorferias.Controls"
+             xmlns:resources="clr-namespace:EventosCorferias.Resources.RecursosIdioma"
+             Title="EditarPerfilView"
+             BackgroundColor="White">
+    <NavigationPage.TitleView>
+        <Label Text="{x:Static resources:AppResources.editarPerfil}"
+               TextColor="{StaticResource ColorTextoMenSup}"
+               Style="{StaticResource LMenuSup}"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0"
+                        BackgroundColor="White"
+                        Margin="0,1,0,50">
+                <VerticalStackLayout  Padding="0,0,0,50"
+                                      Spacing="0"
+                                      HorizontalOptions="Fill">
+                    <!-- IMAGEN DE PERFIL -->
+                    <Grid HorizontalOptions="Center"
+                          Margin="0,20,0,0"
+                          Grid.ColumnSpan="2"
+                          Grid.RowSpan="2"
+                          HeightRequest="160"
+                          WidthRequest="160"
+                          BackgroundColor="Transparent"
+                          Padding="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               IsClippedToBounds="true"
+                               CornerRadius="80"
+                               Margin="0"
+                               Padding="-10"
+                               IsVisible="{Binding FotoUsuario}"
+                               HasShadow="False">
+                            <Image Source="{Binding FotoGaleria}"
+                                   Aspect="AspectFill"
+                                   BackgroundColor="WhiteSmoke"/>
+                        </Frame>
+                        <ImageButton Source="ic_camara_relleno.png"
+                                     HorizontalOptions="End"
+                                     VerticalOptions="End"
+                                     Margin="0,110,0,0"
+                                     WidthRequest="50"
+                                     BackgroundColor="Transparent"
+                                     Command="{Binding Cambiar_Foto}"/>
+                    </Grid>
+                    <!-- FORMULARIO REGISTRO PERSONA -->
+                    <StackLayout Padding="15,15,15,0">
+                        <Label FontSize="11"
+                               TextColor="{StaticResource TextoEntrada}"
+                               HorizontalOptions="Start"
+                               Margin="1,0,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2"
+                                          Text="{x:Static resources:AppResources.nombreCompleto}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                    <Span LineHeight="1.2"
+                                          Text="*"
+                                          TextColor="{StaticResource TextoEntrada}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               Style="{StaticResource FRegistroGeneral}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Source="ic_perfil_obscuro.png"
+                                       WidthRequest="20"
+                                       Margin="10,0,5,0"
+                                       HorizontalOptions="Start"/>
+                                <Entry HeightRequest="35"
+                                       FontFamily="NotoRegular"
+                                       Grid.Column="1"
+                                       TextColor="{StaticResource TextoEntrada}"
+                                       Placeholder="{x:Static resources:AppResources.usuario}"
+                                       PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                       Text="{Binding EntNombreUsu}"
+                                       Style="{StaticResource ERegistroGeneralTexto}"/>
+                            </Grid>
+                        </Frame>
+                        <!-- INDENTIFICACION BLOQUEADA-->
+                        <Label IsVisible="{Binding VerIdentificacionBloq}"
+                               FontSize="11"
+                               TextColor="{StaticResource TextoEntrada}"
+                               HorizontalOptions="Start"
+                               Margin="1,15,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2"
+                                          Text="{x:Static resources:AppResources.tiponNumeroIdentificacion}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                    <Span LineHeight="1.2"
+                                          Text="*"
+                                          TextColor="{StaticResource TextoEntrada}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Grid IsVisible="{Binding VerIdentificacionBloq}"
+                              ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame BorderColor="{StaticResource BordeEntrada}"
+                                   BackgroundColor="{StaticResource FondoEntrada}"
+                                   Grid.Column="0"
+                                   Style="{StaticResource FRegistroGeneral}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0"
+                                           Source="ic_identificacion_obscuro.png"
+                                           WidthRequest="20"
+                                           Margin="10,0,0,0"
+                                           HorizontalOptions="Start"/>
+                                    <Label TextColor="{StaticResource PlaceHolderEntrada}"
+                                           FontFamily="NotoRegular"
+                                           IsEnabled="False"
+                                           FontSize="12"
+                                           Grid.Column="1"
+                                           Margin="0,7,20,0"
+                                           BackgroundColor="Transparent"
+                                           WidthRequest="60"
+                                           Text="{Binding EnTipoIdUsuS}"
+                                           VerticalOptions="Start"/>
+                                </Grid>
+                            </Frame>
+                            <Frame BorderColor="{StaticResource BordeEntrada}"
+                                   BackgroundColor="{StaticResource FondoEntrada}"
+                                   Padding="10"
+                                   Style="{StaticResource FRegistroGeneral}"
+                                   Grid.Column="1"
+                                   HasShadow="False">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label TextColor="{StaticResource PlaceHolderEntrada}"
+                                           FontFamily="NotoRegular"
+                                           IsEnabled="False"
+                                           FontSize="12"
+                                           Grid.Column="0"
+                                           VerticalOptions="Start"
+                                           Margin="60,0,5,0"
+                                           BackgroundColor="Transparent"
+                                           WidthRequest="250"
+                                           Text="{Binding EntIdUsu}"/>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                        <!-- INDENTIFICACION DESBLOQUEADA-->
+                        <Grid Margin="1,15,0,0"
+                              ColumnSpacing="10"
+                              IsVisible="{Binding VerIdentificacionDesBloq}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0">
+                                <Label FontSize="11"
+                                       TextColor="{StaticResource TextoEntrada}"
+                                       HorizontalOptions="Start"
+                                       Margin="1,15,15,0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span LineHeight="1.2"
+                                                  Text="{x:Static resources:AppResources.tipoDocumento}"
+                                                  FontSize="11"
+                                                  FontFamily="NotoSemiBold"/>
+                                            <Span LineHeight="1.2"
+                                                  Text="*"
+                                                  TextColor="{StaticResource TextoEntrada}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Frame BorderColor="{StaticResource BordeEntrada}"
+                                       BackgroundColor="{StaticResource FondoEntrada}"
+                                       Style="{StaticResource FRegistroGeneral}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Column="0"
+                                             Source="ic_identificacion_obscuro.png"
+                                             WidthRequest="20"
+                                             Margin="10,0,5,0"
+                                             HorizontalOptions="Start"/>
+                                        <Picker HeightRequest="35"
+                                                Grid.Column="1"
+                                                FontSize="12"
+                                                FontFamily="NotoRegular"
+                                                Title="{x:Static resources:AppResources.seleccionar}"
+                                                TitleColor="{StaticResource PlaceHolderEntrada}"
+                                                TextColor="{StaticResource TextoEntrada}"
+                                                Margin="0,0,5,0"
+                                                BackgroundColor="Transparent"
+                                                ItemsSource="{Binding ListaTipoIdUsu, Mode=TwoWay}"
+                                                ItemDisplayBinding="{Binding Descripcion, Mode=TwoWay}"
+                                                SelectedItem="{Binding SelecttipoDocumento}"/>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1">
+                                <Label FontSize="11"
+                                       TextColor="{StaticResource TextoEntrada}"
+                                       HorizontalOptions="Start"
+                                       Margin="1,15,15,0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span LineHeight="1.2"
+                                                  Text="{x:Static resources:AppResources.NumeroDocumento}"
+                                                  FontSize="11"
+                                                  FontFamily="NotoSemiBold"/>
+                                            <Span LineHeight="1.2"
+                                                  Text="*"
+                                                  TextColor="{StaticResource TextoEntrada}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Frame BorderColor="{StaticResource BordeEntrada}"
+                                       BackgroundColor="{StaticResource FondoEntrada}"
+                                       Style="{StaticResource FRegistroGeneral}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Column="0"
+                                               Source="ic_identificacion_obscuro.png"
+                                               WidthRequest="20"
+                                               Margin="10,0,5,0"
+                                               HorizontalOptions="Start"/>
+                                        <Entry HeightRequest="35"
+                                               FontFamily="NotoRegular"
+                                               MaxLength="50"
+                                               Margin="0,0,0,0"
+                                               HorizontalOptions="Start"
+                                               HorizontalTextAlignment="Start"
+                                               Grid.Column="1"
+                                               TextColor="{StaticResource TextoEntrada}"
+                                               Placeholder="{x:Static resources:AppResources.Identificacion}"
+                                               PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                               Text="{Binding EntIdentificacio, Mode=TwoWay}"
+                                               Style="{StaticResource ERegistroGeneralTextoNumerico}"/>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </Grid>
+                        <!--FIN IDENTIFICACION-->
+                        <!-- CORREO DESBLOQUEADO-->
+                        <Grid IsVisible="{Binding VerCorreoDesBloq}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="11"
+                                   TextColor="{StaticResource TextoEntrada}"
+                                   Grid.Column="0"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"
+                                   Margin="1,15,15,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span LineHeight="1.2"
+                                              Text="{x:Static resources:AppResources.correoElectronico}"
+                                              FontSize="11"
+                                              FontFamily="NotoSemiBold"/>
+                                        <Span LineHeight="1.2"
+                                              Text="*"
+                                              TextColor="{StaticResource TextoEntrada}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <ImageButton Source="ic_admiracion_obscuro.png"
+                                         WidthRequest="20"
+                                         Margin="0,15,0,0"
+                                         Grid.Column="1"
+                                         BackgroundColor="Transparent"
+                                         Command="{Binding Notificacion_correo}"/>
+                        </Grid>
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               IsVisible="{Binding VerCorreoDesBloq}"
+                               Style="{StaticResource FRegistroGeneral}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Source="ic_correo_obscuro.png"
+                                       WidthRequest="20"
+                                       Margin="10,0,5,0"
+                                       HorizontalOptions="Start"/>
+                                <Entry HeightRequest="35"
+                                       FontFamily="NotoRegular"
+                                       Grid.Column="1"
+                                       TextColor="{StaticResource TextoEntrada}"
+                                       Placeholder="{x:Static resources:AppResources.correoElectronico}"
+                                       PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                       Text="{Binding EntCorreo, Mode=TwoWay}"
+                                       Style="{StaticResource ERegistroGeneralTexto}"/>
+                            </Grid>
+                        </Frame>
+                        <!--CORREO BLOQUEADO -->
+                        <Label IsVisible="{Binding VerCorreoBloq}"
+                               FontSize="11"
+                               TextColor="{StaticResource TextoEntrada}"
+                               HorizontalOptions="Start"
+                               Margin="1,15,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2"
+                                          Text="{x:Static resources:AppResources.correoElectronico}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                    <Span LineHeight="1.2"
+                                          Text="*"
+                                          TextColor="{StaticResource TextoEntrada}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               IsVisible="{Binding VerCorreoBloq}"
+                               Margin="0"
+                               Padding="10"
+                               Style="{StaticResource FRegistroGeneral}"
+                               Grid.Column="0"
+                               HasShadow="False">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Source="ic_correo_obscuro.png"
+                                       WidthRequest="20"
+                                       Margin="0,0,5,0"
+                                       HorizontalOptions="Start"/>
+                                <Label TextColor="{StaticResource PlaceHolderEntrada}"
+                                       FontFamily="NotoRegular"
+                                       IsEnabled="False"
+                                       FontSize="12"
+                                       Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       Margin="0,0,5,0"
+                                       BackgroundColor="Transparent"
+                                       WidthRequest="250"
+                                       Text="{Binding EntCorreoUsu}"/>
+                            </Grid>
+                        </Frame>
+                        <!-- FIN CORREO -->
+
+                        <Label FontSize="11"
+                               TextColor="{StaticResource TextoEntrada}"
+                               HorizontalOptions="Start"
+                               Margin="1,15,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2"
+                                          Text="{x:Static resources:AppResources.telefonoCelular}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               Style="{StaticResource FRegistroGeneral}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Source="ic_telefono_obscuro.png"
+                                       WidthRequest="20"
+                                       Margin="10,0,5,0"
+                                       HorizontalOptions="Start"/>
+                                <Entry HeightRequest="35"
+                                       FontFamily="NotoRegular"
+                                       Grid.Column="1"
+                                       TextColor="{StaticResource TextoEntrada}"
+                                       Placeholder="{x:Static resources:AppResources.telefonoCelular}"
+                                       PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                       Text="{Binding EntCelularUsu, Mode=TwoWay}"
+                                       Style="{StaticResource ERegistroGeneralTextoNumerico}"/>
+                            </Grid>
+                        </Frame>
+
+                        <Label FontSize="11"
+                               TextColor="{StaticResource TextoEntrada}"
+                               HorizontalOptions="Start"
+                               Margin="1,15,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2"
+                                          Text="{x:Static resources:AppResources.fechaNacimiento}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                    <Span LineHeight="1.2"
+                                          Text="*"
+                                          TextColor="{StaticResource TextoEntrada}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               Style="{StaticResource FRegistroGeneral}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Source="ic_calendario_obscuro.png"
+                                       WidthRequest="20"
+                                       Margin="10,0,5,0"
+                                       HorizontalOptions="Start"/>
+                                <DatePicker Grid.Column="1"
+                                            FontSize="12"
+                                            Margin="0,0,5,0"
+                                            BackgroundColor="Transparent"
+                                            WidthRequest="250"
+                                            Format="dd/MM/yyyy"
+                                            HeightRequest="35"
+                                            TextColor="{StaticResource TextoEntrada}"
+                                            Date="{Binding EntFechaNacimientoUsu, Mode=TwoWay}"/>
+                            </Grid>
+                        </Frame>
+
+                        <Label FontSize="11"
+                               TextColor="{StaticResource TextoEntrada}"
+                               HorizontalOptions="Start"
+                               Margin="1,15,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2"
+                                          Text="{x:Static resources:AppResources.ciudadRecinto}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                    <Span LineHeight="1.2"
+                                          Text="*"
+                                          TextColor="{StaticResource TextoEntrada}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               Style="{StaticResource FRegistroGeneral}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Source="ic_pin_obscuro.png"
+                                       WidthRequest="20"
+                                       Margin="10,0,5,0"
+                                       HorizontalOptions="Start"/>
+
+                                <Picker HeightRequest="35"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        FontFamily="NotoRegular"
+                                        Title="{x:Static resources:AppResources.seleccionar}"
+                                        TitleColor="{StaticResource PlaceHolderEntrada}"
+                                        TextColor="{StaticResource TextoEntrada}"
+                                        Margin="0,0,5,0"
+                                        BackgroundColor="Transparent"
+                                        WidthRequest="250"
+                                        ItemsSource="{Binding ListaCiudadRecintoUsu, Mode=TwoWay}"
+                                        ItemDisplayBinding="{Binding Descripcion, Mode=TwoWay}"
+                                        SelectedItem="{Binding SelectCiudadUsu}"
+                                        SelectedIndex="{Binding SelectIndexCiudad}"/>
+                            </Grid>
+                        </Frame>
+
+                        <Label FontSize="11"
+                               TextColor="{StaticResource TextoEntrada}"
+                               HorizontalOptions="Start"
+                               Margin="1,15,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2"
+                                          Text="{x:Static resources:AppResources.paisResidencia}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                    <Span LineHeight="1.2"
+                                          Text="*"
+                                          TextColor="{StaticResource TextoEntrada}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               Style="{StaticResource FRegistroGeneral}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Source="ic_pais_obscuro.png"
+                                       WidthRequest="20"
+                                       Margin="10,0,5,0"
+                                       HorizontalOptions="Start"/>
+
+                                <Picker HeightRequest="35"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        FontFamily="NotoRegular"
+                                        Title="{x:Static resources:AppResources.seleccionar}"
+                                        TitleColor="{StaticResource PlaceHolderEntrada}"
+                                        TextColor="{StaticResource TextoEntrada}"
+                                        Margin="0,0,5,0"
+                                        BackgroundColor="Transparent"
+                                        WidthRequest="250"
+                                        ItemsSource="{Binding ListaPaisUsu, Mode=TwoWay}"
+                                        ItemDisplayBinding="{Binding Descripcion, Mode=TwoWay}"
+                                        SelectedItem="{Binding SelectPaisUsu}"
+                                        SelectedIndex="{Binding SelectIndexPais}"/>
+                            </Grid>
+                        </Frame>
+
+                        <Label FontSize="11"
+                               TextColor="{StaticResource TextoEntrada}"
+                               HorizontalOptions="Start"
+                               Margin="1,15,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2"
+                                          Text="{x:Static resources:AppResources.sectorEconomico}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               Style="{StaticResource FRegistroGeneral}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Source="ic_portafolio_obscuro.png"
+                                       WidthRequest="20"
+                                       Margin="10,0,5,0"
+                                       HorizontalOptions="Start"/>
+
+                                <Picker HeightRequest="35"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        FontFamily="NotoRegular"
+                                        Title="{x:Static resources:AppResources.seleccionar}"
+                                        TitleColor="{StaticResource PlaceHolderEntrada}"
+                                        TextColor="{StaticResource TextoEntrada}"
+                                        Margin="0,0,5,0"
+                                        BackgroundColor="Transparent"
+                                        WidthRequest="250"
+                                        ItemsSource="{Binding ListaSectorEcoUsu, Mode=TwoWay}"
+                                        ItemDisplayBinding="{Binding Descripcion, Mode=TwoWay}"
+                                        SelectedItem="{Binding SelectSectorEcoUsu}"
+                                        SelectedIndex="{Binding SelectIndexSector}"/>
+                            </Grid>
+                        </Frame>
+
+                        <Label FontSize="11"
+                               TextColor="{StaticResource TextoEntrada}"
+                               HorizontalOptions="Start"
+                               Margin="1,15,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2"
+                                          Text="{x:Static resources:AppResources.profesion}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               Style="{StaticResource FRegistroGeneral}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Source="ic_profesion_obscuro.png"
+                                       WidthRequest="20"
+                                       Margin="10,0,5,0"
+                                       HorizontalOptions="Start"/>
+
+                                <Picker HeightRequest="35"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        FontFamily="NotoRegular"
+                                        Title="{x:Static resources:AppResources.seleccionar}"
+                                        TitleColor="{StaticResource PlaceHolderEntrada}"
+                                        TextColor="{StaticResource TextoEntrada}"
+                                        Margin="0,0,5,0"
+                                        BackgroundColor="Transparent"
+                                        WidthRequest="250"
+                                        ItemsSource="{Binding ListaProfesionUsu,  Mode=TwoWay}"
+                                        ItemDisplayBinding="{Binding Descripcion, Mode=TwoWay}"
+                                        SelectedItem="{Binding SelectProfesionUsu}"
+                                        SelectedIndex="{Binding SelectIndexProfesion}"/>
+                            </Grid>
+                        </Frame>
+                        <Grid Margin="10"
+                              Padding="0,15,15,10"
+                              HorizontalOptions="Start"
+                              ColumnSpacing="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0"
+                                   Source="ic_login_obscuro.png"/>
+                            <Label Grid.Column="1"
+                                   FontSize="15"
+                                   FontFamily="NotoSemiBold"
+                                   TextColor="{StaticResource TextoEntrada}"
+                                   Text="{x:Static resources:AppResources.cuentasVinculadas}"/>
+                        </Grid>
+
+                        <Grid Margin="5,0,0,0"
+                              Padding="0,0,0,0"
+                              ColumnSpacing="0"
+                              BackgroundColor="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0"
+                                   Source="ic_arroba_relleno.png"
+                                   WidthRequest="30"
+                                   Margin="0,0,5,0"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1"
+                                   Text="{Binding EntCorreoUsu}"
+                                   FontSize="15"
+                                   Margin="0,0,0,0"
+                                   FontFamily="NotoSemiBold"
+                                   VerticalOptions="Center"
+                                   TextColor="{StaticResource TextoEntrada}"/>
+                            <ImageButton Grid.Column="2"
+                                         Source="ic_admiracion_obscuro.png"
+                                         WidthRequest="20"
+                                         Margin="0,0,0,0"
+                                         HorizontalOptions="End"
+                                         VerticalOptions="Center"
+                                         BackgroundColor="Transparent"
+                                         Command="{Binding Edit_Clave}"/>
+                        </Grid>
+
+                        <Grid Margin="5,20,0,0"
+                              Padding="0,0,0,0"
+                              IsVisible="{Binding Facebook}"
+                              ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0"
+                                   Source="ic_facebook_relleno.png"
+                                   WidthRequest="30"
+                                   Margin="0,0,5,0"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1"
+                                   Text="Facebook"
+                                   FontSize="15"
+                                   Margin="0,0,0,0"
+                                   FontFamily="NotoSemiBold"
+                                   VerticalOptions="Center"
+                                   TextColor="{StaticResource TextoEntrada}"/>
+                            <ImageButton Grid.Column="2"
+                                         Source="ic_cerrar_obscuro.png"
+                                         HeightRequest="20"
+                                         WidthRequest="20"
+                                         Margin="10,0,0,0"
+                                         HorizontalOptions="End"
+                                         VerticalOptions="Center"
+                                         BackgroundColor="Transparent"
+                                         Command="{Binding Edit_facebook}"/>
+                        </Grid>
+
+                        <Grid Margin="5,20,0,0"
+                              Padding="0,0,0,0"
+                              IsVisible="{Binding Google}"
+                              ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0"
+                                   Source="ic_google_relleno.png"
+                                   WidthRequest="30"
+                                   Margin="0,0,5,0"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1"
+                                   Text="Google"
+                                   FontSize="15"
+                                   Margin="0,0,0,0"
+                                   FontFamily="NotoSemiBold"
+                                   VerticalOptions="Center"
+                                   TextColor="{StaticResource TextoEntrada}"/>
+                            <ImageButton Grid.Column="2"
+                                         Source="ic_cerrar_obscuro.png"
+                                         HeightRequest="20"
+                                         WidthRequest="20"
+                                         Margin="10,0,0,0"
+                                         HorizontalOptions="End"
+                                         VerticalOptions="Center"
+                                         BackgroundColor="Transparent"
+                                         Command="{Binding Edit_google}"/>
+                        </Grid>
+
+                        <Grid Margin="5,20,0,0"
+                              Padding="0,0,0,0"
+                              IsVisible="{Binding Apple}"
+                              ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0"
+                                   Source="ic_apple_relleno.png"
+                                   WidthRequest="30"
+                                   Margin="0,0,5,0"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1"
+                                   Text="Apple"
+                                   FontSize="15"
+                                   Margin="0,0,0,0"
+                                   FontFamily="NotoSemiBold"
+                                   VerticalOptions="Center"
+                                   TextColor="{StaticResource TextoEntrada}"/>
+                            <ImageButton Grid.Column="2"
+                                         Source="ic_cerrar_obscuro.png"
+                                         HeightRequest="20"
+                                         WidthRequest="20"
+                                         Margin="10,0,0,0"
+                                         HorizontalOptions="End"
+                                         VerticalOptions="Center"
+                                         BackgroundColor="Transparent"
+                                         Command="{Binding Edit_apple}"/>
+                        </Grid>
+
+                        <Grid RowSpacing="0"
+                              Margin="0,30,0,20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="60"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Column="0"
+                                   Grid.Row="0"
+                                   FontSize="27"
+                                   TextColor="{StaticResource TextoEntrada}"
+                                   HorizontalOptions="Start"
+                                   Margin="0"
+                                   Padding="5"
+                                   Text="{x:Static resources:AppResources.registra}"
+                                   FontFamily="NotoBold"/>
+                            <Label Grid.Column="0"
+                                   Grid.Row="1"
+                                   FontSize="27"
+                                   TextColor="{StaticResource TextoEntrada}"
+                                   HorizontalOptions="Start"
+                                   Margin="0"
+                                   Padding="5"
+                                   Text="{x:Static resources:AppResources.tuEmpresa}"
+                                   FontFamily="NotoBold"/>
+                            <Grid Grid.Column="1"
+                                  Grid.RowSpan="2"
+                                  VerticalOptions="Center">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <ImageButton IsVisible="{Binding FormUsuario}"
+                                             Grid.Row="0"
+                                             Source="ic_mas_relleno.png"
+                                             WidthRequest="35"
+                                             Margin="5,0,5,0"
+                                             HorizontalOptions="End"
+                                             BackgroundColor="Transparent"
+                                             VerticalOptions="End"
+                                             Command="{Binding Form_Usuario}"/>
+                                <ImageButton IsVisible="{Binding FormEmpresa}"
+                                             Grid.Row="0"
+                                             Source="ic_menos_relleno.png"
+                                             WidthRequest="35"
+                                             Margin="5,0,5,0"
+                                             HorizontalOptions="End"
+                                             BackgroundColor="Transparent"
+                                             VerticalOptions="End"
+                                             Command="{Binding Form_Empresa}"/>
+                            </Grid>
+                        </Grid>
+                    </StackLayout>
+                    <!-- Formulario Registro EMPRESA -->
+
+                    <StackLayout Padding="15,0,15,15"
+                                 IsVisible="{Binding FormEmpresa}">
+                        <Label FontSize="11"
+                               TextColor="{StaticResource TextoEntrada}"
+                               HorizontalOptions="Start"
+                               Margin="1,15,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2"
+                                          Text="{x:Static resources:AppResources.nombreEmpresa}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                    <Span LineHeight="1.2"
+                                          Text="*"
+                                          TextColor="{StaticResource TextoEntrada}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               Style="{StaticResource FRegistroGeneral}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Source="ic_perfil_obscuro.png"
+                                       WidthRequest="20"
+                                       Margin="10,0,5,0"
+                                       HorizontalOptions="Start"/>
+                                <Entry HeightRequest="35"
+                                       FontFamily="NotoRegular"
+                                       Grid.Column="1"
+                                       TextColor="{StaticResource TextoEntrada}"
+                                       Placeholder="{x:Static resources:AppResources.nombreEmpresa}"
+                                       PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                       Text="{Binding EntNombreEmpr, Mode=TwoWay}"
+                                       Style="{StaticResource ERegistroGeneralTexto}"/>
+                            </Grid>
+                        </Frame>
+
+                        <Label FontSize="11"
+                               TextColor="{StaticResource TextoEntrada}"
+                               HorizontalOptions="Start"
+                               Margin="1,15,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2"
+                                          Text="{x:Static resources:AppResources.noIdentificacionEmpresa}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                    <Span LineHeight="1.2"
+                                          Text="*"
+                                          TextColor="{StaticResource TextoEntrada}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               Style="{StaticResource FRegistroGeneral}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Source="ic_identificacion_obscuro.png"
+                                       WidthRequest="20"
+                                       Margin="10,0,5,0"
+                                       HorizontalOptions="Start"/>
+                                <Entry HeightRequest="35"
+                                       FontFamily="NotoRegular"
+                                       Grid.Column="1"
+                                       TextColor="{StaticResource TextoEntrada}"
+                                       Placeholder="{x:Static resources:AppResources.noIdentificacionEmpresa}"
+                                       PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                       Text="{Binding EntIdEmpr, Mode=TwoWay}"
+                                       Style="{StaticResource ERegistroGeneralTextoNumerico}"/>
+                            </Grid>
+                        </Frame>
+
+                        <Grid ColumnSpacing="10"
+                              BackgroundColor="White">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="70"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0"
+                                       FontSize="11"
+                                       TextColor="{StaticResource TextoEntrada}"
+                                       Margin="1,15,15,0"
+                                       HorizontalOptions="Start">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span LineHeight="1.2"
+                                                  Text="{x:Static resources:AppResources.telefono}"
+                                                  FontSize="11"
+                                                  FontFamily="NotoSemiBold"/>
+                                            <Span LineHeight="1.2"
+                                                  Text="*"
+                                                  TextColor="{StaticResource TextoEntrada}"
+                                                  FontSize="11"
+                                                  FontFamily="NotoSemiBold"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Frame BorderColor="{StaticResource BordeEntrada}"
+                                       BackgroundColor="{StaticResource FondoEntrada}"
+                                       Grid.Row="1"
+                                       Style="{StaticResource FRegistroGeneral}">
+                                    <HorizontalStackLayout>
+                                        <Image Source="ic_telefono_obscuro.png"
+                                               WidthRequest="20"
+                                               Margin="5,0,0,0"/>
+                                        <Entry HeightRequest="35"
+                                               FontFamily="NotoRegular"
+                                               Margin="15,0,0,0"
+                                               TextColor="{StaticResource TextoEntrada}"
+                                               Placeholder="{x:Static resources:AppResources.telefono}"
+                                               PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                               Text="{Binding EntTelEmpr, Mode=TwoWay}"
+                                               Style="{StaticResource ERegistroGeneralTextoNumerico}"/>
+                                    </HorizontalStackLayout>
+                                </Frame>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0"
+                                       FontSize="11"
+                                       TextColor="{StaticResource TextoEntrada}"
+                                       HorizontalOptions="Start"
+                                       Margin="1,15,15,0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span LineHeight="1.2"
+                                                  Text="{x:Static resources:AppResources.pais}"
+                                                  FontSize="11"
+                                                  FontFamily="NotoSemiBold"/>
+                                            <Span LineHeight="1.2"
+                                                  Text="*"
+                                                  TextColor="{StaticResource TextoEntrada}"
+                                                  FontSize="11"
+                                                  FontFamily="NotoSemiBold"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Frame BorderColor="{StaticResource BordeEntrada}"
+                                       BackgroundColor="{StaticResource FondoEntrada}"
+                                       Grid.Row="1"
+                                       Style="{StaticResource FRegistroGeneral}">
+                                    <Entry HeightRequest="35"
+                                           FontFamily="NotoRegular"
+                                           MaxLength="3"
+                                           Placeholder="57"
+                                           Margin="5,0,0,0"
+                                           WidthRequest="50"
+                                           TextColor="{StaticResource TextoEntrada}"
+                                           PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                           Text="{Binding EntTelPaisEmpr, Mode=TwoWay}"
+                                           Style="{StaticResource ERegistroGeneralTextoNumerico}"/>
+                                </Frame>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label FontSize="11"
+                                       TextColor="{StaticResource TextoEntrada}"
+                                       HorizontalOptions="Start"
+                                       Margin="1,15,15,0"
+                                       Grid.Row="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span LineHeight="1.2"
+                                                  Text="{x:Static resources:AppResources.area}"
+                                                  FontSize="11"
+                                                  FontFamily="NotoSemiBold"/>
+                                            <Span LineHeight="1.2"
+                                                  Text="*"
+                                                  TextColor="{StaticResource TextoEntrada}"
+                                                  FontSize="11"
+                                                  FontFamily="NotoSemiBold"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Frame BorderColor="{StaticResource BordeEntrada}"
+                                       BackgroundColor="{StaticResource FondoEntrada}"
+                                       Grid.Row="1"
+                                       Style="{StaticResource FRegistroGeneral}">
+                                    <Entry HeightRequest="35"
+                                           FontFamily="NotoRegular"
+                                           MaxLength="3"
+                                           Placeholder="1"
+                                           Margin="5,0,0,0"
+                                           WidthRequest="50"
+                                           TextColor="{StaticResource TextoEntrada}"
+                                           PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                           Text="{Binding EntTelAreaEmpr, Mode=TwoWay}"
+                                           Style="{StaticResource ERegistroGeneralTextoNumerico}"/>
+                                </Frame>
+                            </Grid>
+                        </Grid>
+
+                        <Label FontSize="11"
+                               TextColor="{StaticResource TextoEntrada}"
+                               HorizontalOptions="Start"
+                               Margin="1,15,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2"
+                                          Text="{x:Static resources:AppResources.pais}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                    <Span LineHeight="1.2"
+                                          Text="*"
+                                          TextColor="{StaticResource TextoEntrada}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               Style="{StaticResource FRegistroGeneral}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Source="ic_pais_obscuro.png"
+                                       WidthRequest="20"
+                                       Margin="10,0,5,0"
+                                       HorizontalOptions="Start"/>
+
+                                <Picker HeightRequest="35"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        FontFamily="NotoRegular"
+                                        Title="{x:Static resources:AppResources.seleccionar}"
+                                        TitleColor="{StaticResource PlaceHolderEntrada}"
+                                        TextColor="{StaticResource TextoEntrada}"
+                                        Margin="0,0,5,0"
+                                        BackgroundColor="Transparent"
+                                        WidthRequest="250"
+                                        ItemsSource="{Binding ListaPaisEmpre, Mode=TwoWay}"
+                                        ItemDisplayBinding="{Binding Descripcion, Mode=TwoWay}"
+                                        SelectedItem="{Binding SelectPaisEmpre}"
+                                        SelectedIndex="{Binding SelectIndexPaisEmpre}"/>
+                            </Grid>
+                        </Frame>
+
+                        <Label FontSize="11"
+                               TextColor="{StaticResource TextoEntrada}"
+                               HorizontalOptions="Start"
+                               Margin="1,15,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2"
+                                          Text="{x:Static resources:AppResources.ciudad}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                    <Span LineHeight="1.2"
+                                          Text="*"
+                                          TextColor="{StaticResource TextoEntrada}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               Style="{StaticResource FRegistroGeneral}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Source="ic_pin_obscuro.png"
+                                       WidthRequest="20"
+                                       Margin="10,0,5,0"
+                                       HorizontalOptions="Start"/>
+                                <Picker HeightRequest="35"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        FontFamily="NotoRegular"
+                                        Title="{x:Static resources:AppResources.seleccionar}"
+                                        TitleColor="{StaticResource PlaceHolderEntrada}"
+                                        TextColor="{StaticResource TextoEntrada}"
+                                        Margin="0,0,5,0"
+                                        BackgroundColor="Transparent"
+                                        WidthRequest="250"
+                                        ItemsSource="{Binding ListaCiudadEmpre, Mode=TwoWay}"
+                                        ItemDisplayBinding="{Binding Descripcion, Mode=TwoWay}"
+                                        SelectedItem="{Binding SelectCiudadEmpresa}"
+                                        SelectedIndex="{Binding SelectIndexCiudadEmpre}"/>
+                            </Grid>
+                        </Frame>
+
+                        <Label FontSize="11"
+                               TextColor="{StaticResource TextoEntrada}"
+                               HorizontalOptions="Start"
+                               Margin="1,15,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2"
+                                          Text="{x:Static resources:AppResources.direccion}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                    <Span LineHeight="1.2"
+                                          Text="*"
+                                          TextColor="{StaticResource TextoEntrada}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               Style="{StaticResource FRegistroGeneral}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Source="ic_direccion_obscuro.png"
+                                       WidthRequest="20"
+                                       Margin="10,0,5,0"
+                                       HorizontalOptions="Start"/>
+                                <Entry HeightRequest="35"
+                                       FontFamily="NotoRegular"
+                                       Grid.Column="1"
+                                       TextColor="{StaticResource TextoEntrada}"
+                                       Placeholder="{x:Static resources:AppResources.direccion}"
+                                       PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                       Text="{Binding EntDireccionEmpr, Mode=TwoWay}"
+                                       Style="{StaticResource ERegistroGeneralTexto}"/>
+                            </Grid>
+                        </Frame>
+
+                        <Label FontSize="11"
+                               TextColor="{StaticResource TextoEntrada}"
+                               HorizontalOptions="Start"
+                               Margin="1,15,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2"
+                                          Text="{x:Static resources:AppResources.codigoPostal}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                    <Span LineHeight="1.2"
+                                          Text="*"
+                                          TextColor="{StaticResource TextoEntrada}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               Style="{StaticResource FRegistroGeneral}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Source="ic_codigopostal_obscuro.png"
+                                       WidthRequest="20"
+                                       Margin="10,0,5,0"
+                                       HorizontalOptions="Start"/>
+                                <Entry HeightRequest="35"
+                                       FontFamily="NotoRegular"
+                                       Grid.Column="1"
+                                       MaxLength="7"
+                                       TextColor="{StaticResource TextoEntrada}"
+                                       Placeholder="{x:Static resources:AppResources.codigoPostal}"
+                                       PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                       Text="{Binding EntCodPostalEmpr, Mode=TwoWay}"
+                                       Style="{StaticResource ERegistroGeneralTextoNumerico}"/>
+                            </Grid>
+                        </Frame>
+
+                        <Label FontSize="11"
+                               TextColor="{StaticResource TextoEntrada}"
+                               HorizontalOptions="Start"
+                               Margin="1,15,15,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span LineHeight="1.2"
+                                          Text="{x:Static resources:AppResources.cargo}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                    <Span LineHeight="1.2"
+                                          Text="*"
+                                          TextColor="{StaticResource TextoEntrada}"
+                                          FontSize="11"
+                                          FontFamily="NotoSemiBold"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame BorderColor="{StaticResource BordeEntrada}"
+                               BackgroundColor="{StaticResource FondoEntrada}"
+                               Style="{StaticResource FRegistroGeneral}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"
+                                       Source="ic_profesion_obscuro.png"
+                                       WidthRequest="20"
+                                       Margin="10,0,5,0"
+                                       HorizontalOptions="Start"/>
+                                <Entry HeightRequest="35"
+                                       FontFamily="NotoRegular"
+                                       Grid.Column="1"
+                                       TextColor="{StaticResource TextoEntrada}"
+                                       Placeholder="{x:Static resources:AppResources.cargo}"
+                                       PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                       Text="{Binding EntCargoEmpr, Mode=TwoWay}"
+                                       Style="{StaticResource ERegistroGeneralTexto}"/>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Center"
+                                           Margin="0,20,0,30"
+                                           Spacing="0"
+                                           IsVisible="{Binding VerTerminos}">
+                        <controls:CheckBoxEx
+                            x:Name="CustomCheck"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="20"
+                            HeightRequest="20"
+                            IsChecked="{Binding CheckTerminos}"/>
+                        <VerticalStackLayout VerticalOptions="Center"
+                                             Spacing="0"
+                                             Margin="10,0,0,0">
+                            <Label VerticalOptions="Center"
+                                   Padding="0"
+                                   TextColor="{StaticResource TextoEntrada}"
+                                   HorizontalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span LineHeight="2"
+                                              Text="{x:Static resources:AppResources.aceptoLos}"
+                                              FontSize="12"
+                                              TextColor="{StaticResource TextoEntrada}"
+                                              FontFamily="NotoRegular"/>
+                                        <Span LineHeight="2"
+                                              Text=" "
+                                              TextColor="{StaticResource TextoEntrada}"
+                                              FontSize="12"/>
+                                        <Span LineHeight="2"
+                                              Text="{x:Static resources:AppResources.terminosYCondiciones}"
+                                              FontFamily="NotoBold"
+                                              TextColor="{StaticResource TextoEntrada}"
+                                              TextDecorations="Underline"
+                                              FontSize="12">
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Terminos}"/>
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label VerticalOptions="Center"
+                                   Padding="0"
+                                   Margin="0,10,0,0"
+                                   TextColor="{StaticResource TextoEntrada}"
+                                   HorizontalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span LineHeight="1"
+                                              Text="{x:Static resources:AppResources.y}"
+                                              FontSize="12"
+                                              TextColor="{StaticResource TextoEntrada}"
+                                              FontFamily="NotoRegular"/>
+                                        <Span LineHeight="1"
+                                              Text=" "
+                                              FontSize="12"
+                                              TextColor="{StaticResource TextoEntrada}"
+                                              FontFamily="NotoRegular"/>
+                                        <Span LineHeight="1"
+                                              Text="{x:Static resources:AppResources.politicaDeTratamientoDeDatos}"
+                                              FontFamily="NotoBold"
+                                              TextColor="{StaticResource TextoEntrada}"
+                                              TextDecorations="Underline"
+                                              FontSize="12">
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Politicas}"/>
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                    <Button Text="{x:Static resources:AppResources.guardarCambios}"
+                            TextColor="{StaticResource BtnTextoObscuro}"
+                            Command="{Binding Registrarse}"
+                            Style="{StaticResource BtnGeneral}"
+                            Margin="0,20,0,0"
+                            BorderColor="{StaticResource BtnBoderGeneralObscuro}"
+                            BackgroundColor="{StaticResource BtnFondoGeneralObscuro}"/>
+                </VerticalStackLayout>
+            </ScrollView>
+            <Grid BackgroundColor="{StaticResource FondomMenuInfe}"
+                  Margin="0,0,0,-60"
+                  VerticalOptions="End"
+                  HorizontalOptions="Fill"
+                  HeightRequest="70">
+            </Grid>
+            <Grid Grid.Row="0"
+                  BackgroundColor="{StaticResource FondomMenuInfe}"
+                  VerticalOptions="End"
+                  HorizontalOptions="Fill"
+                  ColumnSpacing="5"
+                  Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Column="{Binding GridNotificaciones}"
+            BackgroundColor="{StaticResource FondoNotificaMenuInfe}"
+            Padding="1"
+            CornerRadius="10"
+            HasShadow="False"
+            BorderColor="{StaticResource BorderNotificaMenuInfe}"
+            IsVisible="{Binding VerNotificicaciones}"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            Margin="30,0,0,0">
+                    <Label Text="{Binding CantidadNotificaciones}"
+                FontSize="11"
+                FontFamily="NotoRegular"
+                TextColor="{StaticResource TextNotificaMenuInfe}"
+                WidthRequest="20"
+                HeightRequest="20"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"/>
+                </Frame>
+                <Image x:Name="Menu1"
+                       Grid.Column="0"
+                       WidthRequest="25"
+                       Source="{Binding Icon1}"
+                       ClassId="{Binding Icon1Class}"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="Center"
+                       IsVisible="{Binding Menu1}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                              CommandParameter="{x:Reference Menu1}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="Menu2"
+                       Grid.Column="1"
+                       WidthRequest="25"
+                       Source="{Binding Icon2}"
+                       ClassId="{Binding Icon2Class}"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="Center"
+                       IsVisible="{Binding Menu2}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                              CommandParameter="{x:Reference Menu2}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <BoxView Grid.Column="2"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         WidthRequest="1"
+                         HeightRequest="25"
+                         Color="Red"/>
+                <Image x:Name="Menu3"
+                       Grid.Column="3"
+                       WidthRequest="25"
+                       Source="{Binding Icon3}"
+                       ClassId="{Binding Icon3Class}"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="Center"
+                       IsVisible="{Binding Menu3}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                              CommandParameter="{x:Reference Menu3}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="Menu4"
+                       Grid.Column="4"
+                       WidthRequest="25"
+                       Source="{Binding Icon4}"
+                       ClassId="{Binding Icon4Class}"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="Center"
+                       IsVisible="{Binding Menu4}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                              CommandParameter="{x:Reference Menu4}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+            <Frame Grid.Row="0"
+                   VerticalOptions="End"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,0"
+                   Padding="0"
+                   HasShadow="False"
+                   BorderColor="{StaticResource BordeIconoPrin}"
+                   BackgroundColor="{StaticResource FondoIconoPrin}"
+                   CornerRadius="27"
+                   WidthRequest="58"
+                   HeightRequest="58">
+                <Image Source="{Binding ImagenSplash}"
+                       HeightRequest="40"
+                       WidthRequest="40"
+                       Aspect="AspectFill"
+                       Margin="8">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrHome}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Frame>
+            <Grid BackgroundColor="{StaticResource FondoLoder}"
+                  VerticalOptions="Fill"
+                  HorizontalOptions="Fill"
+                  Margin="-20,-60"
+                  IsVisible="{Binding IsBusy}">
+                <ActivityIndicator IsRunning="true"
+                                   Color="{StaticResource IconoLoder}"
+                                   Margin="20"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

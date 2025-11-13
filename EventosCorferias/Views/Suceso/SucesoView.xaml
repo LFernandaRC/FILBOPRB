@@ -1,0 +1,930 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EventosCorferias.Views.Suceso.SucesoView"
+             xmlns:resources="clr-namespace:EventosCorferias.Resources.RecursosIdioma"
+             xmlns:controls="clr-namespace:EventosCorferias.Controls"
+             Title=""
+             BackgroundColor="White">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal"
+                     Spacing="0"
+                     VerticalOptions="Center"
+                     BackgroundColor="Transparent">
+            <Image Grid.Column="0"
+                   Source="menu.png"
+                   WidthRequest="30"
+                   Margin="0,0,20,0"
+                   VerticalOptions="Center"
+                   BackgroundColor="Transparent"
+                   IsVisible="{OnPlatform iOS=true, Android=false, WinUI=false}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AbrirMenu}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Grid.Column="0"
+                   Source="{Binding ImagenSplash}"
+                   WidthRequest="30"
+                   VerticalOptions="Center"
+                   BackgroundColor="Transparent"/>
+            <StackLayout Spacing="0"
+                         VerticalOptions="Center"
+                         Margin="10,0,0,0">
+                <Label Grid.Column="2"
+                       Grid.Row="0"
+                       FontSize="9"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       Text="{x:Static resources:AppResources.Hola}"
+                       TextColor="{StaticResource ColorTextoMenSup}"
+                       FontFamily="NotoRegular"/>
+                <Label Grid.Column="2"
+                       Grid.Row="1"
+                       FontSize="13"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       Text="{Binding NombreCompletoPerfil}"
+                       MaxLines="1"
+                       TextColor="{StaticResource ColorTextoMenSup}"
+                       FontFamily="NotoBold"/>
+            </StackLayout>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <Style TargetType="StackLayout">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal"/>
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="White"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    <Grid BackgroundColor="White"
+          Padding="0"
+          Margin="0"
+          RowSpacing="0"
+          ColumnSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ScrollView Margin="0,0,0,0"
+                    BackgroundColor="White">
+            <StackLayout Padding="0,0,0,46"
+                         Spacing="0">
+                <!--Parte superior de la vista-->
+                <Grid BackgroundColor="{Binding ColorFondoPrincipal}">
+                    <StackLayout Margin="0"
+                                 Padding="0,15,0,40"
+                                 Spacing="0"
+                                 BackgroundColor="Transparent">
+                        <Grid>
+                            <Frame IsClippedToBounds="True"
+                                   Padding="0"
+                                   CornerRadius="20"
+                                   BackgroundColor="Transparent"
+                                   HasShadow="False">
+                                <ImageButton BackgroundColor="Transparent"
+                                             Source="{Binding ImagenSuceso}"
+                                             Aspect="AspectFit"
+                                             Margin="30,0,30,0"
+                                             HeightRequest="120"
+                                             Command="{Binding PlayImg}"/>
+                            </Frame>
+                        </Grid>
+                        <StackLayout Padding="20,20,20,0"
+                                     Orientation="Horizontal"
+                                     HorizontalOptions="Center"
+                                     BackgroundColor="Transparent">
+                            <Image Grid.Column="0"
+                                   Source="ic_web_obscuro.png"
+                                   HorizontalOptions="Center"
+                                   WidthRequest="25"
+                                   Margin="0,0,10,0"/>
+                            <Label Text="{Binding UrlSuceso, Mode=TwoWay}"
+                                   Grid.Column="1"
+                                   FontSize="14"
+                                   TextColor="{Binding ColorParametrizable}"
+                                   HorizontalOptions="Center"
+                                   TextDecorations="Underline"
+                                   LineHeight="1"
+                                   FontFamily="NotoRegular"
+                                   HorizontalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding UrlSucesoLink}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                        <Frame IsClippedToBounds="True"
+                               Margin="0"
+                               Padding="10,20,10,0"
+                               IsVisible="{Binding ModuloIconos}"
+                               BackgroundColor="Transparent"
+                               HasShadow="False"
+                               BorderColor="Transparent">
+                            <CollectionView x:Name="listServicios"
+                                            SelectionMode="None"
+                                            ItemsSource="{Binding ModulosCarrusel}"
+                                            BackgroundColor="Transparent">
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical"
+                                                     Span="3"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout BackgroundColor="Transparent"
+                                                     VerticalOptions="Start"
+                                                     Margin="5,20,5,5"
+                                                     Padding="0">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.SeleccionarModuloCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
+                                                                      CommandParameter="{Binding .}"/>
+                                            </StackLayout.GestureRecognizers>
+                                            <Frame Margin="0"
+                                                   InputTransparent="True"
+                                                   CornerRadius="35"
+                                                   WidthRequest="70"
+                                                   HeightRequest="70"
+                                                   Padding="0"
+                                                   HasShadow="False"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="Center"
+                                                   BackgroundColor="White"
+                                                   BorderColor="#dddddd">
+                                                <Image Source="{Binding Observacion}"
+                                                       Aspect="AspectFit"
+                                                       Margin="10"
+                                                       BackgroundColor="White"
+                                                       InputTransparent="True"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center"/>
+                                            </Frame>
+                                            <Label Text="{Binding Descripcion}"
+                                                   BackgroundColor="Transparent"
+                                                   FontAutoScalingEnabled="False"
+                                                   HorizontalOptions="Fill"
+                                                   HorizontalTextAlignment="Center"
+                                                   VerticalOptions="Start"
+                                                   FontSize="9"
+                                                   InputTransparent="True"
+                                                   FontFamily="NotoMedium"
+                                                   Padding="0,0,0,0"
+                                                   MaxLines="3"
+                                                   TextColor="{Binding ColorTexto}"
+                                                   LineBreakMode="WordWrap"/>
+
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                        </Frame>
+                    </StackLayout>
+                </Grid>
+
+                <Frame Padding="13"
+                       CornerRadius="20"
+                       BackgroundColor="White"
+                       HorizontalOptions="Center"
+                       HasShadow="False"
+                       Margin="0,20,0,20"
+                       BorderColor="LightGray">
+                    <Grid Margin="0,0,0,0"
+                          BackgroundColor="Transparent"
+                          HorizontalOptions="Fill">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label  Grid.Column="0"
+                                Text="{x:Static resources:AppResources.suscribeteNewlester}"
+                                FontSize="12"
+                                TextColor="Gray"
+                                FontFamily="NotoRegular"
+                                VerticalOptions="Center"/>
+                        <controls:CheckBoxEx Grid.Column="1"
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="Center"
+                                             WidthRequest="15"
+                                             HeightRequest="15"
+                                             Margin="20,0,0,0"
+                                             IsChecked="{Binding CheckNewsletter}"/>
+                    </Grid>
+                </Frame>
+
+                <StackLayout Padding="0"
+                             Spacing="0">
+                    <Grid Margin="0,0,0,0"
+                          IsVisible="{Binding ModuloRedes}"
+                          Padding="20,0,20,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Etiqueta "Síguenos en" -->
+                        <Label Grid.Column="0"
+                               Text="{x:Static resources:AppResources.SiguenosEn}"
+                               FontSize="10"
+                               TextColor="{StaticResource TextoGeneral}"
+                               FontFamily="NotoRegular"
+                               VerticalOptions="Center"
+                               Margin="0,0,10,0"/>
+
+                        <!-- Redes sociales -->
+                        <CollectionView Grid.Column="1"
+                                        SelectionMode="Single"
+                                        SelectedItem="{Binding SelectedRedSocial, Mode=TwoWay}"
+                                        ItemsSource="{Binding ImagenesRedSuceso}"
+                                        BackgroundColor="Transparent"
+                                        HeightRequest="45"
+                                        VerticalOptions="Center">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal"
+                                                   ItemSpacing="10"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Url}"
+                                           Aspect="AspectFit"
+                                           WidthRequest="20"
+                                           HeightRequest="20"
+                                           BackgroundColor="Transparent"
+                                           Margin="0"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+
+                    <Grid Margin="0,0,0,10"
+                          IsVisible="{Binding ModuloRedes}"
+                          Padding="20,0,20,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Etiqueta "Corferias en" -->
+                        <Label Grid.Column="0"
+                               Text="{x:Static resources:AppResources.CorferiasEn}"
+                               FontSize="10"
+                               TextColor="{StaticResource TextoGeneral}"
+                               FontFamily="NotoRegular"
+                               VerticalOptions="Center"
+                               Margin="0,0,10,0"/>
+
+                        <!-- Redes sociales -->
+                        <CollectionView Grid.Column="1"
+                                        SelectionMode="Single"
+                                        SelectedItem="{Binding SelectedRedSocialRecinto, Mode=TwoWay}"
+                                        ItemsSource="{Binding ImagenRedRecinto}"
+                                        BackgroundColor="Transparent"
+                                        HeightRequest="45"
+                                        VerticalOptions="Center">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal"
+                                                   ItemSpacing="10"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Url}"
+                                           Aspect="AspectFit"
+                                           WidthRequest="20"
+                                           HeightRequest="20"
+                                           BackgroundColor="Transparent"
+                                           Margin="0"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+
+                    <StackLayout x:Name="pataDeLogos"
+                                 Spacing="0"
+                                 Margin="0,0,0,0"
+                                 Padding="0">
+                        <StackLayout IsVisible="{Binding VPata1}"
+                                     Padding="0">
+                            <Label Text="{Binding Tpata1}"
+                                   HorizontalOptions="Center"
+                                   FontSize="12"
+                                   Margin="0,20,0,0"
+                                   FontFamily="NotoRegular"
+                                   TextColor="{StaticResource TextoGeneral}"/>
+                            <FlexLayout x:Name="pt1"
+                                        Grid.Column="0"
+                                        Wrap="Wrap"
+                                        JustifyContent="SpaceAround"
+                                        AlignItems="Start"
+                                        BindableLayout.ItemsSource="{Binding ImagenesCarruselPata1, Mode=TwoWay}"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <ImageButton Source="{Binding Observacion}"
+                                                     HorizontalOptions="Fill"
+                                                     VerticalOptions="Fill"
+                                                     Padding="10"
+                                                     WidthRequest="100"
+                                                     HeightRequest="60"
+                                                     BackgroundColor="White"
+                                                     Command="{Binding Path=BindingContext.SelectedPataLogoUrl,Source={x:Reference pt1},Mode=TwoWay}"
+                                                     CommandParameter="{Binding Descripcion}"
+                                                     Margin="0,0,0,10"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding VPata2}">
+                            <Label Text="{Binding Tpata2}"
+                                   HorizontalOptions="Center"
+                                   FontSize="12"
+                                   Margin="0,20,0,0"
+                                   FontFamily="NotoRegular"
+                                   TextColor="{StaticResource TextoGeneral}"/>
+                            <FlexLayout x:Name="pt2"
+                                        Grid.Column="0"
+                                        Wrap="Wrap"
+                                        JustifyContent="SpaceAround"
+                                        AlignItems="Start"
+                                        BindableLayout.ItemsSource="{Binding ImagenesCarruselPata2, Mode=TwoWay}"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <ImageButton Source="{Binding Observacion}"
+                                                     HorizontalOptions="Fill"
+                                                     VerticalOptions="Fill"
+                                                     Padding="10"
+                                                     WidthRequest="100"
+                                                     HeightRequest="60"
+                                                     BackgroundColor="White"
+                                                     Command="{Binding Path=BindingContext.SelectedPataLogoUrl,Source={x:Reference pt2},Mode=TwoWay}"
+                                                     CommandParameter="{Binding Descripcion}"
+                                                     Margin="0,0,0,10"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding VPata3}"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="Center">
+                            <Label Text="{Binding Tpata3}"
+                                   HorizontalOptions="Center"
+                                   FontSize="12"
+                                   Margin="0,20,0,0"
+                                   FontFamily="NotoRegular"
+                                   TextColor="{StaticResource TextoGeneral}"/>
+                            <FlexLayout x:Name="pt3"
+                                        Grid.Column="0"
+                                        Wrap="Wrap"
+                                        JustifyContent="SpaceAround"
+                                        AlignItems="Start"
+                                        BindableLayout.ItemsSource="{Binding ImagenesCarruselPata3, Mode=TwoWay}"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <ImageButton Source="{Binding Observacion}"
+                                                     HorizontalOptions="Fill"
+                                                     VerticalOptions="Fill"
+                                                     Padding="10"
+                                                     WidthRequest="100"
+                                                     HeightRequest="60"
+                                                     BackgroundColor="White"
+                                                     Command="{Binding Path=BindingContext.SelectedPataLogoUrl,Source={x:Reference pt3},Mode=TwoWay}"
+                                                     CommandParameter="{Binding Descripcion}"
+                                                     Margin="0,0,0,10"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding VPata4}">
+                            <Label Text="{Binding Tpata4}"
+                                   HorizontalOptions="Center"
+                                   FontSize="12"
+                                   Margin="0,20,0,0"
+                                   FontFamily="NotoRegular"
+                                   TextColor="{StaticResource TextoGeneral}"/>
+                            <FlexLayout x:Name="pt4"
+                                        Grid.Column="0"
+                                        Wrap="Wrap"
+                                        JustifyContent="SpaceAround"
+                                        AlignItems="Start"
+                                        BindableLayout.ItemsSource="{Binding ImagenesCarruselPata4, Mode=TwoWay}"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <ImageButton Source="{Binding Observacion}"
+                                                     HorizontalOptions="Fill"
+                                                     VerticalOptions="Fill"
+                                                     Padding="10"
+                                                     WidthRequest="100"
+                                                     HeightRequest="60"
+                                                     BackgroundColor="White"
+                                                     Command="{Binding Path=BindingContext.SelectedPataLogoUrl,Source={x:Reference pt4},Mode=TwoWay}"
+                                                     CommandParameter="{Binding Descripcion}"
+                                                     Margin="0,0,0,10"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding VPata5}">
+                            <Label Text="{Binding Tpata5}"
+                                   HorizontalOptions="Center"
+                                   FontSize="12"
+                                   Margin="0,20,0,0"
+                                   FontFamily="NotoRegular"
+                                   TextColor="{StaticResource TextoGeneral}"/>
+                            <FlexLayout x:Name="pt5"
+                                        Grid.Column="0"
+                                        Wrap="Wrap"
+                                        JustifyContent="SpaceAround"
+                                        AlignItems="Start"
+                                        BindableLayout.ItemsSource="{Binding ImagenesCarruselPata5, Mode=TwoWay}"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <ImageButton Source="{Binding Observacion}"
+                                                     HorizontalOptions="Fill"
+                                                     VerticalOptions="Fill"
+                                                     Padding="10"
+                                                     WidthRequest="100"
+                                                     HeightRequest="60"
+                                                     BackgroundColor="White"
+                                                     Command="{Binding Path=BindingContext.SelectedPataLogoUrl,Source={x:Reference pt5},Mode=TwoWay}"
+                                                     CommandParameter="{Binding Descripcion}"
+                                                     Margin="0,0,0,10"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding VPata6}">
+                            <Label Text="{Binding Tpata6}"
+                                   HorizontalOptions="Center"
+                                   FontSize="12"
+                                   Margin="0,20,0,0"
+                                   FontFamily="NotoRegular"
+                                   TextColor="{StaticResource TextoGeneral}"/>
+                            <FlexLayout x:Name="pt6"
+                                        Grid.Column="0"
+                                        Wrap="Wrap"
+                                        JustifyContent="SpaceAround"
+                                        AlignItems="Start"
+                                        BindableLayout.ItemsSource="{Binding ImagenesCarruselPata6, Mode=TwoWay}"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <ImageButton Source="{Binding Observacion}"
+                                                     HorizontalOptions="Fill"
+                                                     VerticalOptions="Fill"
+                                                     Padding="10"
+                                                     WidthRequest="100"
+                                                     HeightRequest="60"
+                                                     BackgroundColor="White"
+                                                     Command="{Binding Path=BindingContext.SelectedPataLogoUrl,Source={x:Reference pt6},Mode=TwoWay}"
+                                                     CommandParameter="{Binding Descripcion}"
+                                                     Margin="0,0,0,10"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding VPata7}">
+                            <Label Text="{Binding Tpata7}"
+                                   HorizontalOptions="Center"
+                                   FontSize="12"
+                                   Margin="0,20,0,0"
+                                   FontFamily="NotoRegular"
+                                   TextColor="{StaticResource TextoGeneral}"/>
+                            <FlexLayout x:Name="pt7"
+                                        Grid.Column="0"
+                                        Wrap="Wrap"
+                                        JustifyContent="SpaceAround"
+                                        AlignItems="Start"
+                                        BindableLayout.ItemsSource="{Binding ImagenesCarruselPata7, Mode=TwoWay}"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <ImageButton Source="{Binding Observacion}"
+                                                     HorizontalOptions="Fill"
+                                                     VerticalOptions="Fill"
+                                                     Padding="10"
+                                                     WidthRequest="100"
+                                                     HeightRequest="60"
+                                                     BackgroundColor="White"
+                                                     Command="{Binding Path=BindingContext.SelectedPataLogoUrl,Source={x:Reference pt7},Mode=TwoWay}"
+                                                     CommandParameter="{Binding Descripcion}"
+                                                     Margin="0,0,0,10"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding VPata8}">
+                            <Label Text="{Binding Tpata8}"
+                                   HorizontalOptions="Center"
+                                   FontSize="12"
+                                   Margin="0,20,0,0"
+                                   FontFamily="NotoRegular"
+                                   TextColor="{StaticResource TextoGeneral}"/>
+                            <FlexLayout x:Name="pt8"
+                                        Grid.Column="0"
+                                        Wrap="Wrap"
+                                        JustifyContent="SpaceAround"
+                                        AlignItems="Start"
+                                        BindableLayout.ItemsSource="{Binding ImagenesCarruselPata8, Mode=TwoWay}"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <ImageButton Source="{Binding Observacion}"
+                                                     HorizontalOptions="Fill"
+                                                     VerticalOptions="Fill"
+                                                     Padding="10"
+                                                     WidthRequest="100"
+                                                     HeightRequest="60"
+                                                     BackgroundColor="White"
+                                                     Command="{Binding Path=BindingContext.SelectedPataLogoUrl,Source={x:Reference pt8},Mode=TwoWay}"
+                                                     CommandParameter="{Binding Descripcion}"
+                                                     Margin="0,0,0,10"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding VPata9}">
+                            <Label Text="{Binding Tpata9}"
+                                   HorizontalOptions="Center"
+                                   FontSize="12"
+                                   Margin="0,20,0,0"
+                                   FontFamily="NotoRegular"
+                                   TextColor="{StaticResource TextoGeneral}"/>
+                            <FlexLayout x:Name="pt9"
+                                        Grid.Column="0"
+                                        Wrap="Wrap"
+                                        JustifyContent="SpaceAround"
+                                        AlignItems="Start"
+                                        BindableLayout.ItemsSource="{Binding ImagenesCarruselPata9, Mode=TwoWay}"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <ImageButton Source="{Binding Observacion}"
+                                                     HorizontalOptions="Fill"
+                                                     VerticalOptions="Fill"
+                                                     Padding="10"
+                                                     WidthRequest="100"
+                                                     HeightRequest="60"
+                                                     BackgroundColor="White"
+                                                     Command="{Binding Path=BindingContext.SelectedPataLogoUrl,Source={x:Reference pt9},Mode=TwoWay}"
+                                                     CommandParameter="{Binding Descripcion}"
+                                                     Margin="0,0,0,10"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding VPata10}">
+                            <Label Text="{Binding Tpata10}"
+                                   HorizontalOptions="Center"
+                                   FontSize="12"
+                                   Margin="0,20,0,0"
+                                   FontFamily="NotoRegular"
+                                   TextColor="{StaticResource TextoGeneral}"/>
+                            <FlexLayout x:Name="pt10"
+                                        Grid.Column="0"
+                                        Wrap="Wrap"
+                                        JustifyContent="SpaceAround"
+                                        AlignItems="Start"
+                                        BindableLayout.ItemsSource="{Binding ImagenesCarruselPata10, Mode=TwoWay}"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <ImageButton Source="{Binding Observacion}"
+                                                     HorizontalOptions="Fill"
+                                                     VerticalOptions="Fill"
+                                                     Padding="10"
+                                                     WidthRequest="100"
+                                                     HeightRequest="60"
+                                                     BackgroundColor="White"
+                                                     Command="{Binding Path=BindingContext.SelectedPataLogoUrl,Source={x:Reference pt10},Mode=TwoWay}"
+                                                     CommandParameter="{Binding Descripcion}"
+                                                     Margin="0,0,0,10"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding VPata11}">
+                            <Label Text="{Binding Tpata11}"
+                                   HorizontalOptions="Center"
+                                   FontSize="12"
+                                   Margin="0,20,0,0"
+                                   FontFamily="NotoRegular"
+                                   TextColor="{StaticResource TextoGeneral}"/>
+                            <FlexLayout x:Name="pt11"
+                                        Grid.Column="0"
+                                        Wrap="Wrap"
+                                        JustifyContent="SpaceAround"
+                                        AlignItems="Start"
+                                        BindableLayout.ItemsSource="{Binding ImagenesCarruselPata11, Mode=TwoWay}"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <ImageButton Source="{Binding Observacion}"
+                                                     HorizontalOptions="Fill"
+                                                     VerticalOptions="Fill"
+                                                     Padding="10"
+                                                     WidthRequest="100"
+                                                     HeightRequest="60"
+                                                     BackgroundColor="White"
+                                                     Command="{Binding Path=BindingContext.SelectedPataLogoUrl,Source={x:Reference pt11},Mode=TwoWay}"
+                                                     CommandParameter="{Binding Descripcion}"
+                                                     Margin="0,0,0,10"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding VPata12}">
+                            <Label Text="{Binding Tpata12}"
+                                   HorizontalOptions="Center"
+                                   FontSize="12"
+                                   Margin="0,20,0,0"
+                                   FontFamily="NotoRegular"
+                                   TextColor="{StaticResource TextoGeneral}"/>
+                            <FlexLayout x:Name="pt12"
+                                        Grid.Column="0"
+                                        Wrap="Wrap"
+                                        JustifyContent="SpaceAround"
+                                        AlignItems="Start"
+                                        BindableLayout.ItemsSource="{Binding ImagenesCarruselPata12, Mode=TwoWay}"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <ImageButton Source="{Binding Observacion}"
+                                                     HorizontalOptions="Fill"
+                                                     VerticalOptions="Fill"
+                                                     Padding="10"
+                                                     WidthRequest="100"
+                                                     HeightRequest="60"
+                                                     BackgroundColor="White"
+                                                     Command="{Binding Path=BindingContext.SelectedPataLogoUrl,Source={x:Reference pt12},Mode=TwoWay}"
+                                                     CommandParameter="{Binding Descripcion}"
+                                                     Margin="0,0,0,10"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding VPata13}">
+                            <Label Text="{Binding Tpata13}"
+                                   HorizontalOptions="Center"
+                                   FontSize="12"
+                                   Margin="0,20,0,0"
+                                   FontFamily="NotoRegular"
+                                   TextColor="{StaticResource TextoGeneral}"/>
+                            <FlexLayout x:Name="pt13"
+                                        Grid.Column="0"
+                                        Wrap="Wrap"
+                                        JustifyContent="SpaceAround"
+                                        AlignItems="Start"
+                                        BindableLayout.ItemsSource="{Binding ImagenesCarruselPata13, Mode=TwoWay}"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <ImageButton Source="{Binding Observacion}"
+                                                     HorizontalOptions="Fill"
+                                                     VerticalOptions="Fill"
+                                                     Padding="10"
+                                                     WidthRequest="100"
+                                                     HeightRequest="60"
+                                                     BackgroundColor="White"
+                                                     Command="{Binding Path=BindingContext.SelectedPataLogoUrl,Source={x:Reference pt13},Mode=TwoWay}"
+                                                     CommandParameter="{Binding Descripcion}"
+                                                     Margin="0,0,0,10"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding VPata14}">
+                            <Label Text="{Binding Tpata14}"
+                                   HorizontalOptions="Center"
+                                   FontSize="12"
+                                   Margin="0,20,0,0"
+                                   FontFamily="NotoRegular"
+                                   TextColor="{StaticResource TextoGeneral}"/>
+                            <FlexLayout x:Name="pt14"
+                                        Grid.Column="0"
+                                        Wrap="Wrap"
+                                        JustifyContent="SpaceAround"
+                                        AlignItems="Start"
+                                        BindableLayout.ItemsSource="{Binding ImagenesCarruselPata14, Mode=TwoWay}"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <ImageButton Source="{Binding Observacion}"
+                                                     HorizontalOptions="Fill"
+                                                     VerticalOptions="Fill"
+                                                     Padding="10"
+                                                     WidthRequest="100"
+                                                     HeightRequest="60"
+                                                     BackgroundColor="White"
+                                                     Command="{Binding Path=BindingContext.SelectedPataLogoUrl,Source={x:Reference pt14},Mode=TwoWay}"
+                                                     CommandParameter="{Binding Descripcion}"
+                                                     Margin="0,0,0,10"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding VPata15}">
+                            <Label Text="{Binding Tpata15}"
+                                   HorizontalOptions="Center"
+                                   FontSize="12"
+                                   Margin="0,20,0,0"
+                                   FontFamily="NotoRegular"
+                                   TextColor="{StaticResource TextoGeneral}"/>
+                            <FlexLayout x:Name="pt15"
+                                        Grid.Column="0"
+                                        Wrap="Wrap"
+                                        JustifyContent="SpaceAround"
+                                        AlignItems="Start"
+                                        BindableLayout.ItemsSource="{Binding ImagenesCarruselPata15, Mode=TwoWay}"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <ImageButton Source="{Binding Observacion}"
+                                                     HorizontalOptions="Fill"
+                                                     VerticalOptions="Fill"
+                                                     Padding="10"
+                                                     WidthRequest="100"
+                                                     HeightRequest="60"
+                                                     BackgroundColor="White"
+                                                     Command="{Binding Path=BindingContext.SelectedPataLogoUrl,Source={x:Reference pt15},Mode=TwoWay}"
+                                                     CommandParameter="{Binding Descripcion}"
+                                                     Margin="0,0,0,10"/>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </StackLayout>
+                    </StackLayout>
+
+                </StackLayout>
+
+                <Grid>
+                    <Frame IsClippedToBounds="True"
+                           Padding="0"
+                           CornerRadius="0"
+                           BackgroundColor="Transparent"
+                           HasShadow="False">
+                        <ImageButton BackgroundColor="Transparent"
+                                     Source="{Binding ImagenPantallaFinal}"
+                                     Aspect="AspectFit"
+                                     Margin="0,0,0,0"/>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+        <Grid BackgroundColor="{StaticResource FondomMenuInfe}"
+              Margin="0,0,0,-60"
+              VerticalOptions="End"
+              HorizontalOptions="Fill"
+              HeightRequest="70">
+        </Grid>
+        <Grid Grid.Row="0"
+              BackgroundColor="{StaticResource FondomMenuInfe}"
+              VerticalOptions="End"
+              HorizontalOptions="Fill"
+              ColumnSpacing="5"
+              Padding="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Frame Grid.Column="{Binding GridNotificaciones}"
+                   BackgroundColor="{StaticResource FondoNotificaMenuInfe}"
+                   Padding="1"
+                   CornerRadius="10"
+                   HasShadow="False"
+                   BorderColor="{StaticResource BorderNotificaMenuInfe}"
+                   IsVisible="{Binding VerNotificicaciones}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   Margin="30,0,0,0">
+                <Label Text="{Binding CantidadNotificaciones}"
+                       FontSize="11"
+                       FontFamily="NotoRegular"
+                       TextColor="{StaticResource TextNotificaMenuInfe}"
+                       WidthRequest="20"
+                       HeightRequest="20"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"/>
+            </Frame>
+            <Image x:Name="Menu1"
+                   Grid.Column="0"
+                   WidthRequest="25"
+                   Source="{Binding Icon1}"
+                   ClassId="{Binding Icon1Class}"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding Menu1}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                          CommandParameter="{x:Reference Menu1}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="Menu2"
+                   Grid.Column="1"
+                   WidthRequest="25"
+                   Source="{Binding Icon2}"
+                   ClassId="{Binding Icon2Class}"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding Menu2}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                          CommandParameter="{x:Reference Menu2}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <BoxView Grid.Column="2"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Center"
+                     WidthRequest="1"
+                     HeightRequest="25"
+                     Color="Red"/>
+            <Image x:Name="Menu3"
+                   Grid.Column="3"
+                   WidthRequest="25"
+                   Source="{Binding Icon3}"
+                   ClassId="{Binding Icon3Class}"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding Menu3}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                          CommandParameter="{x:Reference Menu3}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="Menu4"
+                   Grid.Column="4"
+                   WidthRequest="25"
+                   Source="{Binding Icon4}"
+                   ClassId="{Binding Icon4Class}"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding Menu4}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                          CommandParameter="{x:Reference Menu4}"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+        <Frame Grid.Row="0"
+               VerticalOptions="End"
+               HorizontalOptions="Center"
+               Margin="0,0,0,0"
+               Padding="0"
+               HasShadow="False"
+               BorderColor="{StaticResource BordeIconoPrin}"
+               BackgroundColor="{StaticResource FondoIconoPrin}"
+               CornerRadius="27"
+               WidthRequest="58"
+               HeightRequest="58">
+            <Image Source="{Binding ImagenSplash}"
+                   HeightRequest="40"
+                   WidthRequest="40"
+                   Aspect="AspectFill"
+                   Margin="8">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding IrHome}"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Frame>
+        <Grid BackgroundColor="{StaticResource FondoLoder}"
+              VerticalOptions="Fill"
+              HorizontalOptions="Fill"
+              Margin="-20,-60"
+              IsVisible="{Binding IsBusy}">
+            <ActivityIndicator IsRunning="true"
+                               Color="{StaticResource IconoLoder}"
+                               Margin="20"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+        </Grid>
+    </Grid>
+</ContentPage>

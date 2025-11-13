@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Popup:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EventosCorferias.Views.PopUp.ServiciosPopUp"
+             xmlns:Popup="clr-namespace:Mopups.Pages;assembly=Mopups"
+             xmlns:resources="clr-namespace:EventosCorferias.Resources.RecursosIdioma"
+             Title="ServiciosPopUp"
+             BackgroundColor="{StaticResource ColorFondoPopUp}">
+    <Frame HasShadow="False"
+         BackgroundColor="White"
+         BorderColor="Transparent"
+         IsClippedToBounds="True"
+         VerticalOptions="Center"
+         HorizontalOptions="Fill"
+         Margin="20"
+         Padding="0"
+         CornerRadius="10">
+        <Grid Margin="0" Padding="0">
+            <StackLayout x:Name="SubGrupo" Margin="0" BackgroundColor="White" Padding="15" Spacing="0">
+                <Image BackgroundColor="White" Grid.Column="0" Source="ic_cerrar_obscuro.png" WidthRequest="25" HorizontalOptions="End">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Button_OnClicked"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="{x:Static resources:AppResources.servicios}" VerticalOptions="Center" HorizontalOptions="Center" 
+                       Margin="0,0,0,0" HorizontalTextAlignment="Center" TextColor="{StaticResource TextoGeneral}" FontSize="16" FontFamily="NotoBold"/>
+
+                <CollectionView x:Name="listAgenda" SelectionMode="None" Margin="0,10,0,0" ItemsSource="{Binding ListaServicios}" BackgroundColor="White" >
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="1" VerticalItemSpacing="0" HorizontalItemSpacing="0" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid  Margin="0" Padding="10,5,10,5" BackgroundColor="White" >
+                                <Frame CornerRadius="5" IsClippedToBounds="True" Padding="2" Margin="0" HasShadow="False" BorderColor="{StaticResource BordeTarjeta}" 
+                                       BackgroundColor="{StaticResource FondoTarjeta}" HorizontalOptions="Fill" >
+                                    <Grid Margin="2">
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.SeleccionarModuloCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}"  CommandParameter="{Binding .}"/>
+                                        </Grid.GestureRecognizers>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="26" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="26" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Column="0" InputTransparent="True" Source="IconoPrimero" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="White" />
+                                        <Label Grid.Column="1" InputTransparent="True" VerticalOptions="Center" Padding="5" Text="{Binding NombreServicio}" TextColor="{StaticResource TextoTarjetas}"  FontFamily="NotoRegular" FontSize="12" />
+                                        <Image Grid.Column="2" InputTransparent="True" Source="ic_siguiente_obscuro.png" HorizontalOptions="End" VerticalOptions="Center" HeightRequest="20" WidthRequest="20" BackgroundColor="Transparent" />
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.Footer>
+                        <Label Margin="30"/>
+                    </CollectionView.Footer>
+                </CollectionView>
+            </StackLayout>
+            <Grid BackgroundColor="{StaticResource FondoLoder}"
+                  VerticalOptions="Fill"
+                  HorizontalOptions="Fill"
+                  Margin="-20"
+                  IsVisible="{Binding IsBusy}">
+                <ActivityIndicator IsRunning="true"
+                                   Color="{StaticResource IconoLoder}"
+                                   Margin="20"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+            </Grid>
+        </Grid>
+
+    </Frame>
+</Popup:PopupPage>

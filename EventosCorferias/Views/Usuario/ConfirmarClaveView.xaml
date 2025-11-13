@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EventosCorferias.Views.Usuario.ConfirmarClaveView"
+             xmlns:controls="clr-namespace:EventosCorferias.Controls"
+             xmlns:resources="clr-namespace:EventosCorferias.Resources.RecursosIdioma"
+             Title="ConfirmarClaveView" BackgroundColor="White">
+    <ContentPage.Content>
+        <Grid RowSpacing="0"
+     ColumnSpacing="0"
+     Margin="10"
+     Padding="0"
+     BackgroundColor="Transparent">
+            <ScrollView  VerticalOptions="Fill">
+                <Grid>
+                    <Grid RowSpacing="0"
+         ColumnSpacing="0"
+         VerticalOptions="Fill">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!--parte 1 imagen y Titulo-->
+                        <StackLayout Grid.Row="0" Padding="30,30,30,10" Margin="0">
+                            <Image Source="img_registro_cabeza.png" HorizontalOptions="Start" WidthRequest="180" Margin="0, 30, 0, 40"/>
+                            <Label Text="{x:Static resources:AppResources.recuperarContrasena}"
+      TextColor="{StaticResource TextoGeneral}"
+      FontSize="30"
+      FontFamily="NotoBold"/>
+                            <Label Text="{x:Static resources:AppResources.registraElCorreoMas}"
+      TextColor="{StaticResource TextoGeneral}"
+      Margin="0,10,0,0"
+      FontSize="12"
+      FontFamily="NotoRegular"/>
+                        </StackLayout>
+
+                        <!--parte 2 Entry's y boton enviar-->
+                        <StackLayout Grid.Row="1"
+                    Margin="30,10,30,10"
+                    Spacing="0"
+                    BackgroundColor="Transparent">
+
+                            <Grid VerticalOptions="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="20"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0"
+                          FontSize="11"
+                          TextColor="{StaticResource TextoEntrada}" 
+                          HorizontalOptions="Start"
+                          VerticalOptions="Center"
+                          Margin="10,15,15,0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span LineHeight="3" Text="{x:Static resources:AppResources.nuevaClave}" FontSize="11" FontFamily="NotRegular"/>
+                                            <Span LineHeight="3" Text="*" TextColor="{StaticResource TextoEntrada}" FontSize="11" FontFamily="NotRegular"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <ImageButton Grid.Column="1" Source="ic_admiracion_obscuro.png" WidthRequest="20" VerticalOptions="Center" Margin="0,0,20,-14" BackgroundColor="Transparent"  Command="{Binding Notificacion_clave}"/>
+                            </Grid>
+
+                            <Frame Style="{StaticResource FRegistroGeneral}" Margin="0,5,0,0"
+                       BorderColor="{StaticResource BordeEntrada}" BackgroundColor="{StaticResource FondoEntrada}">
+                                <Grid Margin="0"
+                         Padding="0"
+                         RowSpacing="0"
+                         ColumnSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0"
+                              Source="ic_candado_obscuro.png"
+                              WidthRequest="20"
+                              Margin="15,0,15,0"
+                              HorizontalOptions="Start"/>
+                                    <Entry Grid.Column="1"
+                              x:Name="IsPasword1"
+                              IsPassword="True"
+                              BackgroundColor="Transparent"
+                              Placeholder="{x:Static resources:AppResources.contrasena}"
+                              Text="{Binding EntClaveUsu, Mode=TwoWay}"
+                              Style="{StaticResource ERegistroGeneralTexto}"
+                              TextColor="{StaticResource TextoEntrada}"
+                             PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                              VerticalOptions="Center"
+                              HeightRequest="35"/>
+                                    <ImageButton Grid.Column="2"
+                                    Source="ic_ocultar_obscuro.png"
+                                    HeightRequest="30"
+                                    WidthRequest="20"
+                                    Margin="10,0,10,0"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    BackgroundColor="Transparent"
+                                    x:Name="ImageButton1"
+                                    Clicked="ImageButton_Clicked"/>
+                                </Grid>
+                            </Frame>
+
+                            <Label FontSize="11" 
+                      TextColor="{StaticResource TextoEntrada}" 
+                      HorizontalOptions="Start" 
+                      Margin="10,20,15,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span LineHeight="3" Text="{x:Static resources:AppResources.confirmarContrasena}" FontSize="11" FontFamily="NotRegular"/>
+                                        <Span LineHeight="3" Text="*" TextColor="{StaticResource TextoEntrada}" FontSize="11" FontFamily="NotRegular"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Frame Style="{StaticResource FRegistroGeneral}" Margin="0,7,0,0"
+                       BorderColor="{StaticResource BordeEntrada}" BackgroundColor="{StaticResource FondoEntrada}">
+                                <Grid Margin="0"
+                         Padding="0"
+                         RowSpacing="0"
+                         ColumnSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0"
+                              Source="ic_candado_obscuro.png"
+                              WidthRequest="20"
+                              Margin="15,0,15,0"
+                              HorizontalOptions="Start"/>
+                                    <Entry Grid.Column="1"
+                              x:Name="IsPasword2"
+                              IsPassword="True"
+                              BackgroundColor="Transparent"
+                              Placeholder="{x:Static resources:AppResources.confirmarContrasena}"
+                              Text="{Binding EntClaveUsu2, Mode=TwoWay}"
+                              Style="{StaticResource ERegistroGeneralTexto}"
+                              TextColor="{StaticResource TextoEntrada}"
+                              PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                              VerticalOptions="Center"
+                             HeightRequest="35"/>
+                                    <ImageButton Grid.Column="2"
+                                    Source="ic_ocultar_obscuro.png"
+                                    HeightRequest="30"
+                                    WidthRequest="20"
+                                    Margin="10,0,10,0"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    BackgroundColor="Transparent"
+                                    x:Name="ImageButton2"
+                                    Clicked="ImageButton_Clicked1"/>
+                                </Grid>
+                            </Frame>
+                            <Button Text="{x:Static resources:AppResources.Enviar}" 
+                       Style="{StaticResource BtnGeneral}"
+                        TextColor="{StaticResource BtnTextoObscuro}"
+BorderColor="{StaticResource BtnBoderGeneralObscuro}"
+BackgroundColor="{StaticResource BtnFondoGeneralObscuro}"
+                       Command="{Binding CambiarClave}"
+                       Margin="0,50,0,0"/>
+                        </StackLayout>
+                    </Grid>
+                    <Grid BackgroundColor="{StaticResource FondoLoder}"
+           VerticalOptions="Fill"
+           HorizontalOptions="Fill"
+           Margin="-20,-60"
+           IsVisible="{Binding IsBusy}">
+                        <ActivityIndicator IsRunning="true"
+                            Color="{StaticResource IconoLoder}"
+                            Margin="20"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"/>
+                    </Grid>
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

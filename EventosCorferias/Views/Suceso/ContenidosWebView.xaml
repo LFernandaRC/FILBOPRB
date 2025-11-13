@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EventosCorferias.Views.Suceso.ContenidosWebView"
+             xmlns:local="clr-namespace:EventosCorferias.Models"
+             BackgroundColor="White"
+             Title="{Binding TituloContenido, Source={Reference ThisPage}}"
+             x:Name="ThisPage">
+
+    <NavigationPage.TitleView>
+        <Label Style="{StaticResource LMenuSup}" Text="{Binding TituloContenido, Source={Reference ThisPage}}" TextColor="{StaticResource ColorTextoMenSup}"/>
+    </NavigationPage.TitleView>
+
+    <Grid BackgroundColor="White" VerticalOptions="Fill" HorizontalOptions="Fill">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- WebView con label encima -->
+        <Grid x:Name="contenWeb" >
+            <WebView x:Name="prb"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Fill"
+                     Source="{Binding Url, Source={Reference ThisPage}}"
+                     Navigated="WebviewNavigated"
+                     Navigating="WebviewNavigating" />
+            <Label x:Name="labelLoading"
+                   Text="Loading..."
+                   FontFamily="NotoRegular"
+                   IsVisible="false"
+                   TextColor="Black"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   BackgroundColor="White"/>
+        </Grid>
+
+        <!-- Contenedor de imagen con zoom -->
+        <Grid x:Name="contenIme" BackgroundColor="WhiteSmoke" IsVisible="false" Padding="0" Margin="0" VerticalOptions="Fill">
+            <local:PinchToZoomContainer>
+                <Image Source="{Binding Url, Source={Reference ThisPage}}" VerticalOptions="Fill" />
+            </local:PinchToZoomContainer>
+            <ImageButton Source="ic_zoom.png"  Clicked="ImageButton_Clicked"
+                         VerticalOptions="End" HorizontalOptions="End" Margin="10"
+                         WidthRequest="60" HeightRequest="60" BackgroundColor="White" 
+                         Padding="10" CornerRadius="10" BorderColor="#e5e5e5"/>
+        </Grid>
+    </Grid>
+</ContentPage>

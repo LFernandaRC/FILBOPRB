@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui"
+             x:Class="EventosCorferias.Views.Usuario.MenuPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:resources="clr-namespace:EventosCorferias.Resources.RecursosIdioma"
+             Title="MenuPage"
+             BackgroundColor="{StaticResource ColorFondoMenLat}"
+             NavigationPage.HasNavigationBar="False">
+    <Grid BackgroundColor="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid BackgroundColor="Transparent"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"
+                    Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Margin="0,10,10,10"
+                           Padding="10,5,0,5"
+                           BackgroundColor="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="imgf"
+                                   Grid.Column="0"
+                                   WidthRequest="35"
+                                   HeightRequest="35"></Image>
+                <Label x:Name="NombreCompletoP"
+                                   Text="Usuario"
+                                   Grid.Column="1"
+                                   TextColor="{StaticResource ColorTextoMenLat}"
+                                   FontFamily="NotoMedium"
+                                   FontSize="14"
+                                   Margin="10,0,0,0"
+                                   VerticalOptions="Center"/>
+            </Grid>
+            <BoxView HeightRequest="0.5"
+                              Grid.Row="1"
+                              Color="LightGray"></BoxView>
+            <ScrollView VerticalOptions="Fill"
+                                 Grid.Row="2">
+                <StackLayout Orientation="Vertical"
+                                         BackgroundColor="Transparent"
+                                         Spacing="0">
+                    <StackLayout ClassId="Perfil"
+                                                Orientation="Horizontal"
+                                                BackgroundColor="Transparent"
+                                                Margin="10"
+                                                Spacing="10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Options"/>
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="ic_perfil_obscuro.png"
+                                                 WidthRequest="20"
+                                                 HeightRequest="20"
+                                                 BackgroundColor="Transparent"/>
+                        <Label x:Name="Perfil"
+                                                 VerticalOptions="Center"
+                                                 TextColor="{StaticResource ColorTextoMenLat}"
+                                                 FontSize="14"
+                                                 Text="{x:Static resources:AppResources.perfil}"
+                                                 FontFamily="NotoMedium"/>
+                    </StackLayout>
+                    <StackLayout ClassId="Notificaciones"
+                                                Orientation="Horizontal"
+                                                BackgroundColor="Transparent"
+                                                Margin="10"
+                                                Spacing="10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Options"/>
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="ic_notificacion_obscuro.png"
+                                                 WidthRequest="20"
+                                                 HeightRequest="20"
+                                                 BackgroundColor="Transparent"/>
+                        <Label x:Name="Notificaciones"
+                                                 VerticalOptions="Center"
+                                                 TextColor="{StaticResource ColorTextoMenLat}"
+                                                 FontSize="14"
+                                                 Text="{x:Static resources:AppResources.notificaciones}"
+                                                 FontFamily="NotoMedium"/>
+                    </StackLayout>
+                    <StackLayout ClassId="Idioma"
+                                                Orientation="Horizontal"
+                                                BackgroundColor="Transparent"
+                                                Margin="10"
+                                                Spacing="10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Options"/>
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="ic_web_obscuro.png"
+                                                 WidthRequest="20"
+                                                 HeightRequest="20"
+                                                 BackgroundColor="Transparent"/>
+                        <Label x:Name="Idioma"
+                                                 VerticalOptions="Center"
+                                                 TextColor="{StaticResource ColorTextoMenLat}"
+                                                 FontSize="14"
+                                                 Text="{x:Static resources:AppResources.idioma}"
+                                                 FontFamily="NotoMedium"/>
+                    </StackLayout>
+                    <StackLayout ClassId="Destacados"
+                                                Orientation="Horizontal"
+                                                BackgroundColor="Transparent"
+                                                Margin="10"
+                                                Spacing="10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="ic_favorito_obscuro.png"
+                                                 WidthRequest="20"
+                                                 HeightRequest="20"
+                                                 BackgroundColor="Transparent"/>
+                        <Label x:Name="Destacados"
+                                                 VerticalOptions="Center"
+                                                 TextColor="{StaticResource ColorTextoMenLat}"
+                                                 FontSize="14"
+                                                 Text="{x:Static resources:AppResources.destacados}"
+                                                 FontFamily="NotoMedium"/>
+                        <Image x:Name="flechaSub"
+                                                 Source="ic_flechaabajo_obscuro.png"
+                                                 WidthRequest="16"
+                                                 HeightRequest="16"
+                                                 BackgroundColor="Transparent"/>
+                    </StackLayout>
+                    <StackLayout x:Name="SubGrupo">
+                        <StackLayout ClassId="MContenido"
+                                                       Orientation="Horizontal"
+                                                       BackgroundColor="Transparent"
+                                                       Margin="40,10,10,10"
+                                                       Spacing="10">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Options"/>
+                            </StackLayout.GestureRecognizers>
+                            <Image Source="ic_noticias_obscuro.png"
+                                                        WidthRequest="20"
+                                                        HeightRequest="20"
+                                                        BackgroundColor="Transparent"/>
+                            <Label x:Name="MContenido"
+                                                        VerticalOptions="Center"
+                                                        TextColor="{StaticResource ColorTextoMenLat}"
+                                                        FontSize="14"
+                                                        FontFamily="NotoMedium"
+                                                        Text="{x:Static resources:AppResources.misContenidos}"/>
+                        </StackLayout>
+                        <StackLayout ClassId="MAgenda"
+                                                       Orientation="Horizontal"
+                                                       BackgroundColor="Transparent"
+                                                       Margin="40,10,10,10"
+                                                       Spacing="10">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Options"/>
+                            </StackLayout.GestureRecognizers>
+                            <Image Source="ic_programacion_obscuro.png"
+                                                        WidthRequest="20"
+                                                        HeightRequest="20"
+                                                        BackgroundColor="Transparent"/>
+                            <Label x:Name="MAgenda"
+                                                        VerticalOptions="Center"
+                                                        TextColor="{StaticResource ColorTextoMenLat}"
+                                                        FontSize="14"
+                                                        Text="{x:Static resources:AppResources.miAgenda}"
+                                                        FontFamily="NotoMedium"/>
+                        </StackLayout>
+                        <StackLayout ClassId="MConferenciasta"
+                                                       Orientation="Horizontal"
+                                                       BackgroundColor="Transparent"
+                                                       Margin="40,10,10,10"
+                                                       Spacing="10">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Options"/>
+                            </StackLayout.GestureRecognizers>
+                            <Image Source="ic_conferencista_obscuro.png"
+                                                        WidthRequest="20"
+                                                        HeightRequest="20"
+                                                        BackgroundColor="Transparent"/>
+                            <Label x:Name="MConferenciasta"
+                                                        VerticalOptions="Center"
+                                                        TextColor="{StaticResource ColorTextoMenLat}"
+                                                        FontSize="14"
+                                                        Text="{x:Static resources:AppResources.misInvitados}"
+                                                        FontFamily="NotoMedium"/>
+                        </StackLayout>
+                        <StackLayout ClassId="MExpositor"
+                                                       Orientation="Horizontal"
+                                                       BackgroundColor="Transparent"
+                                                       Margin="40,10,10,10"
+                                                       Spacing="10">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Options"/>
+                            </StackLayout.GestureRecognizers>
+                            <Image Source="ic_expositores_obscuro.png"
+                                                        WidthRequest="20"
+                                                        HeightRequest="20"
+                                                        BackgroundColor="Transparent"/>
+                            <Label x:Name="MExpositor"
+                                                        VerticalOptions="Center"
+                                                        TextColor="{StaticResource ColorTextoMenLat}"
+                                                        FontSize="14"
+                                                        Text="{x:Static resources:AppResources.misExpositores}"
+                                                        FontFamily="NotoMedium"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout ClassId="ComoLlegar"
+                                                Orientation="Horizontal"
+                                                BackgroundColor="Transparent"
+                                                Margin="10"
+                                                Spacing="10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Options"/>
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="ic_pin_obscuro.png"
+                                                 WidthRequest="20"
+                                                 HeightRequest="20"
+                                                 BackgroundColor="Transparent"/>
+                        <Label x:Name="ComoLlegar"
+                                                 VerticalOptions="Center"
+                                                 TextColor="{StaticResource ColorTextoMenLat}"
+                                                 FontSize="14"
+                                                 Text="{x:Static resources:AppResources.comoLlegar}"
+                                                 FontFamily="NotoMedium"/>
+                    </StackLayout>
+                    <StackLayout ClassId="Contacto"
+                                                Orientation="Horizontal"
+                                                BackgroundColor="Transparent"
+                                                Margin="10"
+                                                Spacing="10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Options"/>
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="ic_contactanos_obscuro.png"
+                                                 WidthRequest="20"
+                                                 HeightRequest="20"
+                                                 BackgroundColor="Transparent"/>
+                        <Label x:Name="Contacto"
+                                                 VerticalOptions="Center"
+                                                 TextColor="{StaticResource ColorTextoMenLat}"
+                                                 FontSize="14"
+                                                 Text="{x:Static resources:AppResources.Contactanos}"
+                                                 FontFamily="NotoMedium"/>
+                    </StackLayout>
+                    <StackLayout ClassId="Buscar"
+                                                Orientation="Horizontal"
+                                                BackgroundColor="Transparent"
+                                                Margin="10"
+                                                Spacing="10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Options"/>
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="ic_lupa_obscuro.png"
+                                                 WidthRequest="20"
+                                                 HeightRequest="20"
+                                                 BackgroundColor="Transparent"/>
+                        <Label x:Name="Buscar"
+                                                 VerticalOptions="Center"
+                                                 TextColor="{StaticResource ColorTextoMenLat}"
+                                                 FontSize="14"
+                                                 Text="{x:Static resources:AppResources.Buscar}"
+                                                 FontFamily="NotoMedium"/>
+                    </StackLayout>
+                    <StackLayout ClassId="EliminarUsu"
+                                                Orientation="Horizontal"
+                                                BackgroundColor="Transparent"
+                                                Margin="10"
+                                                Spacing="10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Options"/>
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="ic_caneca_obscuro.png"
+                                                 WidthRequest="20"
+                                                 HeightRequest="20"
+                                                 BackgroundColor="Transparent"/>
+                        <Label x:Name="EliminarUsu"
+                                                 VerticalOptions="Center"
+                                                 TextColor="{StaticResource ColorTextoMenLat}"
+                                                 Text="{x:Static resources:AppResources.EliminarUsuario}"
+                                                 FontSize="14"
+                                                 FontFamily="NotoMedium"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+        <StackLayout ClassId="EliminarUsu"
+                           Grid.Row="1"
+                           Orientation="Horizontal"
+                           BackgroundColor="Transparent"
+                           Margin="10,10,10,20"
+                           Spacing="10"
+                           VerticalOptions="End">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+            </StackLayout.GestureRecognizers>
+            <Image Source="ic_poder_obscuro.png"
+                            WidthRequest="25"
+                            HeightRequest="25"
+                            BackgroundColor="Transparent"/>
+            <Label x:Name="CerrarSesion"
+                            VerticalOptions="Center"
+                            TextColor="{StaticResource ColorTextoMenLat}"
+                            FontSize="14"
+                            FontFamily="NotoMedium"
+                            Text="{x:Static resources:AppResources.CerrarSesion}"/>
+        </StackLayout>
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,1167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cerrar" xml:space="preserve">
+    <value>Cerrar</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="conElCodigoMas" xml:space="preserve">
+    <value>con el código de verificación de tu cuenta</value>
+    <comment>RecuperarClavePage</comment>
+  </data>
+  <data name="continuar" xml:space="preserve">
+    <value>Continuar</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="contrasena" xml:space="preserve">
+    <value>Contraseña</value>
+    <comment>AcuailizarClavePopUp</comment>
+  </data>
+  <data name="elCodigoNoMas" xml:space="preserve">
+    <value>* El código registrado no corresponde</value>
+    <comment>RecuperarClavePage</comment>
+  </data>
+  <data name="enviamosUnCorreoMas" xml:space="preserve">
+    <value>Enviamos un correo electrónico a</value>
+    <comment>RecuperarClavePage</comment>
+  </data>
+  <data name="Enviar" xml:space="preserve">
+    <value>Enviar</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="generarUnCodigoMas" xml:space="preserve">
+    <value>GENERAR UN CÓDIGO NUEVO</value>
+    <comment>RecuperarClavePage</comment>
+  </data>
+  <data name="ingresaElCodigo" xml:space="preserve">
+    <value>INGRESA EL CÓDIGO</value>
+    <comment>RecuperarClavePage</comment>
+  </data>
+  <data name="Ingresar" xml:space="preserve">
+    <value>Ingresar</value>
+    <comment>Login App</comment>
+  </data>
+  <data name="ingresaTuCorreo" xml:space="preserve">
+    <value>Continuar con Correo</value>
+    <comment>RecuperarClave Page</comment>
+  </data>
+  <data name="mantenerConectado" xml:space="preserve">
+    <value>Mantenerme conectado</value>
+    <comment>Login App</comment>
+  </data>
+  <data name="nombreMarca" xml:space="preserve">
+    <value>FILBo</value>
+  </data>
+  <data name="olvideClave" xml:space="preserve">
+    <value>Olvidé mi contraseña</value>
+    <comment>Login App</comment>
+  </data>
+  <data name="recuperarContrasena" xml:space="preserve">
+    <value>Recuperar contraseña</value>
+    <comment>RecuperarClavePage</comment>
+  </data>
+  <data name="registraElCorreoMas" xml:space="preserve">
+    <value>Registra el correo para recuperar tu contraseña</value>
+    <comment>RecuperarClavePage</comment>
+  </data>
+  <data name="seAcaboDeReenviarElCodigo" xml:space="preserve">
+    <value>Se acabo de reenviar el código, revisa tu correo electrónico.</value>
+    <comment>RecuperarContraseña</comment>
+  </data>
+  <data name="VMaceptar" xml:space="preserve">
+    <value>Aceptar</value>
+    <comment>General App</comment>
+  </data>
+  <data name="VMCredencialesIncorrectas" xml:space="preserve">
+    <value>Credenciales incorrectas</value>
+    <comment>LoginApp</comment>
+  </data>
+  <data name="VMElCampoTerminosEsObligatorio" xml:space="preserve">
+    <value>El campo términos y condiciones es obligatorio</value>
+    <comment>RegistroPage</comment>
+  </data>
+  <data name="VMElCorreoElectronicoDebeMas" xml:space="preserve">
+    <value>El correo electrónico debe tener un arroba y .com, ejemplo: tucorreo@ejemplo.com</value>
+    <comment>RegistroPage</comment>
+  </data>
+  <data name="VMElNombreDebeTenerMinimo3Caracteres" xml:space="preserve">
+    <value>El nombre debe tener mínimo 3 caracteres</value>
+    <comment>RegistroPage</comment>
+  </data>
+  <data name="VMElUsuarioNoSeEncontro" xml:space="preserve">
+    <value>El usuario no se encontró</value>
+    <comment>RecuperarClavePage</comment>
+  </data>
+  <data name="VMElUsuarioYaEstaRegistrado" xml:space="preserve">
+    <value>El usuario ya esta registrado</value>
+    <comment>RegistroPage</comment>
+  </data>
+  <data name="VMEsteUsuaraioNoExisteMas" xml:space="preserve">
+    <value>Este usuario no existe en el sistema</value>
+    <comment>LoginApp</comment>
+  </data>
+  <data name="VMLaContrasenaDebeTenerMinimoMas" xml:space="preserve">
+    <value>La contraseña debe tener mínimo 8 caracteres, máximo 16 caracteres, una mayúscula, una minúscula y un número</value>
+    <comment>LoginApp</comment>
+  </data>
+  <data name="VMLasContrasenasNoCoinciden" xml:space="preserve">
+    <value>Las contraseñas no coinciden</value>
+    <comment>RegistroPage</comment>
+  </data>
+  <data name="VMLosCorreosNoCoinciden" xml:space="preserve">
+    <value>Las correos electrónicos no coinciden</value>
+    <comment>RegistroPage</comment>
+  </data>
+  <data name="VMMayorDeEdad" xml:space="preserve">
+    <value>Lo sentimos!! debes ser mayor de edad para poderte registrar</value>
+    <comment>RegistroPage</comment>
+  </data>
+  <data name="VMNoCargaVistaRegistro" xml:space="preserve">
+    <value>Hemos tenido problemas inciando la vista del registro, intenta nuevamente o comunicate con el administrador</value>
+    <comment>RegistroPage</comment>
+  </data>
+  <data name="VMNoDejesCamposVacios" xml:space="preserve">
+    <value>No dejes campos vacíos</value>
+    <comment>LoginApp</comment>
+  </data>
+  <data name="VMNoDejesCamposVaciosEmpresa" xml:space="preserve">
+    <value>No dejes campos obligatorios vacíos en el formulario de la empresa</value>
+    <comment>RegistroPage</comment>
+  </data>
+  <data name="VMNoDejesElCampoVacio" xml:space="preserve">
+    <value>No dejes el campo vacío</value>
+    <comment>RecuperarClavePage</comment>
+  </data>
+  <data name="VMNoTieneFormaroElNombreDelUsuario" xml:space="preserve">
+    <value>No tiene formato el nombre del usuario</value>
+    <comment>RegistroPage</comment>
+  </data>
+  <data name="VMNoTieneFormatoCorreo" xml:space="preserve">
+    <value>No tiene formato el correo electrónico</value>
+    <comment>LoginApp</comment>
+  </data>
+  <data name="VMRevisaTuConexion" xml:space="preserve">
+    <value>Revisa tu conexión a internet</value>
+    <comment>LoginApp</comment>
+  </data>
+  <data name="VMServicioEnMantenimiento" xml:space="preserve">
+    <value>Servicio en mantenimiento, intenta de nuevo más tarde</value>
+    <comment>General App</comment>
+  </data>
+  <data name="nombreCompleto" xml:space="preserve">
+    <value>Nombre completo</value>
+    <comment>General App</comment>
+  </data>
+  <data name="NumeroDocumento" xml:space="preserve">
+    <value>Número de documento</value>
+    <comment>General App</comment>
+  </data>
+  <data name="celular" xml:space="preserve">
+    <value>Celular</value>
+    <comment>General App</comment>
+  </data>
+  <data name="correoElectronico" xml:space="preserve">
+    <value>Correo electrónico</value>
+    <comment>General App</comment>
+  </data>
+  <data name="confirmarCorreoElectronico" xml:space="preserve">
+    <value>Confirmar correo electrónico</value>
+    <comment>General App</comment>
+  </data>
+  <data name="confirmarContrasena" xml:space="preserve">
+    <value>Confirmar contraseña</value>
+    <comment>General App</comment>
+  </data>
+  <data name="fechaNacimiento" xml:space="preserve">
+    <value>Fecha de nacimiento</value>
+    <comment>General App</comment>
+  </data>
+  <data name="profesion" xml:space="preserve">
+    <value>Profesión</value>
+    <comment>General App</comment>
+  </data>
+  <data name="sectorEconomico" xml:space="preserve">
+    <value>Sector económico</value>
+    <comment>General App</comment>
+  </data>
+  <data name="paisResidencia" xml:space="preserve">
+    <value>País de residencia</value>
+    <comment>General App</comment>
+  </data>
+  <data name="ciudadRecinto" xml:space="preserve">
+    <value>Ciudad de recinto</value>
+    <comment>General App</comment>
+  </data>
+  <data name="registra" xml:space="preserve">
+    <value>Registra</value>
+    <comment>General App</comment>
+  </data>
+  <data name="tuEmpresa" xml:space="preserve">
+    <value>tu empresa</value>
+    <comment>General App</comment>
+  </data>
+  <data name="uneteA" xml:space="preserve">
+    <value>Únete a</value>
+    <comment>General App</comment>
+  </data>
+  <data name="nuestraExperiencia" xml:space="preserve">
+    <value>nuestra experiencia</value>
+    <comment>General App</comment>
+  </data>
+  <data name="aceptoLos" xml:space="preserve">
+    <value>Acepto los</value>
+    <comment>General App</comment>
+  </data>
+  <data name="terminosYCondiciones" xml:space="preserve">
+    <value>términos y condiciones</value>
+    <comment>General App</comment>
+  </data>
+  <data name="y" xml:space="preserve">
+    <value>y</value>
+    <comment>General App</comment>
+  </data>
+  <data name="politicaDeDatos" xml:space="preserve">
+    <value>política de datos</value>
+    <comment>General App</comment>
+  </data>
+  <data name="registrarme" xml:space="preserve">
+    <value>Registrarme</value>
+    <comment>General App</comment>
+  </data>
+  <data name="nombreEmpresa" xml:space="preserve">
+    <value>Nombre de la empresa</value>
+    <comment>General App</comment>
+  </data>
+  <data name="numIdentificacionEmpresa" xml:space="preserve">
+    <value>Nº de identificación de la empresa</value>
+    <comment>General App</comment>
+  </data>
+  <data name="telefono" xml:space="preserve">
+    <value>Teléfono</value>
+    <comment>General App</comment>
+  </data>
+  <data name="pais" xml:space="preserve">
+    <value>País</value>
+    <comment>General App</comment>
+  </data>
+  <data name="area" xml:space="preserve">
+    <value>Área</value>
+    <comment>General App</comment>
+  </data>
+  <data name="direccion" xml:space="preserve">
+    <value>Dirección</value>
+    <comment>General App</comment>
+  </data>
+  <data name="cargo" xml:space="preserve">
+    <value>Cargo</value>
+    <comment>General App</comment>
+  </data>
+  <data name="codigoPostal" xml:space="preserve">
+    <value>Código postal</value>
+    <comment>General App</comment>
+  </data>
+  <data name="ciudad" xml:space="preserve">
+    <value>Ciudad</value>
+    <comment>General App</comment>
+  </data>
+  <data name="VMLaContrasenaHaSidoActualizada" xml:space="preserve">
+    <value>La contraseña ha sido actualizada</value>
+    <comment>ConfirmarClavePage</comment>
+  </data>
+  <data name="VMLaContrasenaNoSeHaSidoActualizada" xml:space="preserve">
+    <value>La contraseña no se ha podido actualizar</value>
+    <comment>ConfirmarClavePage</comment>
+  </data>
+  <data name="nuevaClave" xml:space="preserve">
+    <value>Nueva Contraseña</value>
+    <comment>ConfirmarClavePage</comment>
+  </data>
+  <data name="editarPerfil" xml:space="preserve">
+    <value>Editar Perfil</value>
+    <comment>PerfilMenu</comment>
+  </data>
+  <data name="informacion" xml:space="preserve">
+    <value>Información</value>
+    <comment>PerfilMenu</comment>
+  </data>
+  <data name="personal" xml:space="preserve">
+    <value>personal</value>
+    <comment>PerfilMenu</comment>
+  </data>
+  <data name="tiponNumeroIdentificacion" xml:space="preserve">
+    <value>Tipo y número de documento</value>
+    <comment>PerfilMenu</comment>
+  </data>
+  <data name="telefonoCelular" xml:space="preserve">
+    <value>Teléfono o Celular</value>
+    <comment>PerfilMenu</comment>
+  </data>
+  <data name="cuentasVinculadas" xml:space="preserve">
+    <value>Cuentas vinculadas</value>
+    <comment>PerfilMenu</comment>
+  </data>
+  <data name="CerrarSesion" xml:space="preserve">
+    <value>Cerrar sesión</value>
+    <comment>PerilMenu</comment>
+  </data>
+  <data name="deLaEmpresa" xml:space="preserve">
+    <value>de la empresa</value>
+    <comment>PerfilMenu</comment>
+  </data>
+  <data name="noIdentificacionEmpresa" xml:space="preserve">
+    <value>N° identificación de la empresa</value>
+    <comment>PerfilMenu</comment>
+  </data>
+  <data name="seguroQuiereCerrarLaAplicacion" xml:space="preserve">
+    <value>¿Seguro quiere cerrar la aplicación?</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="VMCancelar" xml:space="preserve">
+    <value>Cancelar</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="VMEstasSegurpDeCerrarSesion" xml:space="preserve">
+    <value>¿Estas seguro de cerrar sesión?</value>
+    <comment>PerfilMenu</comment>
+  </data>
+  <data name="VMEstamosCargandoInfo" xml:space="preserve">
+    <value>Estamos cargando información, revisa muy pronto</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="usuario" xml:space="preserve">
+    <value>Usuario</value>
+    <comment>RegistroPage</comment>
+  </data>
+  <data name="Identificacion" xml:space="preserve">
+    <value>Identificación</value>
+    <comment>RegistroPage</comment>
+  </data>
+  <data name="seleccionar" xml:space="preserve">
+    <value>Seleccionar</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="guardarCambios" xml:space="preserve">
+    <value>Guardar cambios</value>
+    <comment>PerfilMenu</comment>
+  </data>
+  <data name="politicaDeTratamientoDeDatos" xml:space="preserve">
+    <value>política de tratamiento de datos</value>
+    <comment>General App</comment>
+  </data>
+  <data name="VMComoQuieresCambiarTuFoto" xml:space="preserve">
+    <value>Como quieres actualizar tu foto de perfil</value>
+    <comment>PerfilPage</comment>
+  </data>
+  <data name="VMCamara" xml:space="preserve">
+    <value>Cámara</value>
+    <comment>EditarPerfilPage</comment>
+  </data>
+  <data name="VMGaleria" xml:space="preserve">
+    <value>Galería</value>
+    <comment>EditarPerfilPage</comment>
+  </data>
+  <data name="VMNoSeHanPodidoActualizarLosDatos" xml:space="preserve">
+    <value>No se han podido actualizar los datos</value>
+    <comment>PerfilEditarPage</comment>
+  </data>
+  <data name="VMParaPoderRealizarElPreRegistroDatosCompletos" xml:space="preserve">
+    <value>Para poder realizar el pre-registro, debes contar con los datos completos en el perfil; por favor actualiza tu información</value>
+    <comment>PerfilEditarPage</comment>
+  </data>
+  <data name="salir" xml:space="preserve">
+    <value>Salir</value>
+    <comment>General App</comment>
+  </data>
+  <data name="quedarme" xml:space="preserve">
+    <value>Quedarme</value>
+    <comment>General App</comment>
+  </data>
+  <data name="VMParaPoderRegistrarCfielDatosCompletos" xml:space="preserve">
+    <value>Para poder registrarte en C-Fiel, debes contar con los datos completos en el perfil; por favor actualiza tu información</value>
+    <comment>PerfilPage</comment>
+  </data>
+  <data name="VMCambiarLaClaveDeCuenta" xml:space="preserve">
+    <value>¿Quieres cambiar la clave de tu cuenta?</value>
+    <comment>PerfilEditarPage</comment>
+  </data>
+  <data name="loginolvidecontraseña" xml:space="preserve">
+    <value>No cuenta con contraseña asignada, Por Favor actualice su información en el login. Opción - Olvidé mi contraseña</value>
+    <comment>loginapple</comment>
+  </data>
+  <data name="VMDesvincularGoogle" xml:space="preserve">
+    <value>¿Estás seguro de desvincular Google?</value>
+    <comment>PerfilEditarPage</comment>
+  </data>
+  <data name="VMSehaEliminadoLaRedSocialConExito" xml:space="preserve">
+    <value>Se ha eliminado la red social con éxito</value>
+    <comment>PerfilEditarPage</comment>
+  </data>
+  <data name="VMDesvincularFacebook" xml:space="preserve">
+    <value>¿Estás seguro de desvincular Facebook?</value>
+    <comment>PerfilEditarPage</comment>
+  </data>
+  <data name="VMDesvincularApple" xml:space="preserve">
+    <value>¿Estás seguro de desvincular Apple?</value>
+    <comment>PerfilEditarPage</comment>
+  </data>
+  <data name="eliminar" xml:space="preserve">
+    <value>Eliminar</value>
+    <comment>NotificacionesVm</comment>
+  </data>
+  <data name="evaluar" xml:space="preserve">
+    <value>Evaluar</value>
+    <comment>NotificacionesVm</comment>
+  </data>
+  <data name="resultados" xml:space="preserve">
+    <value>Resultados</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="notificaciones" xml:space="preserve">
+    <value>Notificaciones</value>
+    <comment>MenuPage</comment>
+  </data>
+  <data name="estasSeguroDeEliminarLasNotificaciones" xml:space="preserve">
+    <value>¿Estás seguro de eliminar todas las notificaciones?</value>
+    <comment>NotificacionesVm</comment>
+  </data>
+  <data name="SeHanBorradoConExito" xml:space="preserve">
+    <value>¡Se han borrado todas las notificaciones con éxito!</value>
+    <comment>NotificacionesVm</comment>
+  </data>
+  <data name="sujetoacambios" xml:space="preserve">
+    <value>* Sujeto a cambios sin previo aviso.</value>
+  </data>
+  <data name="EsteConferencistaNoCuentaAunConAgenda" xml:space="preserve">
+    <value>No contamos con resultados para esta búsqueda, revisa más tarde</value>
+    <comment>AgendaApp</comment>
+  </data>
+  <data name="de" xml:space="preserve">
+    <value>de</value>
+    <comment>DetalleSucesoPage</comment>
+  </data>
+  <data name="a" xml:space="preserve">
+    <value>a</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="zonaHorariaColombia" xml:space="preserve">
+    <value>*Zona horaria de Colombia</value>
+    <comment>AgendaApp</comment>
+  </data>
+  <data name="enero" xml:space="preserve">
+    <value>Enero</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="febrero" xml:space="preserve">
+    <value>Febrero</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="marzo" xml:space="preserve">
+    <value>Marzo</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="abril" xml:space="preserve">
+    <value>Abril</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="mayo" xml:space="preserve">
+    <value>Mayo</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="junio" xml:space="preserve">
+    <value>Junio</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="julio" xml:space="preserve">
+    <value>Julio</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="agosto" xml:space="preserve">
+    <value>Agosto</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="septiembre" xml:space="preserve">
+    <value>Septiembre</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="octubre" xml:space="preserve">
+    <value>Octubre</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="noviembre" xml:space="preserve">
+    <value>Noviembre</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="diciembre" xml:space="preserve">
+    <value>Diciembre</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="agenda" xml:space="preserve">
+    <value>Agenda</value>
+    <comment>DetalleSuceso</comment>
+  </data>
+  <data name="laConsultaGeneradaNoCuentaConRegistro" xml:space="preserve">
+    <value>La consulta generada no cuenta con registros</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="categoria" xml:space="preserve">
+    <value>Categoría</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="lugar" xml:space="preserve">
+    <value>Lugar:</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="conferencistaInvitado" xml:space="preserve">
+    <value>Invitado</value>
+  </data>
+  <data name="esteEventoFueCancelado" xml:space="preserve">
+    <value>Este evento fue cancelado</value>
+    <comment>Agenda</comment>
+  </data>
+  <data name="ErrorRedireccionarLogin" xml:space="preserve">
+    <value>Hemos tenido un error en el redireccionamiento al crear la cuenta. Reinicia la app o consulta con el administrador.</value>
+    <comment>We encountered an error redirecting while creating your account. Please restart the app or consult your administrator.</comment>
+  </data>
+  <data name="ContinuarCorreo" xml:space="preserve">
+    <value>Continuar con correo</value>
+  </data>
+  <data name="CrearCuenta" xml:space="preserve">
+    <value>Crear cuenta</value>
+  </data>
+  <data name="NombreCompletoAst" xml:space="preserve">
+    <value>Nombre Completo*</value>
+  </data>
+  <data name="TipoDocumentoAst" xml:space="preserve">
+    <value>Tipo de documento *</value>
+  </data>
+  <data name="NumeroDocumentoAst" xml:space="preserve">
+    <value>Número de documento *</value>
+  </data>
+  <data name="correoElectronicoAst" xml:space="preserve">
+    <value>Correo electrónico *</value>
+  </data>
+  <data name="confirmarCorreoElectronicoAst" xml:space="preserve">
+    <value>Confirmar correo electrónico *</value>
+  </data>
+  <data name="ContrasenaAst" xml:space="preserve">
+    <value>Contraseña *</value>
+  </data>
+  <data name="ConfirmarContrasenaAst" xml:space="preserve">
+    <value>Confirmar contraseña *</value>
+  </data>
+  <data name="FechaNacimientoAts" xml:space="preserve">
+    <value>Fecha de nacimiento *</value>
+  </data>
+  <data name="ProfesionAst" xml:space="preserve">
+    <value>Profesión *</value>
+  </data>
+  <data name="SectorEconomicoAst" xml:space="preserve">
+    <value>Sector económico *</value>
+  </data>
+  <data name="PaisRecidenciaAst" xml:space="preserve">
+    <value>País de residencia *</value>
+  </data>
+  <data name="ciudadRecintoAst" xml:space="preserve">
+    <value>Ciudad de recinto *</value>
+  </data>
+  <data name="nombreEmpresaAst" xml:space="preserve">
+    <value>Nombre de la empresa *</value>
+  </data>
+  <data name="NumeroIdEmpresaAst" xml:space="preserve">
+    <value>N° de identificación de la empresa *</value>
+  </data>
+  <data name="telefonoAst" xml:space="preserve">
+    <value>Teléfono *</value>
+  </data>
+  <data name="paisAst" xml:space="preserve">
+    <value>País *</value>
+  </data>
+  <data name="areaAst" xml:space="preserve">
+    <value>Área *</value>
+  </data>
+  <data name="direccionAst" xml:space="preserve">
+    <value>Dirección *</value>
+  </data>
+  <data name="cargoAst" xml:space="preserve">
+    <value>Cargo *</value>
+  </data>
+  <data name="codigoPostalAst" xml:space="preserve">
+    <value>Código postal *</value>
+  </data>
+  <data name="ciudadAst" xml:space="preserve">
+    <value>Ciudad *</value>
+  </data>
+  <data name="perfil" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="idioma" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="destacados" xml:space="preserve">
+    <value>Destacados</value>
+  </data>
+  <data name="comoLlegar" xml:space="preserve">
+    <value>Como llegar</value>
+  </data>
+  <data name="Contactanos" xml:space="preserve">
+    <value>Contáctanos</value>
+  </data>
+  <data name="Buscar" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="EliminarUsuario" xml:space="preserve">
+    <value>Eliminar usuario</value>
+  </data>
+  <data name="misContenidos" xml:space="preserve">
+    <value>Mis contenidos</value>
+  </data>
+  <data name="miAgenda" xml:space="preserve">
+    <value>Mi agenda</value>
+  </data>
+  <data name="misInvitados" xml:space="preserve">
+    <value>Mis invitados</value>
+  </data>
+  <data name="misExpositores" xml:space="preserve">
+    <value>Mis expositores</value>
+  </data>
+  <data name="Hola" xml:space="preserve">
+    <value>Hola</value>
+  </data>
+  <data name="suscribeteNewlester" xml:space="preserve">
+    <value>Suscríbete a nuestro newsletter</value>
+  </data>
+  <data name="SiguenosEn" xml:space="preserve">
+    <value>Síguenos en</value>
+  </data>
+  <data name="Expositores" xml:space="preserve">
+    <value>Expositores</value>
+  </data>
+  <data name="ServiciosGenerales" xml:space="preserve">
+    <value>Servicios generales</value>
+  </data>
+  <data name="Contenidos" xml:space="preserve">
+    <value>Jornadas profesionales</value>
+  </data>
+  <data name="Boleteria" xml:space="preserve">
+    <value>Boletería</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="SeguroEliminarUsu" xml:space="preserve">
+    <value>¿Estás seguro de eliminar el usuario? Esta acción es permanente.</value>
+  </data>
+  <data name="SeguroCerrarSesion" xml:space="preserve">
+    <value>¿Estás seguro de cerrar sesión?</value>
+  </data>
+  <data name="FuncionalidadNoDisponible" xml:space="preserve">
+    <value>Esta funcionalidad no se encuentra disponible.</value>
+  </data>
+  <data name="TipoContacto" xml:space="preserve">
+    <value>Tipo de contacto *</value>
+  </data>
+  <data name="Asunto" xml:space="preserve">
+    <value>Asunto</value>
+  </data>
+  <data name="descripcion" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="tipoDocumento" xml:space="preserve">
+    <value>Tipo de documento</value>
+    <comment>General App</comment>
+  </data>
+  <data name="AceptoLa" xml:space="preserve">
+    <value>Acepto la</value>
+  </data>
+  <data name="politicaTrat" xml:space="preserve">
+    <value>politica de tratamiento de datos</value>
+  </data>
+  <data name="EnvioExitoso" xml:space="preserve">
+    <value>Se ha enviado exitosamente</value>
+  </data>
+  <data name="EnvioNoExitoso" xml:space="preserve">
+    <value>No hemos podido enviar el formulario</value>
+  </data>
+  <data name="camposObligatorios" xml:space="preserve">
+    <value>Los campos marcados con * son obligatorios</value>
+  </data>
+  <data name="asunto50Carac" xml:space="preserve">
+    <value>El asunto no puede tener más de 50 caracteres</value>
+  </data>
+  <data name="Descrip50" xml:space="preserve">
+    <value>La descripción no puede tener más de 50 caracteres</value>
+  </data>
+  <data name="ConferencistaDosPuntos" xml:space="preserve">
+    <value>Invitado</value>
+    <comment>DetalleConferencistaPage</comment>
+  </data>
+  <data name="fechaDosPuntos" xml:space="preserve">
+    <value>Fecha: </value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="hora" xml:space="preserve">
+    <value>Hora:</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="aforo" xml:space="preserve">
+    <value>Aforo:</value>
+    <comment>GeneralApp</comment>
+  </data>
+  <data name="lblFranja" xml:space="preserve">
+    <value>Franja</value>
+    <comment>AgendaDetalle</comment>
+  </data>
+  <data name="lblOrganizador" xml:space="preserve">
+    <value>Organizador</value>
+    <comment>DetalleAgendaView</comment>
+  </data>
+  <data name="detalleAgenda" xml:space="preserve">
+    <value>Detalle agenda</value>
+    <comment>DetalleAgendaView</comment>
+  </data>
+  <data name="CorferiasEn" xml:space="preserve">
+    <value>Corferias en</value>
+  </data>
+  <data name="sitios" xml:space="preserve">
+    <value>Sitios</value>
+  </data>
+  <data name="reproducir" xml:space="preserve">
+    <value>Reproducir</value>
+  </data>
+  <data name="detalleContenido" xml:space="preserve">
+    <value>Detalle Jornadas profesionales</value>
+  </data>
+  <data name="reproducirContendo" xml:space="preserve">
+    <value>Reproducir contenido</value>
+  </data>
+  <data name="servicios" xml:space="preserve">
+    <value>Servicios</value>
+  </data>
+  <data name="laInformacionDeEsteRecintoNoDisponible" xml:space="preserve">
+    <value>La información de este recinto no está disponible.</value>
+  </data>
+  <data name="ContinuarGoogle" xml:space="preserve">
+    <value>Continuar con Google</value>
+  </data>
+  <data name="comprar" xml:space="preserve">
+    <value>Comprar</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="misBoletas" xml:space="preserve">
+    <value>Mis boletas</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="del" xml:space="preserve">
+    <value>Del</value>
+    <comment>DetalleSucesoPage</comment>
+  </data>
+  <data name="al" xml:space="preserve">
+    <value>al</value>
+    <comment>DetalleSucesoPage</comment>
+  </data>
+  <data name="suceso" xml:space="preserve">
+    <value>Feria / Evento</value>
+    <comment>CuponeraPage</comment>
+  </data>
+  <data name="estadoDosPuntos" xml:space="preserve">
+    <value>Estado: </value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="preRegistro" xml:space="preserve">
+    <value>Pre-registro</value>
+    <comment>DetalleSuceso</comment>
+  </data>
+  <data name="noBoleteriaEnElMomento" xml:space="preserve">
+    <value>En el momento no tenemos boletería disponible para este ítem, intenta de nuevo más tarde.</value>
+    <comment>boleteria</comment>
+  </data>
+  <data name="valorUnitario" xml:space="preserve">
+    <value>Valor unitario</value>
+    <comment>boleteria</comment>
+  </data>
+  <data name="valorIVA" xml:space="preserve">
+    <value>Valor IVA</value>
+    <comment>boleteria</comment>
+  </data>
+  <data name="vigencia" xml:space="preserve">
+    <value>Vigencia</value>
+    <comment>boleteria</comment>
+  </data>
+  <data name="perfilDelExpositor" xml:space="preserve">
+    <value>Perfil del expositor</value>
+  </data>
+  <data name="detalleExpositor" xml:space="preserve">
+    <value>Detalle expositor</value>
+  </data>
+  <data name="redSocial" xml:space="preserve">
+    <value>Red social</value>
+  </data>
+  <data name="cuponera" xml:space="preserve">
+    <value>Cuponera</value>
+  </data>
+  <data name="ubicacion" xml:space="preserve">
+    <value>Ubicación</value>
+  </data>
+  <data name="catalogoDeProductos" xml:space="preserve">
+    <value>Catálogo de productos</value>
+  </data>
+  <data name="contamosCon" xml:space="preserve">
+    <value>Contamos con -</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="boletasDeseasRealizarLaCompra" xml:space="preserve">
+    <value>- boletas, ¿deseas realizar la compra de esta cantidad?</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="codigoPromocionalInvalido" xml:space="preserve">
+    <value>Código inválido, inténtalo de nuevo</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="datosFacturacion" xml:space="preserve">
+    <value>Datos Facturación</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="NoSePuedoRealizarLaCompra" xml:space="preserve">
+    <value>No se pudo realizar la compra, revise la información o intente de nuevo más tarde</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="CantidadMinimaUna" xml:space="preserve">
+    <value>La cantidad mínima  a comprar debe ser 1 y la máxima es</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="textoBoleteriaUno" xml:space="preserve">
+    <value>Tenga en cuenta: Los datos ingresados en este formulario deben ser los de la persona que va asistir al evento. En caso de comprar varias boletas, el titular deberá presentarse con sus acompañantes al momento de ingresar al evento.</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="textoBoleteriaDos" xml:space="preserve">
+    <value>Al confirmar el pago de la boleta, usted recibirá una confirmación del pago y sus entradas online en el correo electrónico registrado recuerde revisar su casilla de spam.</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="informacionPersonal" xml:space="preserve">
+    <value>Información personal</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="numeroDeDocumento" xml:space="preserve">
+    <value>Número de documento</value>
+    <comment>RegistroPage</comment>
+  </data>
+  <data name="codigoPromocional" xml:space="preserve">
+    <value>Código promocional</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="informacionDeLaEmpresa" xml:space="preserve">
+    <value>Información de la empresa</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="Cantidad" xml:space="preserve">
+    <value>Cantidad</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="valorTotalAPagarSinIva" xml:space="preserve">
+    <value>El valor total a pagar SIN IVA es:</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="expositor" xml:space="preserve">
+    <value>Expositor</value>
+  </data>
+  <data name="detalleSitio" xml:space="preserve">
+    <value>Detalle sitio</value>
+  </data>
+  <data name="conferensista" xml:space="preserve">
+    <value>Invitado</value>
+  </data>
+  <data name="ErrorSplahs" xml:space="preserve">
+    <value>Verifica tu conexión a internet e intenta acceder nuevamente a la app</value>
+  </data>
+  <data name="resumenCompra" xml:space="preserve">
+    <value>Resumen de la compra</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="evento" xml:space="preserve">
+    <value>Evento</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="actividad" xml:space="preserve">
+    <value>Actividad</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="valorBoleta" xml:space="preserve">
+    <value>Valor de la boleta</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="aplicacionImpuestos" xml:space="preserve">
+    <value>Aplicación de impuestos</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="valorTotal" xml:space="preserve">
+    <value>Valor total</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="titularFactura" xml:space="preserve">
+    <value>Titular de la factura</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="pagar" xml:space="preserve">
+    <value>Pagar</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="EnCasoDePresentarUnInconveniente" xml:space="preserve">
+    <value>En caso de presentar un inconveniente, genere una solicitud de contacto desde el menú de la app</value>
+    <comment>Boleteria</comment>
+  </data>
+  <data name="seleccionarIdioma" xml:space="preserve">
+    <value>Seleccionar idioma</value>
+  </data>
+  <data name="ActualizaDatosPerfil" xml:space="preserve">
+    <value>Te recomendamos actualizar los datos de tu perfil antes de cerrar sesión, así podrás contar con tu información unificada al ingresar desde otras redes.</value>
+  </data>
+  <data name="horario" xml:space="preserve">
+    <value>Horario</value>
+  </data>
+  <data name="detalleServicio" xml:space="preserve">
+    <value>Detalle servicio</value>
+  </data>
+  <data name="errorSlashdos" xml:space="preserve">
+    <value>No tenemos la feria activa en este momento. Intenta de nuevo más tarde</value>
+  </data>
+  <data name="rutaDeBusqueda" xml:space="preserve">
+    <value>Ruta de búsqueda</value>
+  </data>
+  <data name="recuerdeQueLaBusquedaCargaIncialmente" xml:space="preserve">
+    <value>Recuerde que la búsqueda carga inicialmente con la ciudad registrada y para el año actual.</value>
+  </data>
+  <data name="queEstasBuscando" xml:space="preserve">
+    <value>El filtro: ¿Qué  estas buscando?, debe contener mínimo  tres caracteres.</value>
+  </data>
+  <data name="elCampoQueEstasBuscandoEsOblighatorio" xml:space="preserve">
+    <value>El filtro: ¿Qué  estas buscando?, debe contener mínimo  tres caracteres.</value>
+  </data>
+  <data name="conferencistas" xml:space="preserve">
+    <value>Invitados</value>
+    <comment>ConferencistasPage</comment>
+  </data>
+  <data name="NoCargaEnlaceRedSocial" xml:space="preserve">
+    <value>No pudimos cargar el enlace de esta red social</value>
+    <comment>DetalleSucesosPage</comment>
+  </data>
+  <data name="detalleConferencista" xml:space="preserve">
+    <value>Detalle invitado</value>
+    <comment>DetalleConferencistaPage</comment>
+  </data>
+  <data name="participaraen" xml:space="preserve">
+    <value>Participara en</value>
+    <comment>DetalleConferencista</comment>
+  </data>
+  <data name="conferencista" xml:space="preserve">
+    <value>Invitado</value>
+    <comment>ConferencistasView</comment>
+  </data>
+  <data name="VMNoDejesCamposVaciosConferencista" xml:space="preserve">
+    <value>El campo de búsqueda no debe estar vacio</value>
+    <comment>ConferencistaPage</comment>
+  </data>
+  <data name="misinvitaciones" xml:space="preserve">
+    <value>Mis invitaciones</value>
+  </data>
+  <data name="CodigoQrti" xml:space="preserve">
+    <value>Código Qr</value>
+  </data>
+  <data name="actual" xml:space="preserve">
+    <value>actual</value>
+    <comment>CambioContrasenaPopUp</comment>
+  </data>
+  <data name="contrasenaActual" xml:space="preserve">
+    <value>Contraseña actual</value>
+    <comment>CambioContrasenaPopup</comment>
+  </data>
+  <data name="contrasenaIncorrecta" xml:space="preserve">
+    <value>Contraseña incorrecta</value>
+    <comment>CambioContrasenaPopUp</comment>
+  </data>
+  <data name="ServicioMantenimiento" xml:space="preserve">
+    <value>Servicio esta en mantenimiento</value>
+    <comment>CambioContrasenaPopUp</comment>
+  </data>
+  <data name="camposVacios" xml:space="preserve">
+    <value>No dejes campos vacíos*</value>
+    <comment>CambioContrasenaPopUp</comment>
+  </data>
+  <data name="nueva" xml:space="preserve">
+    <value>nueva</value>
+    <comment>CambioContrasenaPopUp</comment>
+  </data>
+  <data name="contrasenaNoConincide" xml:space="preserve">
+    <value>Contraseña no coincide</value>
+    <comment>CambioContrasenaPopup</comment>
+  </data>
+  <data name="Modificar" xml:space="preserve">
+    <value>Modificar</value>
+    <comment>CambiarContrasenaPopUp</comment>
+  </data>
+  <data name="paso1" xml:space="preserve">
+    <value>Paso 1</value>
+  </data>
+  <data name="estasSeguroDeEliminarLaFactura" xml:space="preserve">
+    <value>¿Estas seguro de eliminar la factura?</value>
+  </data>
+  <data name="misDestacados" xml:space="preserve">
+    <value>Mis destacados</value>
+  </data>
+  <data name="errroGoogleLogin" xml:space="preserve">
+    <value>No hemos podido obtener la validación de Google. Por favor, intenta de nuevo más tarde.</value>
+  </data>
+  <data name="pagoBoleta" xml:space="preserve">
+    <value>Pago boleta</value>
+  </data>
+  <data name="DebesTenerEnCuentaQueLosCuponesSonLimitado" xml:space="preserve">
+    <value>Debes tener en cuenta que los cupones son limitados y tienen fecha de vencimiento</value>
+    <comment>CuponesPage</comment>
+  </data>
+  <data name="tiendaVirtual" xml:space="preserve">
+    <value>Tienda virtual</value>
+    <comment>CatalogodeProductosView</comment>
+  </data>
+  <data name="porDosPunto" xml:space="preserve">
+    <value>Por: </value>
+    <comment>CatalogoProductoView</comment>
+  </data>
+  <data name="producto" xml:space="preserve">
+    <value>Producto</value>
+    <comment>CatalogoProductoView</comment>
+  </data>
+  <data name="continuarApple" xml:space="preserve">
+    <value>Continuar con Apple</value>
+  </data>
+  <data name="ErrorAppleUno" xml:space="preserve">
+    <value>Disculpa, estamos teniendo problemas con el acceso. Intenta iniciar sesión con otra red social mientras solucionamos el inconveniente.</value>
+  </data>
+  <data name="ErrorAppleDos" xml:space="preserve">
+    <value>No ha sido posible obtener el correo electrónico proporcionado por Apple.</value>
+  </data>
+  <data name="ayudaZoom" xml:space="preserve">
+    <value> ¡Puedes hacer ZOOM en la imagen con tus dedos!</value>
+  </data>
+  <data name="agendaDelAutor" xml:space="preserve">
+    <value>Agenda del autor</value>
+  </data>
+  <data name="BienvenidoCodigoConfirmacion " xml:space="preserve">
+    <value>Bienvenido, su código de verificación es: </value>
+  </data>
+  <data name="CodigoMarca " xml:space="preserve">
+    <value>Código</value>
+  </data>
+</root>

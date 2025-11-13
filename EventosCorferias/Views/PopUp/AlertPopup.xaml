@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Popup:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:Popup="clr-namespace:Mopups.Pages;assembly=Mopups"
+                 x:Class="EventosCorferias.Views.PopUp.AlertPopup"
+                 Title="AlertPopup"
+                 BackgroundColor="{StaticResource ColorFondoPopUp}"
+                 x:Name="ThisPopUpPage">
+    <Frame HasShadow="False"
+              BackgroundColor="White"
+              BorderColor="Transparent"
+              IsClippedToBounds="True"
+              VerticalOptions="Center"
+              HorizontalOptions="Center"
+              Margin="20"
+              Padding="15,25,15,15"
+              CornerRadius="10">
+        <ScrollView VerticalOptions="Center"
+                          BackgroundColor="White"
+                          HorizontalOptions="Fill"
+                          Margin="0"
+                          Padding="0">
+            <StackLayout Spacing="0"
+                                  VerticalOptions="Center"
+                                  HorizontalOptions="Fill"
+                                  BackgroundColor="White"
+                                  Margin="0"
+                                  Padding="0">
+                <Grid ColumnDefinitions="*,Auto"
+                                  BackgroundColor="White">
+                    <Label FontSize="25"
+                                          Grid.Column="0"
+                                          TextColor="{StaticResource TextoGeneral}"
+                                          Text="{Binding TitlePopup, Source={Reference ThisPopUpPage}}"
+                                          FontAttributes="Bold"
+                                          Margin="10,0,0,0"
+                                          VerticalOptions="Center"/>
+                    <ImageButton Source="ic_cerrar_obscuro"
+                                                Grid.Column="1"
+                                                BackgroundColor="Transparent"
+                                                Padding="3"
+                                                Clicked="Button_OnClicked"
+                                                WidthRequest="35"
+                                                HeightRequest="35"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="End"/>
+                </Grid>
+                <Label FontSize="14"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Text="{Binding Message, Source={Reference ThisPopUpPage}}"
+                                   Margin="0,35,0,15"
+                                   TextColor="{StaticResource TextoGeneral}"/>
+                <FlexLayout Direction="Row"
+                                        JustifyContent="Center"
+                                        Margin="0,20,0,15"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="End">
+                    <Frame x:Name="YesLabel"
+                                          HasShadow="False"
+                                               BorderColor="{StaticResource BtnBoderGeneralObscuro}"
+     BackgroundColor="{StaticResource BtnFondoGeneralObscuro}"
+                                          CornerRadius="18"
+                                          FlexLayout.Basis="70%"
+                                          Margin="0,0,10,0"
+                                          Padding="5,10,5,10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding PrimaryCommand, Source={Reference ThisPopUpPage}}"/>
+                        </Frame.GestureRecognizers>
+                        <Label HorizontalOptions="Center"
+                                                 HorizontalTextAlignment="Center"
+                                                 FontAttributes="Bold"
+                                                 Text="{Binding PrimaryButtonText, Source={Reference ThisPopUpPage}}"
+                                                 TextColor="{StaticResource BtnTextoObscuro}"
+                                                 FontSize="13"/>
+                    </Frame>
+                    <Frame x:Name="NoLabel"
+                                          HasShadow="False"
+                                            BorderColor="{StaticResource BtnBoderGeneralObscuro}"
+     BackgroundColor="{StaticResource BtnFondoGeneralObscuro}"
+                                          CornerRadius="18"
+                                          FlexLayout.Basis="70%"
+                                          Margin="10,0,0,0"
+                                          Padding="5,10,5,10"
+                                          IsVisible="{Binding YesorNot, Source={Reference ThisPopUpPage}}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SecondaryCommand, Source={Reference ThisPopUpPage}}"/>
+                        </Frame.GestureRecognizers>
+                        <Label HorizontalOptions="Center"
+                                                 HorizontalTextAlignment="Center"
+                                                 FontAttributes="Bold"
+                                                 Text="{Binding SecondaryButtonText, Source={Reference ThisPopUpPage}}"
+                                                 TextColor="{StaticResource BtnTextoObscuro}"
+                                                 FontSize="13"/>
+                    </Frame>
+                </FlexLayout>
+            </StackLayout>
+        </ScrollView>
+    </Frame>
+</Popup:PopupPage>

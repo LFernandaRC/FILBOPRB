@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EventosCorferias.Views.Suceso.DetalleConferencistaView"
+             xmlns:resources="clr-namespace:EventosCorferias.Resources.RecursosIdioma"
+             Title="DetalleConferencistaView">
+    <NavigationPage.TitleView>
+        <Label Text="{x:Static resources:AppResources.detalleConferencista}"
+               Style="{StaticResource LMenuSup}"
+               TextColor="{StaticResource ColorTextoMenSup}"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ScrollView Margin="0">
+                <StackLayout>
+                    <Frame BorderColor="{StaticResource BordeTitulos}"
+                           Margin="20,20,20,10"
+                           Padding="1"
+                           CornerRadius="20"
+                           BackgroundColor="{StaticResource FondoTarjetaTitulos}"
+                           Style="{StaticResource FRegistroGeneral}">
+                        <StackLayout Padding="0,0,0,50"
+                                     Spacing="0"
+                                     BackgroundColor="Transparent">
+                            <StackLayout Grid.ColumnSpan="2"
+                                         Grid.Row="0"
+                                         Grid.RowSpan="2"
+                                         BackgroundColor="Transparent">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <ContentView Grid.Column="0"
+                                                 HeightRequest="300"
+                                                 Margin="0">
+                                        <Frame IsClippedToBounds="True"
+                                               Padding="0"
+                                               Margin="15"
+                                               CornerRadius="15"
+                                               BackgroundColor="White"
+                                               Style="{StaticResource FRegistroGeneral}">
+                                            <ImageButton BackgroundColor="White"
+                                                         Source="{Binding ImagenFeria}"
+                                                         Aspect="AspectFit"
+                                                         Margin="0"
+                                                         Command="{Binding PlayImg}"/>
+                                        </Frame>
+                                    </ContentView>
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Margin="0,10,0,20"
+                                         IsVisible="{Binding VisibleAgenda}">
+                                <Frame CornerRadius="17"
+                                       Padding="0"
+                                       Margin="0"
+                                       HorizontalOptions="Center"
+                                       BackgroundColor="#041B3B"
+                                       Style="{StaticResource FRegistroGeneral}">
+                                    <StackLayout Orientation="Horizontal"
+                                                 BackgroundColor="Transparent"
+                                                 Padding="30,5,30,5">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BtnCargarAgenda}"/>
+                                        </StackLayout.GestureRecognizers>
+                                        <Image Source="ic_agenda_claro.png"
+                                               WidthRequest="20"
+                                               HeightRequest="20"
+                                               Margin="0,0,20,0"/>
+                                        <Label Text="{x:Static resources:AppResources.agendaDelAutor}"
+                                               FontSize="12"
+                                               VerticalOptions="Center"
+                                               FontFamily="NotoRegular"
+                                               TextColor="White"/>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                            <Grid BackgroundColor="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Spacing="0"
+                                             Padding="20,0,0,20">
+                                    <Label Text="{Binding NombreConferencista}"
+                                           BackgroundColor="Transparent"
+                                           FontSize="16"
+                                           FontFamily="NotoBold"
+                                           TextColor="{StaticResource TextoGeneralTitulos}"/>
+                                    <Label FontSize="12"
+                                           FontFamily="NotoSemiBold"
+                                           TextColor="{StaticResource TextoGeneralTitulos}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Titulo}"/>
+                                                <Span Text=", "/>
+                                                <Span Text="{Binding Pais}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1"
+                                             BackgroundColor="Transparent"
+                                             Spacing="5"
+                                             Margin="10,0,10,0"
+                                             Padding="0"
+                                             HorizontalOptions="End"
+                                             VerticalOptions="Start"
+                                             Orientation="Horizontal">
+                                    <ImageButton Source="ic_compartir_relleno.png"
+                                                 WidthRequest="35"
+                                                 HeightRequest="35"
+                                                 Margin="0,0,0,0"
+                                                 BackgroundColor="Transparent"
+                                                 Padding="3"
+                                                 Command="{Binding BtnCompartir}"/>
+                                    <ImageButton HorizontalOptions="End"
+                                                 VerticalOptions="Start"
+                                                 Source="{Binding ImagenFav}"
+                                                 WidthRequest="35"
+                                                 HeightRequest="35"
+                                                 Margin="0"
+                                                 BackgroundColor="Transparent"
+                                                 Padding="3"
+                                                 Command="{Binding FavActualizar}"/>
+                                </StackLayout>
+                            </Grid>
+                            <StackLayout Padding="20,0,20,0">
+                                <Grid Margin="0,0,0,10"
+                                      ColumnSpacing="10"
+                                      IsVisible="{Binding VerSitioWeb}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="22"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0"
+                                           Source="ic_web_obscuro.png"
+                                           VerticalOptions="Center"/>
+                                    <Label Text="{Binding UrlConferencista, Mode=TwoWay}"
+                                           Grid.Column="1"
+                                           FontSize="12"
+                                           FontFamily="NotoRegular"
+                                           TextColor="{StaticResource TextoGeneralTitulos}"
+                                           VerticalOptions="Center"
+                                           TextDecorations="Underline"
+                                           LineHeight="1">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding UrlConferencistaLink}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+                                <Grid Margin="0,10,0,10"
+                                      IsVisible="{Binding SiguenosEn}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="15"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0"
+                                           Text="{x:Static resources:AppResources.SiguenosEn}"
+                                           FontSize="10"
+                                           TextColor="{StaticResource TextoGeneralTitulos}"
+                                           FontFamily="NotoRegular"/>
+                                    <CollectionView Grid.Column="1"
+                                                    SelectionMode="Single"
+                                                    SelectedItem="{Binding SelectedRedSocial, Mode=TwoWay}"
+                                                    ItemsSource="{Binding ImagenesRedSuceso}"
+                                                    BackgroundColor="Transparent"
+                                                    ItemsLayout="HorizontalList"
+                                                    HeightRequest="35">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Margin="0,0,0,0"
+                                                      Padding="0">
+                                                    <Frame IsClippedToBounds="True"
+                                                           Margin="5,0,0,5"
+                                                           Padding="0"
+                                                           CornerRadius="10"
+                                                           BackgroundColor="White"
+                                                           Style="{StaticResource FRegistroGeneral}">
+                                                        <Image Source="{Binding Url}"
+                                                               Aspect="AspectFit"
+                                                               WidthRequest="25"
+                                                               HeightRequest="25"
+                                                               BackgroundColor="Transparent"
+                                                               VerticalOptions="Start"
+                                                               HorizontalOptions="Start"/>
+                                                    </Frame>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Padding="20,0,20,0">
+                                <Label Margin="0,0,0,0"
+                                       Text="{Binding DescripcionConferencista}"
+                                       FontSize="14"
+                                       FontFamily="NotoRegular"
+                                       TextColor="{StaticResource TextoGeneralTitulos}"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <BoxView HeightRequest="60"
+                             BackgroundColor="Transparent"/>
+                </StackLayout>
+            </ScrollView>
+            <!--INICIA MENU INFERIOR-->
+            <Grid BackgroundColor="{StaticResource FondomMenuInfe}"
+                  Margin="0,0,0,-60"
+                  VerticalOptions="End"
+                  HorizontalOptions="Fill"
+                  HeightRequest="70">
+            </Grid>
+            <Grid Grid.Row="0"
+                  BackgroundColor="{StaticResource FondomMenuInfe}"
+                  VerticalOptions="End"
+                  HorizontalOptions="Fill"
+                  ColumnSpacing="5"
+                  Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Column="{Binding GridNotificaciones}"
+            BackgroundColor="{StaticResource FondoNotificaMenuInfe}"
+            Padding="1"
+            CornerRadius="10"
+            HasShadow="False"
+            BorderColor="{StaticResource BorderNotificaMenuInfe}"
+            IsVisible="{Binding VerNotificicaciones}"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            Margin="30,0,0,0">
+                    <Label Text="{Binding CantidadNotificaciones}"
+                FontSize="11"
+                FontFamily="NotoRegular"
+                TextColor="{StaticResource TextNotificaMenuInfe}"
+                WidthRequest="20"
+                HeightRequest="20"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"/>
+                </Frame>
+                <Image x:Name="Menu1"
+                       Grid.Column="0"
+                       WidthRequest="25"
+                       Source="{Binding Icon1}"
+                       ClassId="{Binding Icon1Class}"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="Center"
+                       IsVisible="{Binding Menu1}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                              CommandParameter="{x:Reference Menu1}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="Menu2"
+                       Grid.Column="1"
+                       WidthRequest="25"
+                       Source="{Binding Icon2}"
+                       ClassId="{Binding Icon2Class}"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="Center"
+                       IsVisible="{Binding Menu2}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                              CommandParameter="{x:Reference Menu2}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <BoxView Grid.Column="2"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         WidthRequest="1"
+                         HeightRequest="25"
+                         Color="Red"/>
+                <Image x:Name="Menu3"
+                       Grid.Column="3"
+                       WidthRequest="25"
+                       Source="{Binding Icon3}"
+                       ClassId="{Binding Icon3Class}"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="Center"
+                       IsVisible="{Binding Menu3}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                              CommandParameter="{x:Reference Menu3}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="Menu4"
+                       Grid.Column="4"
+                       WidthRequest="25"
+                       Source="{Binding Icon4}"
+                       ClassId="{Binding Icon4Class}"
+                       BackgroundColor="Transparent"
+                       HorizontalOptions="Center"
+                       IsVisible="{Binding Menu4}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrMenuInferior}"
+                                              CommandParameter="{x:Reference Menu4}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+            <Frame Grid.Row="0"
+                   VerticalOptions="End"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,0"
+                   Padding="0"
+                   HasShadow="False"
+                   BorderColor="{StaticResource BordeIconoPrin}"
+                   BackgroundColor="{StaticResource FondoIconoPrin}"
+                   CornerRadius="27"
+                   WidthRequest="58"
+                   HeightRequest="58">
+                <Image Source="{Binding ImagenSplash}"
+                       HeightRequest="40"
+                       WidthRequest="40"
+                       Aspect="AspectFill"
+                       Margin="8">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding IrHome}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Frame>
+            <!--TERMINA MENU INFERIOR-->
+            <!--INICIA ISBUSY-->
+            <Grid BackgroundColor="{StaticResource FondoLoder}"
+                  VerticalOptions="Fill"
+                  HorizontalOptions="Fill"
+                  Margin="-20,-60"
+                  IsVisible="{Binding IsBusy}">
+                <ActivityIndicator IsRunning="true"
+                                   Color="{StaticResource IconoLoder}"
+                                   Margin="20"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+            </Grid>
+            <!--TERMINA ISBUSY-->
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
