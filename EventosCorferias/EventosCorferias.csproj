@@ -187,4 +187,13 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net10.0-ios'">
+		<CodesignKey />
+		<CodesignProvision />
+		<CodesignRequireProvisioningProfile>false</CodesignRequireProvisioningProfile>
+		<CodesignEntitlements />
+		<CodesignDisable>true</CodesignDisable>
+	</PropertyGroup>
+
+
 </Project>
