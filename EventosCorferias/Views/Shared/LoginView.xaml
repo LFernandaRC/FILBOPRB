@@ -112,7 +112,7 @@
                     <StackLayout IsVisible="{Binding IngresoRedes}"
                                  Spacing="0"
                                  BackgroundColor="Transparent">
-                        <Frame Style="{StaticResource FTipoIngreso}"
+                        <Frame Style="{StaticResource FTipoIngreso}" 
                                BorderColor="{StaticResource BordeEntrada}">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer  Command="{Binding Ingresar_Correo}"/>
