@@ -4,11 +4,87 @@
              xmlns:local="clr-namespace:EventosCorferias"
              x:Class="EventosCorferias.App">
     <Application.Resources>
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="#EFEFEF" />
+        </Style>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <!-- COLORES FINALES PARA LA APP-->
+
+            <!--CAMPOS DE ENTRADA -->
+            <Color x:Key="BordeEntrada">#dedede</Color>
+            <Color x:Key="TextoEntrada">#041B3B</Color>
+            <Color x:Key="FondoEntrada">#f8f8f8</Color>
+            <Color x:Key="PlaceHolderEntrada">#b7b7b7</Color>
+
+            <!--MENUS-->
+            <!--Menu superior-->
+            <Color x:Key="ColorTextoMenSup">#041B3B</Color>
+
+            <!--Menu lateral-->
+            <Color x:Key="ColorTextoMenLat">#041B3B</Color>
+            <Color x:Key="ColorFondoMenLat">#dedede</Color>
+
+            <!--Menu inferior-->
+            <Color x:Key="FondomMenuInfe">#EFEFEF</Color>
+            <Color x:Key="FondoNotificaMenuInfe">#041B3B</Color>
+            <Color x:Key="BorderNotificaMenuInfe">#041B3B</Color>
+            <Color x:Key="TextNotificaMenuInfe">#EFEFEF</Color>
+            <Color x:Key="FondoIconoPrin">#ffffff</Color>
+            <Color x:Key="BordeIconoPrin">#d2d2d2</Color>
+
+            <!--BOTONES-->
+            <!--Btn iconos claro-->
+            <Color x:Key="BtnFondoIconoClaro">#dedede</Color>
+            <Color x:Key="BtnBordeIconoClaro">#d2d2d2</Color>
+
+            <!--Btn icono obscuro-->
+            <Color x:Key="BtnFondoIconoObscuro">#041B3B</Color>
+            <Color x:Key="BtnBoderIconoObscuro">#0b3b7e</Color>
+
+            <!--Btn texto claro-->
+            <Color x:Key="BtnFondoGeneralClaro">#69A8EF</Color>
+            <Color x:Key="BtnBoderGeneralClaro">#4c7aaf</Color>
+            <Color x:Key="BtnTextoClaro">#ffffff</Color>
+
+            <!--Btn texto obscuro-->
+            <Color x:Key="BtnFondoGeneralObscuro">#041B3B</Color>
+            <Color x:Key="BtnBoderGeneralObscuro">#0b3b7e</Color>
+            <Color x:Key="BtnTextoObscuro">#ffffff</Color>
+
+            <!--TEXTO GENERAL -->
+            <Color x:Key="TextoGeneral">#041B3B</Color>
+
+            <!--TARJETAS CICLOS-->
+            <Color x:Key="TextoTarjetas">#041B3B</Color>
+            <Color x:Key="FondoTarjeta">#ffffff</Color>
+            <Color x:Key="FondoImagen">#ffffff</Color>
+            <Color x:Key="BordeTarjeta">#dedede</Color>
+
+            <!--TARJETAS NO CICLOS-->
+            <Color x:Key="FondoTitulos">#041B3B</Color>
+            <Color x:Key="TextoTitulos">#ffffff</Color>
+
+            <Color x:Key="BordeTitulos">#dedede</Color>
+            <Color x:Key="FondoTarjetaTitulos">#ffffff</Color>
+            <Color x:Key="TextoGeneralTitulos">#041B3B</Color>
+
+            <!--POPUPS -->
+            <Color x:Key="ColorFondoPopUp">#40000000</Color>
+
+            <!--LODER -->
+            <Color x:Key="FondoLoder">#B3ffffff</Color>
+            <Color x:Key="IconoLoder">#041B3B</Color>
+
+            <!--TARJETAS MAPA -->
+            <Color x:Key="BorderMapa">#d2d2d2</Color>
+            <Color x:Key="FondoMapa">#d2d2d2</Color>
+            <Color x:Key="TextoMapa">#041B3B</Color>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

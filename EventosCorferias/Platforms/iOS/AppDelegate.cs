@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using UIKit;
 
 namespace EventosCorferias
 {
@@ -6,5 +7,7 @@ namespace EventosCorferias
     public class AppDelegate : MauiUIApplicationDelegate
     {
         protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+
     }
+
 }

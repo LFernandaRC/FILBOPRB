@@ -6,8 +6,8 @@ namespace EventosCorferias
     {
         public App()
         {
-
             MainPage = new Splash();
         }
+
     }
 }

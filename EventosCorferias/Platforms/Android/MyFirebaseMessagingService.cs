@@ -13,6 +13,6 @@ namespace EventosCorferias.Platforms.Android
     [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
     public class MyFirebaseMessagingService 
     {
-        
+        const string TAG = "FCMService";
     }
 }

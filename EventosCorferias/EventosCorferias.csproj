@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net10.0-android;net10.0-ios;</TargetFrameworks>
+		<TargetFrameworks>net10.0-android;net10.0-ios</TargetFrameworks>
 
 		<OutputType>Exe</OutputType>
 		<RootNamespace>EventosCorferias</RootNamespace>
@@ -186,22 +186,5 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
-
-	<ItemGroup>
-		<MauiXaml Update="Resources\Styles\Colors.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
-
-		<MauiXaml Update="Resources\Styles\Styles.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
-	</ItemGroup>
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net10.0-ios'">
-		<CodesignKey />
-		<CodesignProvision />
-		<CodesignRequireProvisioningProfile>false</CodesignRequireProvisioningProfile>
-		<CodesignEntitlements />
-		<CodesignDisable>true</CodesignDisable>
-	</PropertyGroup>
 
 </Project>

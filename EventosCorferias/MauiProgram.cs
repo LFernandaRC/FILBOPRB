@@ -110,9 +110,9 @@ public static class MauiProgram
 #endif
 
 #if ANDROID
-    handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
-    handler.PlatformView.SetPadding(0, 0, 0, 0);
-    handler.PlatformView.Background = null;
+            handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+            handler.PlatformView.SetPadding(0, 0, 0, 0);
+            handler.PlatformView.Background = null;
 #endif
         });
 
