@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Popup:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="EventosCorferias.Views.PopUp.AgendaSitiosPopUp"
+                 xmlns:Popup="clr-namespace:Mopups.Pages;assembly=Mopups"
+                 xmlns:resources="clr-namespace:EventosCorferias.Resources.RecursosIdioma"
+                 Title="AgendaSitiosPopUp"
+                 BackgroundColor="{StaticResource ColorFondoPopUp}">
+    <Frame HasShadow="False"
+           BackgroundColor="White"
+           BorderColor="Transparent"
+           IsClippedToBounds="True"
+           VerticalOptions="Fill"
+           HorizontalOptions="Fill"
+           Margin="10"
+           Padding="10"
+           CornerRadius="10">
+        <Grid BackgroundColor="Transparent"
+                  RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <CollectionView x:Name="listAgenda"
+                                SelectionMode="None"
+                                Margin="0,55,0,0"
+                                ItemsSource="{Binding ListaAgenda}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                         Span="1"
+                                         VerticalItemSpacing="0"
+                                         HorizontalItemSpacing="0"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.Header>
+                    <StackLayout Spacing="0">
+                        <StackLayout Margin="0"
+                                         BackgroundColor="White">
+                            <Grid Padding="15,0,15,0"
+                                      Margin="0"
+                                      ColumnSpacing="8"
+                                      RowSpacing="8"
+                                      HeightRequest="35">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Frame HasShadow="False"
+                                           Grid.Column="0"
+                                           Grid.Row="0"
+                                           CornerRadius="20"
+                                           IsVisible="{Binding FlechaCategoria}"
+                                           BackgroundColor="White"
+                                           Padding="0"
+                                           Margin="0"
+                                           BorderColor="Gray">
+                                    <Grid Margin="0"
+                                              Padding="3"
+                                              RowSpacing="0"
+                                              ColumnSpacing="0">
+                                        <Image Grid.Column="0"
+                                                   Source="ic_flechaabajo_obscuro.png"
+                                                   WidthRequest="15"
+                                                   HeightRequest="15"
+                                                   HorizontalOptions="End"
+                                                   VerticalOptions="Center"
+                                                   Margin="0,0,4,0"
+                                                   BackgroundColor="Transparent"
+                                                   IsVisible="{Binding FlechaCategoria}"/>
+
+                                        <Picker x:Name="pickerUno"
+                                                    HeightRequest="35"
+                                                    Grid.Column="1"
+                                                    FontSize="10"
+                                                    FontFamily="NotoMedium"
+                                                    Title="{Binding Filtro1}"
+                                                    BackgroundColor="Transparent"
+                                                    TitleColor="{StaticResource PlaceHolderEntrada}"
+                                                    TextColor="{StaticResource TextoEntrada}"
+                                                    Margin="10,0,0,0"
+                                                    WidthRequest="250"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="Start"
+                                                    ItemsSource="{Binding ListaCategoria, Mode=TwoWay}"
+                                                    ItemDisplayBinding="{Binding Descripcion, Mode=TwoWay}"
+                                                    SelectedItem="{Binding SelectCategoria}"/>
+
+                                    </Grid>
+                                </Frame>
+
+                                <Frame HasShadow="False"
+                                           Grid.Column="0"
+                                           Grid.Row="0"
+                                           CornerRadius="20"
+                                           BackgroundColor="White"
+                                           Padding="0"
+                                           Margin="0"
+                                           BorderColor="Gray"
+                                           IsVisible="{Binding EquisCategoria}">
+                                    <Grid Margin="0"
+                                              Padding="3"
+                                              RowSpacing="0"
+                                              ColumnSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="26"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Picker HeightRequest="35"
+                                                    Grid.Column="0"
+                                                    FontSize="10"
+                                                    FontFamily="NotoMedium"
+                                                    Title="{Binding Filtro1}"
+                                                    Margin="10,0,0,0"
+                                                    BackgroundColor="Transparent"
+                                                    TitleColor="{StaticResource PlaceHolderEntrada}"
+                                                    TextColor="{StaticResource TextoEntrada}"
+                                                    WidthRequest="250"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="Start"
+                                                    ItemsSource="{Binding ListaCategoria, Mode=TwoWay}"
+                                                    ItemDisplayBinding="{Binding Descripcion, Mode=TwoWay}"
+                                                    SelectedItem="{Binding SelectCategoria}"/>
+
+                                        <ImageButton Grid.Column="1"
+                                                         Source="ic_cerrar_obscuro2.png"
+                                                         HorizontalOptions="End"
+                                                         VerticalOptions="Center"
+                                                         WidthRequest="14"
+                                                         HeightRequest="14"
+                                                         Padding="0"
+                                                         Margin="0,0,4,0"
+                                                         BackgroundColor="Transparent"
+                                                         Command="{Binding LimpiarCategoria}"/>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame HasShadow="False"
+                                           Grid.Column="1"
+                                           Grid.Row="0"
+                                           CornerRadius="20"
+                                           IsVisible="{Binding FlechaLugar}"
+                                           BackgroundColor="White"
+                                           Padding="0"
+                                           Margin="0"
+                                           BorderColor="Gray">
+                                    <Grid Margin="0"
+                                              Padding="3"
+                                              RowSpacing="0"
+                                              ColumnSpacing="0">
+                                        <Image Grid.Column="0"
+                                                   Source="ic_flechaabajo_obscuro.png"
+                                                   WidthRequest="15"
+                                                   HeightRequest="15"
+                                                   HorizontalOptions="End"
+                                                   VerticalOptions="Center"
+                                                   Margin="0,0,4,0"
+                                                   BackgroundColor="Transparent"
+                                                   IsVisible="{Binding FlechaCategoria}"/>
+
+                                        <Picker x:Name="pickerDos"
+                                                    HeightRequest="35"
+                                                    Grid.Column="1"
+                                                    FontSize="10"
+                                                    FontFamily="NotoMedium"
+                                                    Title="{Binding Filtro2}"
+                                                    Margin="10,0,0,0"
+                                                    BackgroundColor="Transparent"
+                                                    TitleColor="{StaticResource PlaceHolderEntrada}"
+                                                    TextColor="{StaticResource TextoEntrada}"
+                                                    WidthRequest="250"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="Start"
+                                                    ItemsSource="{Binding ListaLugar, Mode=TwoWay}"
+                                                    ItemDisplayBinding="{Binding Descripcion, Mode=TwoWay}"
+                                                    SelectedItem="{Binding SelectLugar}"/>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame HasShadow="False"
+                                           Grid.Column="1"
+                                           Grid.Row="0"
+                                           CornerRadius="20"
+                                           IsVisible="{Binding EquisLugar}"
+                                           BackgroundColor="White"
+                                           Padding="0"
+                                           Margin="0"
+                                           BorderColor="Gray">
+
+                                    <Grid Margin="0"
+                                              Padding="3"
+                                              RowSpacing="0"
+                                              ColumnSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="26"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Picker HeightRequest="35"
+                                                    Grid.Column="0"
+                                                    FontSize="10"
+                                                    FontFamily="NotoMedium"
+                                                    Title="{Binding Filtro2}"
+                                                    Margin="10,0,0,0"
+                                                    BackgroundColor="Transparent"
+                                                    TitleColor="{StaticResource PlaceHolderEntrada}"
+                                                    TextColor="{StaticResource TextoEntrada}"
+                                                    WidthRequest="250"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="Start"
+                                                    ItemsSource="{Binding ListaLugar, Mode=TwoWay}"
+                                                    ItemDisplayBinding="{Binding Descripcion, Mode=TwoWay}"
+                                                    SelectedItem="{Binding SelectLugar}"/>
+
+                                        <ImageButton Grid.Column="1"
+                                                         Source="ic_cerrar_obscuro2.png"
+                                                         HorizontalOptions="End"
+                                                         VerticalOptions="Center"
+                                                         WidthRequest="14"
+                                                         HeightRequest="14"
+                                                         Padding="0"
+                                                         Margin="0,0,4,0"
+                                                         BackgroundColor="Transparent"
+                                                         Command="{Binding LimpiarLugar}"/>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+
+                            <Grid Padding="15,0,15,0"
+                                      Margin="0,10,0,0"
+                                      ColumnSpacing="8"
+                                      RowSpacing="8"
+                                      HeightRequest="35">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="35"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame HasShadow="False"
+                                           Grid.Column="0"
+                                           CornerRadius="20"
+                                           BackgroundColor="White"
+                                           Padding="0"
+                                           Margin="0"
+                                           BorderColor="Gray">
+
+                                    <Entry x:Name="filtroTres"
+                                               HeightRequest="35"
+                                               FontSize="10"
+                                               Grid.Column="1"
+                                               Margin="10,0,0,0"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center"
+                                               MaxLength="50"
+                                               FontFamily="NotoMedium"
+                                               Placeholder="{Binding Filtro3}"
+                                               BackgroundColor="Transparent"
+                                               TextColor="{StaticResource TextoEntrada}"
+                                               PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                               Text="{Binding EntConferencista, Mode=TwoWay}"
+                                               Style="{StaticResource ERegistroGeneralTexto}"
+                                               IsReadOnly="{Binding IsReadOnlyEntryConfe}"/>
+                                </Frame>
+                                <ImageButton Grid.Column="1"
+                                                 CornerRadius="18"
+                                                 HorizontalOptions="End"
+                                                 WidthRequest="36"
+                                                 HeightRequest="36"
+                                                 Margin="0"
+                                                 BorderColor="Gray"
+                                                 Source="ic_lupa_obscuro.png"
+                                                 Padding="8"
+                                                 Command="{Binding BuscarEntAgenda}"
+                                                 BackgroundColor="White"/>
+                            </Grid>
+
+                            <Grid Padding="15,0,15,0"
+                                      Margin="0,10,0,0"
+                                      ColumnSpacing="8"
+                                      RowSpacing="8"
+                                      HeightRequest="35">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame HasShadow="False"
+                                           Grid.Column="0"
+                                           CornerRadius="20"
+                                           BackgroundColor="White"
+                                           Padding="0"
+                                           Margin="0"
+                                           BorderColor="Gray"
+                                           IsVisible="{Binding EquisCalendario}">
+                                    <Grid Margin="0"
+                                              Padding="3"
+                                              RowSpacing="0"
+                                              ColumnSpacing="0"
+                                              BackgroundColor="Transparent">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="26"/>
+                                        </Grid.ColumnDefinitions>
+                                        <DatePicker x:Name="DatePickerCalendario"
+                                                        Grid.Column="1"
+                                                        FontSize="10"
+                                                        Margin="30,0,0,0"
+                                                        BackgroundColor="White"
+                                                        WidthRequest="250"
+                                                        Format="dd/MM/yyyy"
+                                                        HeightRequest="35"
+                                                        FontFamily="NotoMedium"
+                                                        VerticalOptions="Center"
+                                                        TextColor="{StaticResource PlaceHolderEntrada}"
+                                                        Date="{Binding EntFechaBuscar, Mode=TwoWay}"/>
+
+                                        <ImageButton Grid.Column="1"
+                                                         Source="ic_cerrar_obscuro2.png"
+                                                         HorizontalOptions="End"
+                                                         VerticalOptions="Center"
+                                                         WidthRequest="14"
+                                                         HeightRequest="14"
+                                                         Padding="0"
+                                                         Margin="0,0,4,0"
+                                                         BackgroundColor="Transparent"
+                                                         Command="{Binding LimpiarCalendario}"/>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame HasShadow="False"
+                                           Grid.Column="0"
+                                           CornerRadius="20"
+                                           BackgroundColor="White"
+                                           Padding="0"
+                                           Margin="0"
+                                           BorderColor="Gray"
+                                           IsVisible="{Binding FlechaCalendario}">
+                                    <Grid>
+                                        <Label Text="{Binding Filtro4}"
+                                                   TextColor="{StaticResource PlaceHolderEntrada}"
+                                                   Margin="10,0,0,0"
+                                                   BackgroundColor="White"
+                                                   FontSize="10"
+                                                   HorizontalOptions="Start"
+                                                   VerticalOptions="Center"/>
+                                        <Image Source="ic_calendario_obscuro.png"
+                                                   BackgroundColor="Transparent"
+                                                   WidthRequest="18"
+                                                   HeightRequest="18"
+                                                   HorizontalOptions="End"
+                                                   Margin="0,0,8,0"/>
+
+                                        <DatePicker x:Name="PickeCalen"
+                                                        Grid.Column="1"
+                                                        FontSize="12"
+                                                        Margin="10,0,0,0"
+                                                        BackgroundColor="White"
+                                                        WidthRequest="250"
+                                                        Format="dd/MM/yyyy"
+                                                        HeightRequest="35"
+                                                        FontFamily="NotoMedium"
+                                                        VerticalOptions="Center"
+                                                        TextColor="Transparent"
+                                                        Date="{Binding EntFechaBuscar, Mode=TwoWay}"/>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame HasShadow="False"
+                                           Grid.Column="1"
+                                           Grid.Row="0"
+                                           CornerRadius="20"
+                                           IsVisible="{Binding FlechaFranja}"
+                                           BackgroundColor="White"
+                                           Padding="0"
+                                           Margin="0"
+                                           BorderColor="Gray">
+                                    <Grid Margin="0"
+                                              Padding="3"
+                                              RowSpacing="0"
+                                              ColumnSpacing="0">
+                                        <Image Grid.Column="0"
+                                                   Source="ic_flechaabajo_obscuro.png"
+                                                   WidthRequest="15"
+                                                   HeightRequest="15"
+                                                   HorizontalOptions="End"
+                                                   VerticalOptions="Center"
+                                                   Margin="0,0,4,0"
+                                                   BackgroundColor="Transparent"
+                                                   IsVisible="{Binding FlechaCategoria}"/>
+
+                                        <Picker x:Name="pickerTres"
+                                                    HeightRequest="35"
+                                                    Grid.Column="1"
+                                                    FontSize="10"
+                                                    FontFamily="NotoMedium"
+                                                    Title="{Binding Filtro5}"
+                                                    BackgroundColor="Transparent"
+                                                    TitleColor="{StaticResource PlaceHolderEntrada}"
+                                                    TextColor="{StaticResource TextoEntrada}"
+                                                    Margin="10,0,0,0"
+                                                    WidthRequest="250"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="Start"
+                                                    ItemsSource="{Binding ListaFranja, Mode=TwoWay}"
+                                                    ItemDisplayBinding="{Binding Descripcion, Mode=TwoWay}"
+                                                    SelectedItem="{Binding SelectFranja}"/>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame HasShadow="False"
+                                           Grid.Column="1"
+                                           Grid.Row="0"
+                                           CornerRadius="20"
+                                           IsVisible="{Binding EquisFranja}"
+                                           BackgroundColor="White"
+                                           Padding="0"
+                                           Margin="0"
+                                           BorderColor="Gray">
+                                    <Grid Margin="0"
+                                              Padding="3"
+                                              RowSpacing="0"
+                                              ColumnSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="26"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Picker HeightRequest="35"
+                                                    Grid.Column="0"
+                                                    FontSize="10"
+                                                    FontFamily="NotoMedium"
+                                                    Title="{Binding Filtro5}"
+                                                    BackgroundColor="Transparent"
+                                                    TitleColor="{StaticResource PlaceHolderEntrada}"
+                                                    TextColor="{StaticResource TextoEntrada}"
+                                                    Margin="10,0,0,0"
+                                                    WidthRequest="250"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="Start"
+                                                    ItemsSource="{Binding ListaFranja, Mode=TwoWay}"
+                                                    ItemDisplayBinding="{Binding Descripcion, Mode=TwoWay}"
+                                                    SelectedItem="{Binding SelectFranja}"/>
+
+                                        <ImageButton Grid.Column="1"
+                                                         Source="ic_cerrar_obscuro2.png"
+                                                         HorizontalOptions="End"
+                                                         VerticalOptions="Center"
+                                                         WidthRequest="14"
+                                                         HeightRequest="14"
+                                                         Padding="0"
+                                                         Margin="0,0,4,0"
+                                                         BackgroundColor="Transparent"
+                                                         Command="{Binding LimpiarFranja}"/>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                            <ImageButton CornerRadius="18"
+                                             HorizontalOptions="End"
+                                             WidthRequest="36"
+                                             HeightRequest="36"
+                                             BorderColor="#041B3B"
+                                             Margin="0,10,20,10"
+                                             Source="ic_ordenar_claro.png"
+                                             Padding="8"
+                                             Command="{Binding OrdenarAgenda}"
+                                             BackgroundColor="#041B3B"/>
+                        </StackLayout>
+                        <Label TextColor="{StaticResource TextoTarjetas}"
+                                   Text="{Binding CantidadAgenda}"
+                                   FontSize="12"
+                                   Margin="20,0,20,0"
+                                   FontFamily="NotoBold"/>
+                        <Label TextColor="{StaticResource TextoTarjetas}"
+                                   Text="{x:Static resources:AppResources.sujetoacambios}"
+                                   FontSize="10"
+                                   Margin="20,0,20,0"
+                                   FontFamily="NotoRegular"/>
+                        <Label TextColor="{StaticResource TextoTarjetas}"
+                                   Text="{x:Static resources:AppResources.EsteConferencistaNoCuentaAunConAgenda}"
+                                   FontSize="12"
+                                   Margin="20,0,20,10"
+                                   FontFamily="NotoRegular"
+                                   IsVisible="{Binding SinRegistros}"/>
+                    </StackLayout>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0"
+                                  Padding="10">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal"/>
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor"
+                                                        Value="{StaticResource BordeTarjeta}"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Frame BorderColor="{StaticResource BordeTarjeta}"
+                                       IsClippedToBounds="True"
+                                       CornerRadius="15"
+                                       BackgroundColor="{StaticResource FondoTarjeta}"
+                                       Padding="1,0,1,1"
+                                       HasShadow="False">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.SeleccionarAgendaCommand, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
+                                                              CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                                <Grid BackgroundColor="Transparent">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"/>
+                                        <ColumnDefinition Width="0.6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Frame Margin="0"
+                                               Padding="0"
+                                               CornerRadius="16"
+                                               HasShadow="False"
+                                               IsClippedToBounds="True"
+                                               BackgroundColor="{StaticResource FondoTarjeta}"
+                                               InputTransparent="True">
+                                        <Image Margin="0"
+                                                   Source="{Binding Imagen}"
+                                                   Aspect="AspectFill"
+                                                   BackgroundColor="{StaticResource FondoImagen}"
+                                                   HeightRequest="170"/>
+                                    </Frame>
+                                    <StackLayout Grid.Column="1"
+                                                     Spacing="0"
+                                                     Padding="5,0,5,5">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label FontSize="11"
+                                                       HorizontalTextAlignment="Start"
+                                                       Margin="0,10,5,0"
+                                                       TextColor="{StaticResource TextoTarjetas}"
+                                                       Text="{Binding Titulo}"
+                                                       MaxLines="2"
+                                                       LineBreakMode="TailTruncation"
+                                                       FontFamily="NotoBold"
+                                                       InputTransparent="True"/>
+                                            <ImageButton Grid.Column="1"
+                                                             Source="{Binding ImagenFav}"
+                                                             WidthRequest="35"
+                                                             HeightRequest="35"
+                                                             HorizontalOptions="End"
+                                                             VerticalOptions="Start"
+                                                             Margin="5"
+                                                             BackgroundColor="Transparent"
+                                                             Padding="4,5,4,3"
+                                                             Command="{Binding Path=BindingContext.FavButtonCommand,Source={x:Reference listAgenda},Mode=TwoWay}"
+                                                             CommandParameter="{Binding .}"
+                                                             InputTransparent="False"/>
+                                        </Grid>
+                                        <Label FontSize="11"
+                                                   FontFamily="NotoSemiBold"
+                                                   TextColor="{StaticResource TextoTarjetas}"
+                                                   Text="{Binding Categoria}"
+                                                   MaxLines="1"
+                                                   Margin="0,5,0,0"
+                                                   LineBreakMode="TailTruncation"
+                                                   InputTransparent="True"/>
+                                        <Label FontSize="10"
+                                                   FontFamily="NotoRegular"
+                                                   TextColor="{StaticResource TextoTarjetas}"
+                                                   MaxLines="3"
+                                                   InputTransparent="True">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span LineHeight="1"
+                                                              Text="{Binding DiaIn}"/>
+                                                    <Span LineHeight="1"
+                                                              Text=" "/>
+                                                    <Span LineHeight="1"
+                                                              Text="{x:Static resources:AppResources.de}"/>
+                                                    <Span LineHeight="1"
+                                                              Text=" "/>
+                                                    <Span LineHeight="1"
+                                                              Text="{Binding MesIn}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label FontSize="10"
+                                                   TextColor="{StaticResource TextoTarjetas}"
+                                                   MaxLines="1"
+                                                   FontFamily="NotoRegular"
+                                                   InputTransparent="True">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span LineHeight="1"
+                                                              Text="{Binding HoraInicio}"/>
+                                                    <Span LineHeight="1"
+                                                              Text=" "/>
+                                                    <Span LineHeight="1"
+                                                              Text="{x:Static resources:AppResources.a}"/>
+                                                    <Span LineHeight="1"
+                                                              Text=" "/>
+                                                    <Span LineHeight="1"
+                                                              Text="{Binding HoraFin}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Text="{Binding Lugar}"
+                                                   FontSize="10"
+                                                   TextColor="{StaticResource TextoTarjetas}"
+                                                   MaxLines="3"
+                                                   LineBreakMode="TailTruncation"
+                                                   FontFamily="NotoRegular"
+                                                   InputTransparent="True"/>
+                                        <Label Text="{x:Static resources:AppResources.zonaHorariaColombia}"
+                                                   FontSize="10"
+                                                   Margin="0,2,0,0"
+                                                   TextColor="{StaticResource TextoTarjetas}"
+                                                   MaxLines="3"
+                                                   LineBreakMode="TailTruncation"
+                                                   FontFamily="NotoRegular"
+                                                   InputTransparent="True"/>
+                                        <Label FontSize="13"
+                                                   FontAttributes="Bold"
+                                                   TextColor="{StaticResource TextoTarjetas}"
+                                                   Text="{Binding Estado}"
+                                                   MaxLines="1"
+                                                   HorizontalOptions="Center"
+                                                   FontFamily="NotoRegular"
+                                                   InputTransparent="True"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.Footer>
+                    <Label Margin="30"/>
+                </CollectionView.Footer>
+            </CollectionView>
+            <Image BackgroundColor="Transparent"
+                       Margin="0,10,10,10"
+                       Source="ic_cerrar_obscuro.png"
+                       WidthRequest="25"
+                       HeightRequest="25"
+                       VerticalOptions="Start"
+                       HorizontalOptions="End">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Button_OnClicked"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Grid BackgroundColor="{StaticResource FondoLoder}"
+                      VerticalOptions="Fill"
+                      HorizontalOptions="Fill"
+                      Margin="-20,-60"
+                      IsVisible="{Binding IsBusy}">
+                <ActivityIndicator IsRunning="true"
+                                       Color="{StaticResource IconoLoder}"
+                                       Margin="20"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+            </Grid>
+        </Grid>
+    </Frame>
+</Popup:PopupPage>

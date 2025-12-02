@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EventosCorferias.Views.Usuario.Splash"
+             NavigationPage.HasNavigationBar="False"
+             Title="Splash"
+             BackgroundColor="{Binding ColorImagen}"
+             BackgroundImageSource="{Binding UrlImagen}">
+    <VerticalStackLayout
+    BackgroundColor="Transparent"
+    VerticalOptions="Center">
+        <Image 
+    Source="{Binding UrlImagen}"
+    Aspect="AspectFit"
+    BackgroundColor="Transparent">
+            <Image.IsVisible>
+                <OnPlatform x:TypeArguments="x:Boolean">
+                    <On Platform="iOS" Value="False"/>
+                    <On Platform="Android" Value="True"/>
+                </OnPlatform>
+            </Image.IsVisible>
+        </Image>
+        <Label
+      IsVisible="{Binding VerSmsError}"
+      Text="{Binding SmsError}"
+      FontSize="16"
+      TextColor="#eaeaea"
+      FontAttributes="Bold"
+      HorizontalOptions="Center"
+      VerticalOptions="End"
+      Margin="10,60,10,0"/>
+
+    </VerticalStackLayout>
+</ContentPage>

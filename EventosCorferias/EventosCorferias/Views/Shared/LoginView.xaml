@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EventosCorferias.Views.Shared.LoginView"
+             xmlns:controls="clr-namespace:EventosCorferias.Controls"
+             xmlns:resources="clr-namespace:EventosCorferias.Resources.RecursosIdioma"
+                 Title="LoginView"
+    BackgroundColor="White"
+    BackgroundImageSource="{Binding ImagenFondo}">
+    <Grid RowSpacing="0"
+          ColumnSpacing="0"
+          Margin="10"
+          Padding="0"
+          BackgroundColor="Transparent">
+        <ScrollView  VerticalOptions="Fill">
+            <Grid RowSpacing="10"
+                  ColumnSpacing="0"
+                  Margin="0"
+                  Padding="0"
+                  VerticalOptions="Fill">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <!-- Parte 1 Logo y fechas de la feria -->
+                <StackLayout Grid.Row="0"
+                             Margin="0,30,0,0"
+                             Spacing="0"
+                             BackgroundColor="Transparent">
+                    <Image x:Name="CoreImg"
+                           Source="{Binding ImagenLogin}"
+                           WidthRequest="200"
+                           HeightRequest="200"
+                           Margin="0,30,0,0"
+                           VerticalOptions="End"
+                           BackgroundColor="Transparent"></Image>
+                    <StackLayout Spacing="0"
+                                 BackgroundColor="Transparent"
+                                 Margin="0,20,0,0">
+                        <Grid HorizontalOptions="Center"
+                              RowSpacing="0"
+                              ColumnSpacing="0"
+                              BackgroundColor="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="1"/>
+                                <ColumnDefinition Width="70"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="{Binding DiaInicio}"
+                                   FontAutoScalingEnabled="False"
+                                   FontSize="60"
+                                   HorizontalOptions="Center"
+                                   FontFamily="PalabrasCuerpoNueva"
+                                   TextColor="{Binding ColorTexto}"/>
+                            <Label Grid.Column="1"
+                                   FontAutoScalingEnabled="False"
+                                   BackgroundColor="{Binding ColorTexto}"
+                                   HeightRequest="40"
+                                   WidthRequest="3"/>
+                            <Label Grid.Column="2"
+                                   FontAutoScalingEnabled="False"
+                                   FontSize="60"
+                                   HorizontalOptions="Center"
+                                   Text="{Binding DiaFin}"
+                                   FontFamily="PalabrasCuerpoNueva"
+                                   TextColor="{Binding ColorTexto}"/>
+                            <Label Text="{Binding MesIncio}"
+                                   FontAutoScalingEnabled="False"
+                                   Grid.Row="1"
+                                   FontSize="30"
+                                   HorizontalOptions="Center"
+                                   FontFamily="PalabrasCuerpoNueva"
+                                   Margin="0,-10,0,0"
+                                   TextColor="{Binding ColorTexto}"/>
+                            <Label Grid.Column="2"
+                                   Grid.Row="1"
+                                   FontAutoScalingEnabled="False"
+                                   FontSize="30"
+                                   HorizontalOptions="Center"
+                                   Text="{Binding MesFin}"
+                                   FontFamily="PalabrasCuerpoNueva"
+                                   Margin="0,-10,0,0"
+                                   TextColor="{Binding ColorTexto}"/>
+                            <Label Grid.Column="0"
+                                   Grid.ColumnSpan="3"
+                                   Grid.Row="2"
+                                   FontAutoScalingEnabled="False"
+                                   FontSize="60"
+                                   HorizontalOptions="Center"
+                                   Text="{Binding AnoFeria}"
+                                   FontFamily="PalabrasCuerpoNueva"
+                                   Margin="0,10,0,0"
+                                   TextColor="{Binding ColorTexto}"/>
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+
+                <!-- Parte 2 Botones de ingreso-->
+                <StackLayout Grid.Row="1"
+                             Padding="40,0,40,0"
+                             Margin="0"
+                             VerticalOptions="End"
+                             Spacing="0"
+                             BackgroundColor="Transparent">
+
+                    <!-- Parte 2.1 Seleccion tipo login-->
+                    <StackLayout IsVisible="{Binding IngresoRedes}"
+                                 Spacing="0"
+                                 BackgroundColor="Transparent">
+                        <Frame Style="{StaticResource FTipoIngreso}"
+                               BorderColor="{StaticResource BordeEntrada}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer  Command="{Binding Ingresar_Correo}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid Margin="0"
+                                  Padding="0"
+                                  RowSpacing="0"
+                                  ColumnSpacing="0">
+                                <ImageButton Source="ic_correo_relleno"
+                                             Padding="7,0,7,0"
+                                             Margin="0,0,10,0"
+                                             HeightRequest="35"
+                                             WidthRequest="35"
+                                             VerticalOptions="Center"
+                                             HorizontalOptions="Start"
+                                             BackgroundColor="Transparent"
+                                             Clicked="ImageButton_Clicked"/>
+                                <Label FontSize="11"
+                                       TextTransform="None"
+                                       HorizontalOptions="Center"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalOptions="Center"
+                                       BackgroundColor="Transparent"
+                                       Text="{x:Static resources:AppResources.ContinuarCorreo}"
+                                       Margin="20,0,0,0"
+                                       Padding="0"
+                                       TextColor="{StaticResource TextoEntrada}"
+                                       FontFamily="NotoLight"/>
+                            </Grid>
+                        </Frame>
+
+                        <Frame Style="{StaticResource FTipoIngreso}"
+                               Margin="0,10,0,0" IsVisible="{Binding BtnGoogle}"
+                               BorderColor="{StaticResource BordeEntrada}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer  Command="{Binding Ingresar_Google}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid Margin="0"
+                                  Padding="0"
+                                  RowSpacing="0"
+                                  ColumnSpacing="0">
+                                <ImageButton Source="ic_google_relleno"
+                                             Padding="7,0,7,0"
+                                             Margin="0,0,10,0"
+                                             HeightRequest="35"
+                                             WidthRequest="35"
+                                             VerticalOptions="Center"
+                                             HorizontalOptions="Start"
+                                             BackgroundColor="Transparent"
+                                             Clicked="ImageButton_Clicked"/>
+                                <Label FontSize="11"
+                                       TextTransform="None"
+                                       HorizontalOptions="Center"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalOptions="Center"
+                                       BackgroundColor="Transparent"
+                                       Text="{x:Static resources:AppResources.ContinuarGoogle}"
+                                       Margin="20,0,0,0"
+                                       Padding="0"
+                                       TextColor="{StaticResource TextoEntrada}"
+                                       FontFamily="NotoLight"/>
+                            </Grid>
+                        </Frame>
+
+                        <Frame Style="{StaticResource FTipoIngreso}"
+                               IsVisible="{Binding BtnApple}"
+                               Margin="0,10,0,0"
+                               BorderColor="{StaticResource BordeEntrada}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Ingresar_Apple}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid Margin="0"
+                                  Padding="0"
+                                  RowSpacing="0"
+                                  ColumnSpacing="0">
+                                <ImageButton Source="ic_arroba_relleno"
+                                             Padding="7,0,7,0"
+                                             Margin="0,0,10,0"
+                                             HeightRequest="35"
+                                             WidthRequest="35"
+                                             VerticalOptions="Center"
+                                             HorizontalOptions="Start"
+                                             BackgroundColor="Transparent"/>
+                                <Label FontSize="11"
+                                       TextTransform="None"
+                                       HorizontalOptions="Center"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalOptions="Center"
+                                       BackgroundColor="Transparent"
+                                       Text="{x:Static resources:AppResources.continuarApple}"
+                                       Margin="20,0,0,0"
+                                       Padding="0"
+                                       TextColor="{StaticResource TextoEntrada}"
+                                       FontFamily="NotoLight"/>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+
+                    <!--  Parte 2.2 ingreso correo y clave-->
+                    <StackLayout IsVisible="{Binding IngresoCorreoClave}"
+                                 Margin="0,0,0,0"
+                                 Spacing="0"
+                                 BackgroundColor="Transparent">
+                        <Frame Style="{StaticResource FCorreoLogin}"
+                               BorderColor="{StaticResource BordeEntrada}">
+                            <Entry Placeholder="{x:Static resources:AppResources.ingresaTuCorreo}"
+                                   Text="{Binding EntCorreo, Mode=TwoWay}"
+                                   TextColor="{StaticResource TextoEntrada}"
+                                   PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                   Style="{StaticResource ECorreoLogin}"/>
+                        </Frame>
+                        <Frame Style="{StaticResource FContrasenaLogin}"
+                               BorderColor="{StaticResource BordeEntrada}">
+                            <Grid Margin="0"
+                                  Padding="0"
+                                  RowSpacing="0"
+                                  ColumnSpacing="0">
+                                <Entry
+                                    Placeholder="{x:Static resources:AppResources.contrasena}"
+                                    Text="{Binding EntClave, Mode=TwoWay}"
+                                    x:Name="IsPasword1"
+                                    TextColor="{StaticResource TextoEntrada}"
+                                    PlaceholderColor="{StaticResource PlaceHolderEntrada}"
+                                    Style="{StaticResource EContrasenaLogin}"/>
+                                <ImageButton Source="ic_ocultar_obscuro"
+                                             HeightRequest="26"
+                                             WidthRequest="26"
+                                             Margin="0,0,10,0"
+                                             VerticalOptions="Center"
+                                             HorizontalOptions="End"
+                                             BackgroundColor="Transparent"
+                                             Clicked="ImageButton_Clicked"
+                                             x:Name="ImageButton1"/>
+                            </Grid>
+                        </Frame>
+                        <Button Text="{x:Static resources:AppResources.Ingresar}"
+                                Command="{Binding LoginCorreo}"
+                                BackgroundColor="{StaticResource BtnFondoGeneralClaro}"
+                                BorderColor="{StaticResource BtnBoderGeneralClaro}"
+                                TextColor="{StaticResource BtnTextoClaro}"
+                                Style="{StaticResource BBotonLogin}"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <!-- Parte 3 Mantener conectado, olvide mi contrasena y crear cuenta-->
+                <StackLayout Grid.Row="2"
+                             Padding="0"
+                             Margin="0,30,0,0"
+                             Spacing="0"
+                             BackgroundColor="Transparent">
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center"
+                                 Margin="0,0,0,0"
+                                 VerticalOptions="End">
+                        <controls:CheckBoxEx
+                            x:Name="CustomCheck"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="13"
+                            HeightRequest="13"
+                            IsChecked="{Binding MatenerConectado}"/>
+
+                        <Label Text="{x:Static resources:AppResources.mantenerConectado}"
+                               FontSize="11"
+                               Margin="10,0,0,0"
+                               FontFamily="NotoRegular"
+                               TextColor="{Binding ColorTexto}"
+                               VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Label Padding="10,10, 10,30"
+                           IsVisible="{Binding IngresoCorreoClave}"
+                           Margin="0,10,0,0"
+                           Text="{x:Static resources:AppResources.olvideClave}"
+                           FontSize="11"
+                           FontFamily="NotoRegular"
+                           TextColor="{Binding ColorTexto}"
+                           HorizontalOptions="Center"
+                           TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Olvide_Clave}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Padding="10,10, 10,30"
+                           Margin="0,10,0,0"
+                           Text="{x:Static resources:AppResources.CrearCuenta}"
+                           FontSize="11"
+                           FontFamily="NotoRegular"
+                           TextColor="{Binding ColorTexto}"
+                           HorizontalOptions="Center"
+                           TextDecorations="Underline"
+                           IsVisible="{Binding IngresoRedes}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Crear_Cuenta}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+
+            </Grid>
+        </ScrollView>
+        <ImageButton HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     IsVisible="{Binding RegresarIcon}"
+                     Source="ic_flecha_registro"
+                     Padding="0"
+                     Margin="10,0,0,0"
+                     Command="{Binding Regresar}"
+                     BackgroundColor="Transparent">
+            <ImageButton.WidthRequest>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="Android"
+                        Value="30"/>
+                    <On Platform="iOS"
+                        Value="40"/>
+                </OnPlatform>
+            </ImageButton.WidthRequest>
+        </ImageButton>
+        <Grid BackgroundColor="{StaticResource FondoLoder}"
+              VerticalOptions="Fill"
+              HorizontalOptions="Fill"
+              Margin="-20,-60"
+              IsVisible="{Binding IsBusy}">
+            <ActivityIndicator IsRunning="true"
+                               Color="{StaticResource IconoLoder}"
+                               Margin="20"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+        </Grid>
+    </Grid>
+</ContentPage>
