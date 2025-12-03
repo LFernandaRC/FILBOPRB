@@ -5,12 +5,10 @@ using EventosCorferias.Views.Suceso;
 using EventosCorferias.Views.Boletas;
 using EventosCorferias.Resources.RecursosIdioma;
 
-/*using ZXing;
-using SkiaSharp;
-using ZXing.Common;*/
 using Newtonsoft.Json.Linq;
 using System.Windows.Input;
 using Newtonsoft.Json;
+using QRCoder;
 
 namespace EventosCorferias.ViewModel.Boletas
 {
@@ -320,7 +318,7 @@ namespace EventosCorferias.ViewModel.Boletas
                                     misBoletas.VerCodigoQR = true;
                                     misBoletas.VerImagenFeria = false;
                                     misBoletas.ImagenFeria = item.GetValue("Qr")?.ToString();
-                                    misBoletas.QrImage = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(GenerQr_Clicked(item.GetValue("Qr")?.ToString()))));
+                                    misBoletas.QrImage = GenerQr_Clicked(item.GetValue("Qr")?.ToString());
                                 }
                                 catch
                                 {
@@ -359,58 +357,29 @@ namespace EventosCorferias.ViewModel.Boletas
                 IsBusy = false;
             }
         }
-        private string GenerQr_Clicked(string codigo)
-        {/*
+        private ImageSource GenerQr_Clicked(string codigo)
+        {
             try
             {
                 Console.WriteLine("Base64 QR en iOS: codigo" + codigo);
-                var writer = new BarcodeWriterPixelData
-                {
-                    Format = ZXing.BarcodeFormat.QR_CODE,
-                    Options = new EncodingOptions
-                    {
-                        Height = 450,
-                        Width = 450,
-                        Margin = 0
-                    }
-                };
 
-                var pixelData = writer.Write(codigo);
-                var imageInfo = new SKImageInfo(pixelData.Width, pixelData.Height, SKColorType.Bgra8888, SKAlphaType.Premul);
+                QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(codigo, QRCodeGenerator.ECCLevel.L);
 
-                using (var surface = SKSurface.Create(imageInfo))
-                {
-                    surface.Canvas.Clear(SKColors.White);
+                PngByteQRCode qRCode = new PngByteQRCode(qrCodeData);
+                byte[] qrCodeBytes = qRCode.GetGraphic(20);
+                ImageSource qrImageSource = ImageSource.FromStream(() => new MemoryStream(qrCodeBytes));
 
-                    using (var bitmap = new SKBitmap(imageInfo))
-                    {
-                        System.Runtime.InteropServices.Marshal.Copy(pixelData.Pixels, 0, bitmap.GetPixels(), pixelData.Pixels.Length);
-                        surface.Canvas.DrawBitmap(bitmap, 0, 0);
-                    }
-
-                    using (var image = surface.Snapshot())
-                    using (var data = image.Encode(SKEncodedImageFormat.Png, 100))
-                    {
-                        byte[] imageBytes = data.ToArray();
-                        string base64String = Convert.ToBase64String(imageBytes);
-
-
-                        Console.WriteLine("Base64 QR en iOS: " + base64String);
-
-                        return base64String;
-                    }
-                }
+                return qrImageSource;
             }
             catch (Exception ex)
             {
                 claseBase.InsertarLogs_Mtd("ERROR", ex.Message, "BoleteriaVm", "generQr_Clicked", "Error al Generar Codigo QR");
                 Console.WriteLine("Base64 QR en iOS: " + "error");
                 Console.WriteLine("Base64 QR en iOS: " + ex.Message);
-                return codigo;
+                return null;
             }
-      
-        */
-            return codigo;
+
         }
 
 
@@ -490,7 +459,7 @@ namespace EventosCorferias.ViewModel.Boletas
                                         preRegistro.VerCodigoQR = true;
                                         preRegistro.VerImagenFeria = false;
                                         preRegistro.ImagenFeria = item.GetValue("CodigoQR")?.ToString();
-                                        preRegistro.QrImage = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(GenerQr_Clicked(item.GetValue("CodigoQR")?.ToString()))));
+                                        preRegistro.QrImage = GenerQr_Clicked(item.GetValue("CodigoQR")?.ToString());
                                     }
                                     catch
                                     {

@@ -53,6 +53,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
 		<PackageReference Include="Mopups" Version="1.3.2" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+		<PackageReference Include="QRCoder-ImageSharp" Version="0.10.0" />
 	</ItemGroup>
 
 	<ItemGroup>
