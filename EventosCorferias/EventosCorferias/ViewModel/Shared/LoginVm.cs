@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using System.Windows.Input;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
-//using EventosCorferias.GoogleAuth;
+using EventosCorferias.GoogleAuth;
 using Mopups.Services;
 using EventosCorferias.Views.PopUp;
 using EventosCorferias.ViewModel.Usuario;
@@ -504,7 +504,7 @@ namespace EventosCorferias.ViewModel.Shared
         }
 
         // INICIO DE SESION DE GOOGLE
-        // private readonly IGoogleAuthService _googleAuthService = new GoogleAuthService();
+        private readonly IGoogleAuthService _googleAuthService = new GoogleAuthService();
 
         private void IngresoGoogle()
         {
@@ -518,7 +518,7 @@ namespace EventosCorferias.ViewModel.Shared
 
         private async void Ingresar_Google_MtdAndroid()
         {
-            /*
+
             try
             {
                 IsBusy = true;
@@ -561,7 +561,7 @@ namespace EventosCorferias.ViewModel.Shared
             {
                 IsBusy = false;
             }
-            */
+
         }
 
         private async void Ingresar_Google_MtdiOS()
@@ -610,14 +610,14 @@ namespace EventosCorferias.ViewModel.Shared
         */
         }
 
-        /* private void GuardarPreferenciasUsuarioNuevo(GoogleUserDTO loggedUser)
-         {
-             Preferences.Set("Email", loggedUser.Email);
-             Preferences.Set("Imagen", "https://thumbs.dreamstime.com/b/omita-el-icono-del-perfil-avatar-placeholder-gris-de-la-foto-99724602.jpg");
-             Preferences.Set("NombreCompleto", loggedUser.FullName);
-             Preferences.Set("RedSocial", 2);
-             Preferences.Set("IdiomaApp", LenguajeBase);
-         }*/
+        private void GuardarPreferenciasUsuarioNuevo(GoogleUserDTO loggedUser)
+        {
+            Preferences.Set("Email", loggedUser.Email);
+            Preferences.Set("Imagen", "https://thumbs.dreamstime.com/b/omita-el-icono-del-perfil-avatar-placeholder-gris-de-la-foto-99724602.jpg");
+            Preferences.Set("NombreCompleto", loggedUser.FullName);
+            Preferences.Set("RedSocial", 2);
+            Preferences.Set("IdiomaApp", LenguajeBase);
+        }
 
         private async Task ProcesarUsuarioExistente(string jsonResponse, string email)
         {

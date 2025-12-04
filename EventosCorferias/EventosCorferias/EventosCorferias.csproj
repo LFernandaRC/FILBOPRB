@@ -11,10 +11,10 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>EventosCorferias</ApplicationTitle>
+		<ApplicationTitle>Filbo</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.eventoscorferias</ApplicationId>
+		<ApplicationId>com.cdi.jlge.CorferiasEventos</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -22,11 +22,27 @@
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<AndroidSigningKeyStore>filbocorferias.keystore</AndroidSigningKeyStore>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(TargetFramework)' == 'net10.0-android'">
 		<RuntimeIdentifiers>android-arm64;android-arm</RuntimeIdentifiers>
 		<AndroidSupportedAbis>arm64-v8a;armeabi-v7a</AndroidSupportedAbis>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0-android|AnyCPU'">
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidSigningStorePass>Temporal1</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>filbocorferias</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>Temporal1</AndroidSigningKeyPass>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0-android|AnyCPU'">
+	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidSigningStorePass>Temporal1</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>filbocorferias</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>Temporal1</AndroidSigningKeyPass>
 	</PropertyGroup>
 	
 	<ItemGroup>
@@ -213,6 +229,12 @@
 	  <MauiXaml Update="Views\Usuario\RegistroView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0-android'">
+	  <PackageReference Include="Xamarin.GooglePlayServices.Auth">
+	    <Version>121.4.0.1</Version>
+	  </PackageReference>
 	</ItemGroup>
 
 </Project>
