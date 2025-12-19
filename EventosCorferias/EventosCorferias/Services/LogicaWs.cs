@@ -6,10 +6,10 @@ namespace EventosCorferias.Services
     class LogicaWs
     {
         /*Enlace marca blanca pruebas*/
-        //private static readonly string url = "http://190.147.38.91:8891/CorferiasEventosServ/";
+        private static readonly string url = "http://190.147.38.91:8891/CorferiasEventosServ/";
 
         /*Enlace marca blanca Productivo*/
-        private static readonly string url = "https://servicioseventos.corferias.co/CorferiasEventosServ/";
+        //private static readonly string url = "https://servicioseventos.corferias.co/CorferiasEventosServ/";
 
         //Imagenes transversales de uso en la app
         public string ImgMenuSuperior_Mtd()
@@ -571,9 +571,9 @@ namespace EventosCorferias.Services
 
         /*--------------------------------------------------------------------------------------------------------------------------------------------------*/
         /*Contenidos */
-        public string Movile_Select_ContenidosFavotito_Mtd(string idioma, string tituloContenido, string categoria, string correo)
+        public string Movile_Select_ContenidosFavotito_Mtd(string idioma, string tituloContenido, string categoria, string correo, string idSuceso)
         {
-            return url + "/" + Movile_Select_ContenidosFavorito + "/" + correo + "/" + idioma + "/" + tituloContenido + "/" + categoria;
+            return url + "/" + Movile_Select_ContenidosFavorito + "/" + correo + "/" + idioma + "/" + tituloContenido + "/" + categoria + "/" + idSuceso;
         }
 
         public string Movile_Select_ContenidosSuceso_Mtd(string Bandera, string idioma, string correo, string tituloContenido, string idSuceso)
@@ -839,9 +839,9 @@ namespace EventosCorferias.Services
 
         /*Notificaciones */
 
-        public string Movile_Select_Notificaciones_Mtd(string correo, string idioma)
+        public string Movile_Select_Notificaciones_Mtd(string correo, string idioma, string idSuceso)
         {
-            return url + "/" + Movile_Select_Notificaciones + "/" + correo + "/" + idioma;
+            return url + "/" + Movile_Select_Notificaciones + "/" + correo + "/" + idioma + "/" + idSuceso;
         }
 
         public string Movile_Update_Notificaciones_Mtd(string bandera, string correo, string Idioma, string Estado, string IdNotificacion)

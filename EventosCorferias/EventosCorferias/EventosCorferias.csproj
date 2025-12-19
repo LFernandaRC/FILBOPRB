@@ -31,11 +31,13 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0-android|AnyCPU'">
-	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	  <AndroidPackageFormat>aab</AndroidPackageFormat>
 	  <AndroidKeyStore>True</AndroidKeyStore>
 	  <AndroidSigningStorePass>Temporal1</AndroidSigningStorePass>
 	  <AndroidSigningKeyAlias>filbocorferias</AndroidSigningKeyAlias>
 	  <AndroidSigningKeyPass>Temporal1</AndroidSigningKeyPass>
+	  <AndroidUseAapt2>True</AndroidUseAapt2>
+	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0-android|AnyCPU'">
@@ -43,15 +45,21 @@
 	  <AndroidSigningStorePass>Temporal1</AndroidSigningStorePass>
 	  <AndroidSigningKeyAlias>filbocorferias</AndroidSigningKeyAlias>
 	  <AndroidSigningKeyPass>Temporal1</AndroidSigningKeyPass>
+	  <AndroidUseAapt2>True</AndroidUseAapt2>
+	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+	  <AndroidPackageFormat>aab</AndroidPackageFormat>
 	</PropertyGroup>
 	
 	<ItemGroup>
-		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		
+		<!-- Ícono para Android -->
+		<MauiIcon Include="Resources\AppIcon\imgprin.png" Color="#041B3B" ForegroundScale="0.6" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
-
+		<MauiSplashScreen Include="Resources\Splash\logoappblanco.png" Color="#041B3B" />
+		    
+		
+		
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
@@ -61,6 +69,11 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <None Remove="Resources\AppIcon\imgprin.png" />
+	  <None Remove="Resources\Splash\logoappblanco.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -237,4 +250,8 @@
 	  </PackageReference>
 	</ItemGroup>
 
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-ios'">
+		<BundleResource Include="GoogleService-Info.plist" />
+	</ItemGroup>
+	
 </Project>

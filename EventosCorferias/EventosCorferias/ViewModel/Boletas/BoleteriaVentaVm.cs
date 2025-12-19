@@ -7,6 +7,7 @@ using EventosCorferias.Resources.RecursosIdioma;
 using Newtonsoft.Json.Linq;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using EventosCorferias.Views.Boletas;
 
 namespace EventosCorferias.ViewModel.Boletas
 {
@@ -253,10 +254,10 @@ namespace EventosCorferias.ViewModel.Boletas
                         break;
                     }
 
-                  /*  if (auxBoleta)
+                    if (auxBoleta)
                         await RootNavigation.PushAsync(new SeleccionBoletasView(boletas));
                     else
-                        await pageServicio.DisplayAlert(AppResources.nombreMarca, AppResources.noBoleteriaEnElMomento, AppResources.VMaceptar);*/
+                        await pageServicio.DisplayAlert(AppResources.nombreMarca, AppResources.noBoleteriaEnElMomento, AppResources.VMaceptar);
                 }
                 catch (Exception ex)
                 {

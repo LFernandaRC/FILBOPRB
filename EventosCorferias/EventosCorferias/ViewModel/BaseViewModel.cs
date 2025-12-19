@@ -360,7 +360,7 @@ namespace EventosCorferias.ViewModel
                 CantidadNotificaciones = "0";
                 int cantidadAux = 0;
                 LogicaWs logicaWS = new LogicaWs();
-                string urli = logicaWS.Movile_Select_Notificaciones_Mtd(Preferences.Get("Email", "").Trim(), Preferences.Get("IdiomaDefecto", "es"));
+                string urli = logicaWS.Movile_Select_Notificaciones_Mtd(Preferences.Get("Email", "").Trim(), Preferences.Get("IdiomaDefecto", "es"), Preferences.Get("IdSuceso", ""));
                 string jsonProcedimiento = await logicaWS.ConectionGet(urli);
                 JArray jsArray = JArray.Parse(jsonProcedimiento);
 

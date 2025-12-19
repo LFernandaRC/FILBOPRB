@@ -157,7 +157,7 @@ namespace EventosCorferias.ViewModel.Suceso
                 if (TipoContenido == "comunidad")
                     urli = logicaWS.Movile_Select_ContenidosComunidad_Mtd(LenguajeBase, EmailUsuario, "0", IdSucesoComunidad);
                 if (TipoContenido == "favorito")
-                    urli = logicaWS.Movile_Select_ContenidosFavotito_Mtd(LenguajeBase, "0", "0", EmailUsuario);
+                    urli = logicaWS.Movile_Select_ContenidosFavotito_Mtd(LenguajeBase, "0", "0", EmailUsuario, IdSucesoComunidad);
 
                 string jsonProcedimiento = await logicaWS.ConectionGet(urli);
                 if (jsonProcedimiento != "")
