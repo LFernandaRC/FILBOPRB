@@ -1,40 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-		  package="com.cdi.jlge.CorferiasEventos"
-          android:versionCode="35"
-          android:versionName="35">
-	<application 
-		android:allowBackup="true"
-		android:label="FilBo"
-		android:icon="@mipmap/appicon" 
-		android:roundIcon="@mipmap/appicon_round" 
-		android:supportsRtl="true">
-
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.cdi.jlge.CorferiasEventos" android:versionCode="37" android:versionName="37">
+	<application android:allowBackup="true" android:label="FilBo" android:icon="@mipmap/imgprin" android:supportsRtl="true">
 		<!-- 🔑 Google Play Services -->
-		<meta-data
-		android:name="com.google.android.gms.version"
-		android:value="@integer/google_play_services_version" />
-		
+		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 	</application>
-
 	<!-- 📸 Permitir uso de la cámara -->
 	<queries>
 		<intent>
 			<action android:name="android.media.action.IMAGE_CAPTURE" />
 		</intent>
 	</queries>
-
 	<!-- 🌐 Permisos de red -->
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
-
 	<!-- 📸 Permisos de cámara y almacenamiento -->
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
 	<!-- 📍 Permisos de ubicación -->
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	
 </manifest>

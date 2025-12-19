@@ -17,6 +17,7 @@ namespace EventosCorferias.ViewModel.Usuario
         private bool auxFecha;
         private bool _equisCalendario;
         private bool _flechaCalendario;
+        private string idSuceso;
 
         private string _cantidadAgenda;
         public string? IdCominidad_;
@@ -168,6 +169,7 @@ namespace EventosCorferias.ViewModel.Usuario
             claseBase = new ClaseBase();
             pageServicio = new PageServicio();
 
+            idSuceso = Preferences.Get("IdSuceso", "");
             EmailUsuario = Preferences.Get("Email", "");
             LenguajeBase = Preferences.Get("IdiomaDefecto", "");
             NombreCompletoPerfil = Preferences.Get("NombreCompleto", "");
@@ -198,7 +200,7 @@ namespace EventosCorferias.ViewModel.Usuario
 
                 if (idComunidad.Equals("0"))
                 {
-                    urli = logicaWS.Movile_Select_Notificaciones_Mtd(EmailUsuario, LenguajeBase);
+                    urli = logicaWS.Movile_Select_Notificaciones_Mtd(EmailUsuario, LenguajeBase, idSuceso);
                 }
                 else
                 {
