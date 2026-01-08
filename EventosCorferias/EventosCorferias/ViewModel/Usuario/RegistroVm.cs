@@ -802,7 +802,6 @@ namespace EventosCorferias.ViewModel.Usuario
                             Application.Current!.MainPage = new MasterHomePage();
 
                             await CheckTerminosYCondiciones();
-                            await RecuperarToken();
                             await RelacionUsuarioApp();
                         }
                         else
@@ -830,27 +829,6 @@ namespace EventosCorferias.ViewModel.Usuario
             }
         }
 
-        public async Task RecuperarToken()
-        {
-            try
-            {
-                string Token = Preferences.Get("TokenApp", "");
-                string Correo = Preferences.Get("Email", "");
-
-                if (!Token.Equals("") && !Correo.Equals(""))
-                {
-                    string urli = logicaWS.Movile_Update_Token_Mtd(Correo, Token);
-                    string jsonProcedimiento = await logicaWS.ConectionGet(urli);
-
-                    if (!jsonProcedimiento.Equals("Datos Actualizados"))
-                        claseBase.InsertarLogs_Mtd("ERROR", jsonProcedimiento, "RegistroVM", "RecuperarToken", "actualizatoken");
-                }
-            }
-            catch (Exception e)
-            {
-                claseBase.InsertarLogs_Mtd("ERROR", e.Message, "RegistroVM", "RecuperarToken", "actualizatoken");
-            }
-        }
 
         private async void CargarListaciudadByPais(string IdPais)
         {

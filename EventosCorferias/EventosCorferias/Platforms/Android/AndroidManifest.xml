@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.cdi.jlge.CorferiasEventos" android:versionCode="37" android:versionName="37">
-	<application android:allowBackup="true" android:label="FilBo" android:icon="@mipmap/imgprin" android:supportsRtl="true">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.cdi.jlge.CorferiasEventos" android:versionCode="39" android:versionName="39">
+	<application android:allowBackup="true" android:label="FilBo" android:icon="@mipmap/imgprin" android:supportsRtl="true" android:usesCleartextTraffic="true">
 		<!-- 🔑 Google Play Services -->
 		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+		<!-- 🔔 Firebase Messaging -->
+		<meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="default_channel" />
 	</application>
 	<!-- 📸 Permitir uso de la cámara -->
 	<queries>
@@ -20,4 +22,6 @@
 	<!-- 📍 Permisos de ubicación -->
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<!-- 📍 Permisos de FIREBASE -->
+	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 </manifest>

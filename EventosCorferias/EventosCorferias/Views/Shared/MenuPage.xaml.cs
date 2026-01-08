@@ -39,8 +39,6 @@ public partial class MenuPage : ContentPage
             imgf.Source = logicaWS.ImgMenuSuperior_Mtd();
             EmailUsuario = Preferences.Get("Email", "");
             NombreCompletoP.Text = Preferences.Get("NombreCompleto", "");
-
-            _ = RecuperarToken();
             CargarListaIdiomaAsync();
 
         }
@@ -268,28 +266,6 @@ public partial class MenuPage : ContentPage
     private void NoDisponible()
     {
         pageServicio.DisplayAlert(AppResources.nombreMarca, AppResources.FuncionalidadNoDisponible, AppResources.cerrar);
-    }
-
-    public async Task RecuperarToken()
-    {
-        try
-        {
-            string Token = Preferences.Get("TokenApp", "");
-            string Correo = Preferences.Get("Email", "");
-
-            if (!Token.Equals("") && !Correo.Equals(""))
-            {
-                string urli = logicaWS.Movile_Update_Token_Mtd(Correo, Token);
-                string jsonProcedimiento = await logicaWS.ConectionGet(urli);
-
-                if (!jsonProcedimiento.Equals("Datos Actualizados"))
-                    claseBase.InsertarLogs_Mtd("ERROR", jsonProcedimiento, "MenuPage", "RecuperarToken1", "n/a");
-            }
-        }
-        catch (Exception e)
-        {
-            claseBase.InsertarLogs_Mtd("ERROR", e.Message, "MenuPage", "RecuperarToken2", "n/a");
-        }
     }
 
 }

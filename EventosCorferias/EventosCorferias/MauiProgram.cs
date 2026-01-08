@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Handlers;
 using Mopups.Hosting;
+using Shiny;
+using Shiny.Push;
 
 namespace EventosCorferias
 {
@@ -12,6 +14,7 @@ namespace EventosCorferias
             builder
                 .UseMauiApp<App>()
                 .ConfigureMopups()
+                .UseShiny()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("LaNuevaRegular.ttf", "PalabrasCuerpoNueva");
@@ -23,6 +26,8 @@ namespace EventosCorferias
                     fonts.AddFont("Montserrat-SemiBold.ttf", "NotoSemiBold");
                 });
 
+            builder.Services.AddPush<PushDelegate>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
@@ -31,10 +36,10 @@ namespace EventosCorferias
             EntryHandler.Mapper.AppendToMapping("NoBorders", (handler, view) =>
             {
 #if IOS
-            handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
-            handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
-            handler.PlatformView.Layer.CornerRadius = 0;
-            handler.PlatformView.Layer.BorderWidth = 0;
+                handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+                handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
+                handler.PlatformView.Layer.CornerRadius = 0;
+                handler.PlatformView.Layer.BorderWidth = 0;
 #endif
 
 #if ANDROID
@@ -48,10 +53,10 @@ namespace EventosCorferias
             PickerHandler.Mapper.AppendToMapping("NoBorders", (handler, view) =>
             {
 #if IOS
-            handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
-            handler.PlatformView.Layer.BorderWidth = 0;
-            handler.PlatformView.Layer.CornerRadius = 0;
-            handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+                handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
+                handler.PlatformView.Layer.BorderWidth = 0;
+                handler.PlatformView.Layer.CornerRadius = 0;
+                handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
 #endif
 
 #if ANDROID
@@ -65,10 +70,10 @@ namespace EventosCorferias
             DatePickerHandler.Mapper.AppendToMapping("NoBorders", (handler, view) =>
             {
 #if IOS
-            handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
-            handler.PlatformView.Layer.BorderWidth = 0;
-            handler.PlatformView.Layer.CornerRadius = 0;
-            handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+                handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
+                handler.PlatformView.Layer.BorderWidth = 0;
+                handler.PlatformView.Layer.CornerRadius = 0;
+                handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
 #endif
 
 #if ANDROID
@@ -82,9 +87,9 @@ namespace EventosCorferias
             EditorHandler.Mapper.AppendToMapping("NoBorders", (handler, view) =>
             {
 #if IOS
-            handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
-            handler.PlatformView.Layer.BorderWidth = 0;
-            handler.PlatformView.Layer.CornerRadius = 0;
+                handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
+                handler.PlatformView.Layer.BorderWidth = 0;
+                handler.PlatformView.Layer.CornerRadius = 0;
 #endif
 
 #if ANDROID

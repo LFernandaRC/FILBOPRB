@@ -75,6 +75,10 @@
 	  <None Remove="Resources\AppIcon\imgprin.png" />
 	  <None Remove="Resources\Splash\logoappblanco.png" />
 	</ItemGroup>
+	
+	<ItemGroup>
+	  <GoogleServicesJson Include="Platforms\Android\google-services.json" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
@@ -83,6 +87,8 @@
 		<PackageReference Include="Mopups" Version="1.3.2" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 		<PackageReference Include="QRCoder-ImageSharp" Version="0.10.0" />
+		<PackageReference Include="Shiny.Hosting.Maui" Version="3.3.4" />
+		<PackageReference Include="Shiny.Push" Version="3.3.4" />
 	</ItemGroup>
 
 	<ItemGroup>

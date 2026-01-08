@@ -281,7 +281,6 @@ namespace EventosCorferias.ViewModel.Shared
                         if (!email.Equals(""))
                         {
                             Application.Current!.MainPage = new MasterHomePage();
-                            GuardarTokenFirebase();
                         }
                         else
                         {
@@ -303,19 +302,6 @@ namespace EventosCorferias.ViewModel.Shared
                 VerSmsError = true;
                 SmsError = AppResources.errorSlashdos;
                 claseBase.InsertarLogs_Mtd("ERROR", ex.Message, "SplashVM", "PasarAsync", "n/a");
-            }
-        }
-
-        private async void GuardarTokenFirebase()
-        {
-            if (Preferences.Get("Email", "") != null && Preferences.Get("TokenFirebase", "") != null)
-            {
-                var pr = Preferences.Get("Email", "");
-                var ds = Preferences.Get("TokenFirebase", "");
-
-                LogicaWs logicaWS = new LogicaWs();
-                string urli = logicaWS.Movile_Update_Token_Mtd(Preferences.Get("Email", ""), Preferences.Get("TokenFirebase", "") + "prbFilbo");
-                string jsonProcedimiento = await logicaWS.ConectionGet(urli);
             }
         }
 

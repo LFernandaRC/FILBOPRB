@@ -281,9 +281,9 @@ namespace EventosCorferias.Services
                     banderaEmpresa;
         }
 
-        public string Movile_Update_Token_Mtd(string correo, string token)
+        public string Movile_Update_Token_Mtd(string correo, string token, string IDaPP)
         {
-            return url + "/" + Movile_Update_Token + "/" + correo + "/" + token;
+            return url + "/" + Movile_Update_Token + "/" + correo + "/" + token + "/" + IDaPP;
         }
 
         public string Movile_select_Pais_Mtd()
