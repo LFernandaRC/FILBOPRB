@@ -314,6 +314,7 @@ namespace EventosCorferias.ViewModel.Boletas
                 await CargarInfoUsuario();
                 await CargarInfoTarjeta();
                 await CargarListasUsuario();
+                ContadorNotificaciones_Mtd();
             }
             finally
             {

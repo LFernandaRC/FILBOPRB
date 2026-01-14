@@ -275,6 +275,7 @@ namespace EventosCorferias.ViewModel.Suceso
             UrlExpositorLink = new Command(async () => await UrlExpositorLink_MtdAsync());
 
             InfoExpositorSuceso();
+            ContadorNotificaciones_Mtd();
         }
 
         public async void InfoExpositorSuceso()

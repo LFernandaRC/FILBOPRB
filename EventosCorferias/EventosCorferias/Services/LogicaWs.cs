@@ -844,9 +844,9 @@ namespace EventosCorferias.Services
             return url + "/" + Movile_Select_Notificaciones + "/" + correo + "/" + idioma + "/" + idSuceso;
         }
 
-        public string Movile_Update_Notificaciones_Mtd(string bandera, string correo, string Idioma, string Estado, string IdNotificacion)
+        public string Movile_Update_Notificaciones_Mtd(string bandera, string correo, string Idioma, string Estado, string IdNotificacion, string IdSuceso)
         {
-            return url + "/" + Movile_Update_Notificaciones + "/" + bandera + "/" + correo + "/" + Idioma + "/" + IdNotificacion + "/" + Estado;
+            return url + "/" + Movile_Update_Notificaciones + "/" + bandera + "/" + correo + "/" + Idioma + "/" + IdNotificacion + "/" + Estado + "/" + IdSuceso;
         }
 
         public string Movile_Select_NotificacionesComunidades_Mtd(string bandera, string correo, string Idioma, string IdComunidad)

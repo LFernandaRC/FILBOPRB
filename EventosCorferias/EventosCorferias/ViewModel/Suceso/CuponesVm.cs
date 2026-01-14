@@ -146,13 +146,7 @@ namespace EventosCorferias.ViewModel.Suceso
 
 
             Inicializar_MtdAsync();
-
-            string ValidarIphad = DeviceInfo.Name;
-            bool res = ValidarIphad.ToLower().Contains("ipad");
-            if (res)
-                VerChat = false;
-            else
-                VerChat = true;
+            ContadorNotificaciones_Mtd();
         }
 
 

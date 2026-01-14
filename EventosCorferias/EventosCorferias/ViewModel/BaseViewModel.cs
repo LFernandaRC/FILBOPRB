@@ -20,17 +20,10 @@ namespace EventosCorferias.ViewModel
         public MasterHomePage RootMainPage => Application.Current.MainPage as MasterHomePage;
         public NavigationPage RootNavigation => RootMainPage?.Detail as NavigationPage;
 
-        private bool _VerChat;
         public string? LenguajeBase;
         private bool _isBusy = false;
         private bool _isBusyInverse = false;
         private bool _stateconexion;
-
-        public bool VerChat
-        {
-            get { return _VerChat; }
-            set { SetProperty(ref _VerChat, value); }
-        }
 
         public bool IsBusyInverse
         {
@@ -113,7 +106,7 @@ namespace EventosCorferias.ViewModel
         private static string _icon3Class;
         private static string _icon4Class;
 
-        private static string _CantidadNotificaciones;
+        private static string _CantidadNotificaciones = "0";
         private static string _GridNotificaciones;
         private static bool _verNotificicaciones;
 
@@ -354,7 +347,17 @@ namespace EventosCorferias.ViewModel
             {
 
             }
+            finally
+            {
+                ContadorNotificaciones_Mtd();
+            }
 
+
+
+        }
+
+        public async void ContadorNotificaciones_Mtd()
+        {
             try
             {
                 CantidadNotificaciones = "0";
@@ -417,7 +420,6 @@ namespace EventosCorferias.ViewModel
             {
                 VerNotificicaciones = false;
             }
-
         }
 
         public ICommand IrHome

@@ -158,6 +158,7 @@ namespace EventosCorferias.ViewModel.Suceso
         public async void Incializar()
         {
             await InfoDetalleContenido();
+            ContadorNotificaciones_Mtd(); 
         }
 
         public async Task InfoDetalleContenido()

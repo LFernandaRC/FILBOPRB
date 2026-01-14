@@ -132,7 +132,7 @@ namespace EventosCorferias.ViewModel.Formulario
             Politicas = new Command(async () => await pageServicio.DisplayAlert(terminos.Modulo, terminos.Texto, AppResources.VMaceptar));
 
             Multilista_MtdAsync();
-            _ = ValidarMenuInferior();
+            ContadorNotificaciones_Mtd();
         }
 
         public async void Multilista_MtdAsync()

@@ -151,6 +151,7 @@ namespace EventosCorferias.ViewModel.Suceso
                 await ListasFiltros();
                 await BuscarExpositor_MtoAsync();
                 await FiltrosMascara();
+                ContadorNotificaciones_Mtd();
             }
             finally
             {

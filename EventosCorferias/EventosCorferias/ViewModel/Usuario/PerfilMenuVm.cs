@@ -257,6 +257,7 @@ namespace EventosCorferias.ViewModel.Usuario
                 Cerrar_Sesion = new Command(async () => await Cerrar_Sesion_MtoAsync());
 
                 Inicializar();
+                ContadorNotificaciones_Mtd();
             }
             catch (Exception ex)
             {

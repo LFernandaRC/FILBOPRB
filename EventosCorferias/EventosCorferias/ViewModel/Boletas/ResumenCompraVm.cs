@@ -211,6 +211,7 @@ namespace EventosCorferias.ViewModel.Boletas
             BtnTerminosYcondiciones = new Command(async () => await pageServicio.DisplayAlert(terminos.Modulo, terminos.Texto, AppResources.cerrar));
 
             _ = CargarDatos();
+            ContadorNotificaciones_Mtd();
         }
 
         private async Task CargarDatos()

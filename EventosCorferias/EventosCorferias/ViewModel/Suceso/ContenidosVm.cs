@@ -138,6 +138,7 @@ namespace EventosCorferias.ViewModel.Suceso
                 await BuscarContenidos_MtoAsync();
                 if (TipoContenido.Equals("favorito"))
                     await FiltroContenidos_MtdAsync();
+                ContadorNotificaciones_Mtd(); ;
             }
             finally
             {

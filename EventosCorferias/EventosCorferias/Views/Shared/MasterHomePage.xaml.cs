@@ -4,10 +4,6 @@ using Shiny.Hosting;
 using Shiny.Push;
 using System.ComponentModel;
 
-using EventosCorferias.Models;
-using Shiny;
-using Shiny.Hosting;
-using Shiny.Push;
 using EventosCorferias.Services;
 
 
@@ -79,17 +75,15 @@ public partial class MasterHomePage : FlyoutPage
                 var EmailFire = Preferences.Get("Email", "");
                 var idApp = Preferences.Get("IdApp", "");
 
+                ClaseBase claseBase;
+                claseBase = new ClaseBase();
+
                 if (EmailFire != null && Preferences.Get("TokenFirebase", "") != null)
                 {
                     LogicaWs logicaWS = new LogicaWs();
-                    string urli = logicaWS.Movile_Update_Token_Mtd(EmailFire, Preferences.Get("TokenFirebase", ""), idApp);
+                    string urli = logicaWS.Movile_Update_Token_Mtd(EmailFire, Preferences.Get("TokenFirebase", ""), "1");
                     string jsonProcedimiento = await logicaWS.ConectionGet(urli);
                 }
-
-                ClaseBase claseBase;
-                claseBase = new ClaseBase();
-                claseBase.InsertarLogs_Mtd("ERROR", token, "SPALR FIREBASE", "SPALR FIREBASE", "SPALR FIREBASE");
-
             }
             else
             {

@@ -140,6 +140,7 @@ namespace EventosCorferias.ViewModel.Suceso
             BloquearCampo = true;
             await CargarBusqueda_MtdAsync();
             await ListasFiltros_MtdAsync();
+            ContadorNotificaciones_Mtd();
         }
 
         private async Task CargarBusqueda_MtdAsync()

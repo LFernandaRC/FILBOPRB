@@ -91,6 +91,7 @@ namespace EventosCorferias.ViewModel.Suceso
             PlayImg = new Command(PlayImg_Mtd);
 
             CargaGeneralInfoAsync(servicios);
+            ContadorNotificaciones_Mtd();
         }
 
         private void CargaGeneralInfoAsync(ServiciosM servicios)

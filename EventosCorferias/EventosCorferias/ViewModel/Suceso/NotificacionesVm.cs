@@ -104,7 +104,7 @@ namespace EventosCorferias.ViewModel.Usuario
 
                             if (res && !Eva)
                             {
-                                string urli = logicaWS.Movile_Update_Notificaciones_Mtd("3", EmailUsuario, LenguajeBase, SelectNotificacion.IdNotificacion, "3");
+                                string urli = logicaWS.Movile_Update_Notificaciones_Mtd("3", EmailUsuario, LenguajeBase, SelectNotificacion.IdNotificacion, "3", idSuceso);
                                 string? jsonProcedimiento = await logicaWS.ConectionGet(urli);
 
                                 await CargarAgenda_MtoAsync(IdCominidad_);
@@ -112,7 +112,7 @@ namespace EventosCorferias.ViewModel.Usuario
 
                             if (!res)
                             {
-                                string urli = logicaWS.Movile_Update_Notificaciones_Mtd("3", EmailUsuario, LenguajeBase, SelectNotificacion.IdNotificacion, "1");
+                                string urli = logicaWS.Movile_Update_Notificaciones_Mtd("3", EmailUsuario, LenguajeBase, SelectNotificacion.IdNotificacion, "1", idSuceso);
                                 string? jsonProcedimiento = await logicaWS.ConectionGet(urli);
                                 foreach (var aux in ListaAgenda)
                                 {
@@ -125,7 +125,7 @@ namespace EventosCorferias.ViewModel.Usuario
 
                             if (res && Eva)
                             {
-                                string urli = logicaWS.Movile_Update_Notificaciones_Mtd("3", EmailUsuario, LenguajeBase, SelectNotificacion.IdNotificacion, "1");
+                                string urli = logicaWS.Movile_Update_Notificaciones_Mtd("3", EmailUsuario, LenguajeBase, SelectNotificacion.IdNotificacion, "1", idSuceso);
                                 string? jsonProcedimiento = await logicaWS.ConectionGet(urli);
                                 //await RootMainPage.PushAsync(new EvaluacionPage(SelectNotificacion.IdEvaluacion));
                             }
@@ -147,13 +147,13 @@ namespace EventosCorferias.ViewModel.Usuario
                     finally
                     {
                         IsBusy = false;
-                        ValidarMenuInferior();
+                        ContadorNotificaciones_Mtd();
                     }
 
                 });
             }
         }
-   
+
         public ICommand OrdenarAgenda { get; }
         public ICommand FocusCalendario { get; }
         public ICommand LimpiarCalendario { get; }
@@ -181,7 +181,7 @@ namespace EventosCorferias.ViewModel.Usuario
             BorrarNotificacion = new Command(BorrarNotificacionGenrales_MtoAsync);
 
             Inicializar(idComunidad);
-
+            ContadorNotificaciones_Mtd();
         }
 
         private async void Inicializar(string idComunidad)
@@ -285,7 +285,7 @@ namespace EventosCorferias.ViewModel.Usuario
 
                 if (res)
                 {
-                    string urli = logicaWS.Movile_Update_Notificaciones_Mtd("2", EmailUsuario, LenguajeBase, "0", "0");
+                    string urli = logicaWS.Movile_Update_Notificaciones_Mtd("2", EmailUsuario, LenguajeBase, "0", "0", idSuceso);
                     string? jsonProcedimiento = await logicaWS.ConectionGet(urli);
                     CantidadAgenda = 0 + " " + AppResources.resultados;
 
@@ -303,7 +303,7 @@ namespace EventosCorferias.ViewModel.Usuario
             finally
             {
                 IsBusy = false;
-                ValidarMenuInferior();
+                ContadorNotificaciones_Mtd();
             }
         }
 

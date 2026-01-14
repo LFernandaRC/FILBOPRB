@@ -144,6 +144,7 @@ namespace EventosCorferias.ViewModel.Suceso
 
             _ = CargaGeneralInfoAsync(servicios);
             ValidaBtnExpoAgrnda();
+            ContadorNotificaciones_Mtd();
         }
 
         public async Task CargaGeneralInfoAsync(SitiosM servicios)

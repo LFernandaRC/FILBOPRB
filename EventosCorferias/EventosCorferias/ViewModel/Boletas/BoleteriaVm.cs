@@ -164,6 +164,7 @@ namespace EventosCorferias.ViewModel.Boletas
             try
             {
                 BtnComprar_Mtd();
+                ContadorNotificaciones_Mtd();
             }
             catch (Exception ex)
             {

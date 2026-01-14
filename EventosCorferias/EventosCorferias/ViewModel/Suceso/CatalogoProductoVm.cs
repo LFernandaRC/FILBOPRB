@@ -83,13 +83,7 @@ namespace EventosCorferias.ViewModel.Suceso
             FiltroEntry.Completed += (sender, e) => EntryCompleted(sender, e);
 
             _ = BuscarProducto_MtoAsync();
-
-            string ValidarIphad = DeviceInfo.Name;
-            bool res = ValidarIphad.ToLower().Contains("ipad");
-            if (res)
-                VerChat = false;
-            else
-                VerChat = true;
+            ContadorNotificaciones_Mtd();
         }
 
         void EntryCompleted(object sender, EventArgs e)

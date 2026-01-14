@@ -20,6 +20,7 @@ namespace EventosCorferias.ViewModel.Shared
             LenguajeBase = Preferences.Get("IdiomaDefecto", "");
             NombreCompletoPerfil = Preferences.Get("NombreCompleto", "");
             ImagenSplash = logicaWs.ImgMenuSuperior_Mtd();
+            ContadorNotificaciones_Mtd();
 
         }
     }

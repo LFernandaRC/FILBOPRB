@@ -172,6 +172,7 @@ namespace EventosCorferias.ViewModel.Suceso
 
             Inicializar();
             ValidaAgenda();
+            ContadorNotificaciones_Mtd();
         }
 
         private async void Inicializar()

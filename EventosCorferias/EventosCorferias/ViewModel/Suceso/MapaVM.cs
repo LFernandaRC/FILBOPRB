@@ -159,6 +159,7 @@ namespace EventosCorferias.ViewModel.Suceso
             BtnDetalleServicio = new Command(BtnDetalleServicio_Mtd);
 
             Incializar(Id, origen, bandera);
+            ContadorNotificaciones_Mtd();
         }
 
         private async void Incializar(string id, string origen, string bandera)

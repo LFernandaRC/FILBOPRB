@@ -99,6 +99,7 @@ namespace EventosCorferias.ViewModel.Suceso
         private async void Inicializar()
         {
             await CargarConferencista_MtoAsync();
+            ContadorNotificaciones_Mtd();
         }
 
         private async Task CargarConferencista_MtoAsync()

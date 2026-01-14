@@ -581,6 +581,7 @@ namespace EventosCorferias.ViewModel.Usuario
             politicas = new TerminosCondiciones();
 
             Inicializar();
+            ContadorNotificaciones_Mtd();
         }
 
         //INICIA CARGA INCIAL

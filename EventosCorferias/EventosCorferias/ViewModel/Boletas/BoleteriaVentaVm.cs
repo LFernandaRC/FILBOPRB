@@ -112,6 +112,7 @@ namespace EventosCorferias.ViewModel.Boletas
             {
                 await CargarBoletas_MtoAsync();
                 ListasFiltros_MtoAsync();
+                ContadorNotificaciones_Mtd();
             }
             finally
             {

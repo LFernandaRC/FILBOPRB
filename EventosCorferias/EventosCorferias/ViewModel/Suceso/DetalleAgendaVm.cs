@@ -301,6 +301,7 @@ namespace EventosCorferias.ViewModel.Suceso
             BtnCompartir = new Command(BtnCompartir_Mtd);
 
             CargarDetalle();
+            ContadorNotificaciones_Mtd();
         }
 
         private async void CargarDetalle()

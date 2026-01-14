@@ -558,6 +558,7 @@ namespace EventosCorferias.ViewModel.Suceso
             SeleccionarModuloCommand = new Command<ListasGeneral>(SeleccionarModulo);
 
             _ = Inicializar_MtoAsync();
+            ContadorNotificaciones_Mtd(); 
         }
 
 

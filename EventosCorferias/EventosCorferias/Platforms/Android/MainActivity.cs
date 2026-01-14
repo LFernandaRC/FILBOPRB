@@ -1,15 +1,29 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.Content.PM;
-using Android.Gms.Auth.Api.SignIn;
 using Android.OS;
+using Android.Gms.Auth.Api.SignIn;
 using Firebase;
 using Shiny;
 
 namespace EventosCorferias
 {
-    [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleTop, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
-    [IntentFilter( new[] { ShinyPushIntents.NotificationClickAction }, Categories = new[] { "android.intent.category.DEFAULT" } )]
+    [Activity(
+        Theme = "@style/Maui.SplashTheme",
+        MainLauncher = true,
+        LaunchMode = LaunchMode.SingleTop,
+        ConfigurationChanges =
+            ConfigChanges.ScreenSize |
+            ConfigChanges.Orientation |
+            ConfigChanges.UiMode |
+            ConfigChanges.ScreenLayout |
+            ConfigChanges.SmallestScreenSize |
+            ConfigChanges.Density
+    )]
+    [IntentFilter(
+        new[] { ShinyPushIntents.NotificationClickAction },
+          Categories = new[] { "android.intent.category.DEFAULT" }
+    )]
     public class MainActivity : MauiAppCompatActivity
     {
         public static event EventHandler<(bool Success, GoogleSignInAccount account)> ResultGoogleAuth;
@@ -24,11 +38,11 @@ namespace EventosCorferias
             if (firebaseApp == null)
             {
                 var options = new FirebaseOptions.Builder()
-                  .SetApplicationId("1:362436346103:android:f7871cba0b989b38cdd3f2")
-                  .SetApiKey("AIzaSyD4B3y5Z6jhwlrqEFlcI33yyWYmMuMBIxQ")
-                  .SetProjectId("app-marca-blanca")
-                  .SetGcmSenderId("362436346103") 
-                  .Build();
+                    .SetApplicationId("1:362436346103:android:f7871cba0b989b38cdd3f2")
+                    .SetApiKey("AIzaSyD4B3y5Z6jhwlrqEFlcI33yyWYmMuMBIxQ")
+                    .SetProjectId("app-marca-blanca")
+                    .SetGcmSenderId("362436346103")
+                    .Build();
 
                 FirebaseApp.InitializeApp(this, options);
             }
@@ -54,19 +68,19 @@ namespace EventosCorferias
 
         protected override async void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
+            base.OnActivityResult(requestCode, resultCode, data);
+
             if (requestCode == 9001)
             {
                 try
                 {
                     var currentAccount = await GoogleSignIn.GetSignedInAccountFromIntentAsync(data);
-
-                    ResultGoogleAuth.Invoke(this, (currentAccount.Email != null, currentAccount));
+                    ResultGoogleAuth?.Invoke(this, (currentAccount?.Email != null, currentAccount));
                 }
-                catch (Exception ex)
+                catch
                 {
-                    ResultGoogleAuth.Invoke(this, (false, null));
+                    ResultGoogleAuth?.Invoke(this, (false, null));
                 }
-
             }
         }
     }
