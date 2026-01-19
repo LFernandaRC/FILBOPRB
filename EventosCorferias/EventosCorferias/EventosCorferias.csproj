@@ -53,12 +53,11 @@
 	<ItemGroup>
 		
 		<!-- Ícono para Android -->
-		<MauiIcon Include="Resources\AppIcon\imgprin.png" Color="#041B3B" ForegroundScale="0.6" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\logoappblanco.png" Color="#041B3B" />
-		    
 		
+		<MauiIcon Include="Resources\AppIcon\appicon.png" />
 		
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -71,14 +70,11 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 	
-	<ItemGroup>
-	  <None Remove="Resources\AppIcon\imgprin.png" />
-	  <None Remove="Resources\Splash\logoappblanco.png" />
-	</ItemGroup>
 	
 	<ItemGroup>
 	  <GoogleServicesJson Include="Platforms\Android\google-services.json" />
 	</ItemGroup>
+
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
