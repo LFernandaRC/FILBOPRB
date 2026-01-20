@@ -230,7 +230,7 @@ namespace EventosCorferias.ViewModel.Suceso
             {
                 int horaActual = EntregaHoraMilitar(DateTime.Now.ToString("h:mm:ss tt"), "2");
 
-                string urli = logicaWS.Moviel_select_consultaagendasuceso_Mtd("0", "1", EmailUsuario, Preferences.Get("IdSuceso", ""), LenguajeBase, "0", contenidoDetalle.IdContenido);
+                string urli = logicaWS.Moviel_select_consultaagendasuceso_Mtd("0", "1", EmailUsuario, Preferences.Get("IdSuceso", ""), LenguajeBase, "0", contenidoDetalle.IdContenido, "0");
 
                 ConsultaAgenda consultaAgenda = new ConsultaAgenda
                 {

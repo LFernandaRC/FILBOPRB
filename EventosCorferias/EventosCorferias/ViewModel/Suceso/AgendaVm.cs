@@ -59,6 +59,7 @@ namespace EventosCorferias.ViewModel.Usuario
         private bool _sinRegistros;
         public bool esfavorti;
         public bool OrigenPrincipal_;
+        public bool ProgramacionCheck_;
 
         private int horaActual;
 
@@ -187,6 +188,19 @@ namespace EventosCorferias.ViewModel.Usuario
         {
             get { return _flechaCategoria; }
             set { _flechaCategoria = value; OnPropertyChanged(nameof(FlechaCategoria)); }
+        }
+
+        public bool ProgramacionCheck
+        {
+            get { return ProgramacionCheck_; }
+            set
+            {
+                ProgramacionCheck_ = value; OnPropertyChanged(nameof(ProgramacionCheck));
+                if (auxFecha.Equals(true))
+                {
+                    FiltradoGeneral_MtoAsync();
+                }
+            }
         }
 
         public bool EquisLugar
@@ -318,6 +332,7 @@ namespace EventosCorferias.ViewModel.Usuario
             try
             {
                 IsBusy = true;
+                ProgramacionCheck = false;
                 await Task.Delay(100); // Da tiempo a la UI para actualizarse antes de navegar
                 await ListasFiltros_MtoAsync();
                 await CargarAgenda_MtoAsync(IdSuceso, IdConferencista);
@@ -490,11 +505,11 @@ namespace EventosCorferias.ViewModel.Usuario
 
                 if (esfavorti)
                 {
-                    urli = logicaWs.Moviel_select_consultaagendasuceso_Mtd("0", "5", EmailUsuario, idSuceso, LenguajeBase, idConferencista, IdContenido_);
+                    urli = logicaWs.Moviel_select_consultaagendasuceso_Mtd("0", "5", EmailUsuario, idSuceso, LenguajeBase, idConferencista, IdContenido_, "0");
                 }
                 else
                 {
-                    urli = logicaWs.Moviel_select_consultaagendasuceso_Mtd("0", "1", EmailUsuario, idSuceso, LenguajeBase, idConferencista, IdContenido_);
+                    urli = logicaWs.Moviel_select_consultaagendasuceso_Mtd("0", "1", EmailUsuario, idSuceso, LenguajeBase, idConferencista, IdContenido_, "0");
                 }
 
                 string json = JsonConvert.SerializeObject(consultaAgenda);
@@ -547,7 +562,8 @@ namespace EventosCorferias.ViewModel.Usuario
                              Conferencistas, idConferencistas,
                             item.GetValue("fav")?.ToString() ?? string.Empty,
                             claseBase.ValidaString(item.GetValue("Franja")?.ToString() ?? string.Empty),
-                            claseBase.ValidaString(item.GetValue("Organizador")?.ToString() ?? string.Empty));
+                            claseBase.ValidaString(item.GetValue("Organizador")?.ToString() ?? string.Empty),
+                            claseBase.ValidaString(item.GetValue("programacionoficial")?.ToString() ?? string.Empty));
 
                         if (!agenda.Estado.Equals(""))
                             agenda.Lugar = "";
@@ -630,6 +646,11 @@ namespace EventosCorferias.ViewModel.Usuario
                     ListaAgenda = ListaAgenda.Where(x => x.NameList.ToLower().Contains(EntConferencista.ToLower().Trim())
                     || x.Titulo.ToLower().Contains(EntConferencista.ToLower().Trim()) ||
                     x.Categoria.ToLower().Contains(EntConferencista.ToLower().Trim())).ToList();
+
+                if (ProgramacionCheck)
+                {
+                    ListaAgenda = ListaAgenda.Where(x => x.ProgramacionOficial.ToLower().Contains("1")).ToList();
+                }
 
                 CantidadAgenda = ListaAgenda.Count.ToString() + " " + AppResources.resultados;
             }

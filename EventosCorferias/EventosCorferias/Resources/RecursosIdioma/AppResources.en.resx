@@ -1005,4 +1005,10 @@
   <data name="CodigoMarca " xml:space="preserve">
     <value>Code</value>
   </data>
+  <data name="programacionOficial" xml:space="preserve">
+    <value>Official Programming</value>
+  </data>
+  <data name="ProOficial" xml:space="preserve">
+    <value>Official Programming</value>
+  </data>
 </root>

@@ -64,6 +64,8 @@ namespace EventosCorferias.Models
         public string? _imagenFav { get; set; }
 
         public string? Organizador { get; set; }
+        public string? ProgramacionOficial { get; set; }
+        public string? TextoProgramacionOficial { get; set; }
 
         public string NameList { get { return string.Join(", ", this.Conferencistas); } }
 
@@ -80,7 +82,8 @@ namespace EventosCorferias.Models
             string horaInicio, string horaFin, string aforo, string estado, string imagen,
             string iconoFeria, string contextoClasificacion, string descripcion, string palabrasClave,
             string motivocancelacion, string fechaCancelacion, DateTime fechaActiva, DateTime fechaInActiva,
-            DateTime fechaInicio, List<string> conferencistas, List<string> iDCONFERENCISTA, string fav, string franja, string organizador)
+            DateTime fechaInicio, List<string> conferencistas, List<string> iDCONFERENCISTA, string fav, string franja, string organizador,
+            string programacionOficial)
         {
             IdAgenda = idAgenda;
             IdSuceso = idSuceso;
@@ -218,6 +221,22 @@ namespace EventosCorferias.Models
 
             }
             Organizador = organizador;
+            ProgramacionOficial = programacionOficial; 
+            if (string.IsNullOrWhiteSpace(programacionOficial))
+            {
+                TextoProgramacionOficial = "";
+            }
+            else
+            {
+                if (programacionOficial == "1")
+                {
+                    TextoProgramacionOficial = AppResources.ProOficial;
+                }
+                else
+                {
+                    TextoProgramacionOficial = "";
+                }
+            }
         }
     }
 }

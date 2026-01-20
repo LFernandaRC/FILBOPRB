@@ -1164,4 +1164,11 @@
   <data name="CodigoMarca " xml:space="preserve">
     <value>Código</value>
   </data>
+  <data name="programacionOficial" xml:space="preserve">
+    <value>Programación Oficial</value>
+    <comment>Official Programming</comment>
+  </data>
+  <data name="ProOficial" xml:space="preserve">
+    <value>Programación Oficial</value>
+  </data>
 </root>

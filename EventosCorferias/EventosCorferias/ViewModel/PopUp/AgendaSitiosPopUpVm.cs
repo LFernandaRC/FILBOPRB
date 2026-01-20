@@ -394,7 +394,7 @@ namespace EventosCorferias.ViewModel.PopUp
                     Franja = "0"
                 };
 
-                string urli = logicaWs.Moviel_select_consultaagendasuceso_Mtd("0", "3", EmailUsuario, Preferences.Get("IdSuceso", "0"), LenguajeBase, "0", idSitio_);
+                string urli = logicaWs.Moviel_select_consultaagendasuceso_Mtd("0", "3", EmailUsuario, Preferences.Get("IdSuceso", "0"), LenguajeBase, "0", idSitio_, "0");
 
                 string json = JsonConvert.SerializeObject(consultaAgenda);
                 string jsonProcedimiento = await logicaWs.ConectionPost(json, urli);
@@ -446,7 +446,8 @@ namespace EventosCorferias.ViewModel.PopUp
                              Conferencistas, idConferencistas,
                             item.GetValue("fav")?.ToString() ?? string.Empty,
                             claseBase.ValidaString(item.GetValue("Franja")?.ToString() ?? string.Empty),
-                            claseBase.ValidaString(item.GetValue("Organizador")?.ToString() ?? string.Empty));
+                            claseBase.ValidaString(item.GetValue("Organizador")?.ToString() ?? string.Empty),
+                            claseBase.ValidaString(item.GetValue("programacionoficial")?.ToString() ?? string.Empty));
 
                         if (!agenda.Estado.Equals(""))
                             agenda.Lugar = "";

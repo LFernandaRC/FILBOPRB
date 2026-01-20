@@ -6,10 +6,10 @@ namespace EventosCorferias.Services
     class LogicaWs
     {
         /*Enlace marca blanca pruebas*/
-        //private static readonly string url = "http://190.147.38.91:8891/CorferiasEventosServ/";
+        private static readonly string url = "http://190.147.38.91:8891/CorferiasEventosServ/";
 
         /*Enlace marca blanca Productivo*/
-        private static readonly string url = "https://servicioseventos.corferias.co/CorferiasEventosServ/";
+        //private static readonly string url = "https://servicioseventos.corferias.co/CorferiasEventosServ/";
 
         //Imagenes transversales de uso en la app
         public string ImgMenuSuperior_Mtd()
@@ -194,6 +194,7 @@ namespace EventosCorferias.Services
         private readonly string Movile_actualizarelacionusuario = "actualizarelacionusuario";
 
         private readonly string Movile_consultaAdministraIconos = "consultaAdministraIconos";
+        private readonly string Movile_Select_consultaprogramacionof = "consultaprogramacionof";
 
         /*--------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -219,9 +220,9 @@ namespace EventosCorferias.Services
             return url + "/" + Moviel_select_consAExpositorSitioLugar + "/" + bandera + "/" + IdExpositor + "/" + IdSucesoRecinto + "/" + IdSitio;
         }
 
-        public string Moviel_select_consultaagendasuceso_Mtd(string IdCiudad, string bandera, string correo, string IdSuceso, string Idioma, string idConf, string IdContenido)
+        public string Moviel_select_consultaagendasuceso_Mtd(string IdCiudad, string bandera, string correo, string IdSuceso, string Idioma, string idConf, string IdContenido, string IdProgramacion)
         {
-            return url + "/" + Moviel_select_consultaagendasuceso + "/" + IdCiudad + "/" + bandera + "/" + correo + "/" + IdSuceso + "/" + Idioma + "/" + idConf + "/" + IdContenido;
+            return url + "/" + Moviel_select_consultaagendasuceso + "/" + IdCiudad + "/" + bandera + "/" + correo + "/" + IdSuceso + "/" + Idioma + "/" + idConf + "/" + IdContenido + "/" + IdProgramacion;
         }
 
         public string Moviel_select_consAMascaraFiltroExp_Mtd(string idLabel, string IdSuceso)
@@ -605,10 +606,13 @@ namespace EventosCorferias.Services
             return url + "/" + Movile_select_ContenidosDetalle + "/" + idioma + "/" + idContendido + "/" + correo;
         }
 
-
         /*--------------------------------------------------------------------------------------------------------------------------------------------------*/
         /*Agenda */
 
+        public string Movile_Select_consultaprogramacionof_Mtd(string bandera, string IdSuceso)
+        {
+            return url + "/" + Movile_Select_consultaprogramacionof + "/" + bandera + "/" + IdSuceso;
+        }
         public string Movile_Select_Mascara_Agenda_Mtd(string idSuceso, string idioma)
         {
             return url + "/" + Movile_Select_Mascara_Agenda + "/" + idSuceso + "/" + idioma;

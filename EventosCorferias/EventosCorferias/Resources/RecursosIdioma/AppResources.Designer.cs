@@ -167,7 +167,18 @@ namespace EventosCorferias.Resources.RecursosIdioma {
                 return ResourceManager.GetString("al", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a Programación Oficial.
+        /// </summary>
+        internal static string programacionoficial
+        {
+            get
+            {
+                return ResourceManager.GetString("programacionoficial", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Busca una cadena traducida similar a Aplicación de impuestos.
         /// </summary>
@@ -203,6 +214,19 @@ namespace EventosCorferias.Resources.RecursosIdioma {
                 return ResourceManager.GetString("Asunto", resourceCulture);
             }
         }
+
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a Programacion Oficial.
+        /// </summary>
+        internal static string ProOficial
+        {
+            get
+            {
+                return ResourceManager.GetString("ProOficial", resourceCulture);
+            }
+        }
+
         
         /// <summary>
         ///   Busca una cadena traducida similar a El asunto no puede tener más de 50 caracteres.

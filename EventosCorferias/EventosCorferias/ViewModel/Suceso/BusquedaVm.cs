@@ -458,7 +458,7 @@ namespace EventosCorferias.ViewModel.Suceso
                                 try
                                 {
                                     ConsultaAgenda consultaAgenda;
-                                    urli = logicaWS.Moviel_select_consultaagendasuceso_Mtd("0", "1", EmailUsuario, busqueda.IdSuceso, LenguajeBase, "0", "0");
+                                    urli = logicaWS.Moviel_select_consultaagendasuceso_Mtd("0", "1", EmailUsuario, busqueda.IdSuceso, LenguajeBase, "0", "0", "0");
                                     consultaAgenda = new ConsultaAgenda
                                     {
                                         Categoria = "0",
@@ -518,7 +518,8 @@ namespace EventosCorferias.ViewModel.Suceso
                                                      Conferencistas, idConferencistas,
                                                     item.GetValue("fav").ToString(),
                                                      claseBase.ValidaString(item.GetValue("Franja").ToString()),
-                                                      claseBase.ValidaString(item.GetValue("Organizador").ToString())
+                                                      claseBase.ValidaString(item.GetValue("Organizador").ToString()),
+                                                      claseBase.ValidaString(item.GetValue("programacionoficial")?.ToString() ?? string.Empty)
                                                     );
                                                 if (!agenda.Estado.Equals(""))
                                                 {

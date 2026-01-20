@@ -240,7 +240,7 @@ namespace EventosCorferias.ViewModel.Suceso
                     Lugar = "0",
                     Franja = "0"
                 };
-                string urli = logicaWS.Moviel_select_consultaagendasuceso_Mtd("0", "3", EmailUsuario, Preferences.Get("IdSuceso", "0"), LenguajeBase, "0", idSitio_);
+                string urli = logicaWS.Moviel_select_consultaagendasuceso_Mtd("0", "3", EmailUsuario, Preferences.Get("IdSuceso", "0"), LenguajeBase, "0", idSitio_, "0");
                 string json = JsonConvert.SerializeObject(consultaAgenda);
 
                 string jsonProcedimiento = await logicaWS.ConectionPost(json, urli);

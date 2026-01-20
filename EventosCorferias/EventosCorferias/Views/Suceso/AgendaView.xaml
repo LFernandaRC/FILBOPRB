@@ -67,8 +67,7 @@
             </CollectionView.ItemsLayout>
             <CollectionView.Header>
                 <StackLayout Spacing="0">
-                    <StackLayout Margin="0"
-                                 BackgroundColor="Transparent">
+                    <StackLayout Margin="0" BackgroundColor="Transparent">
                         <Grid HeightRequest="35"
                               Padding="10,0,7,0"
                               Margin="0,20,0,5"
@@ -81,6 +80,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
+                            
                             <Frame Grid.Column="0"
                                    Grid.Row="0"
                                    Style="{StaticResource FRegistroGeneral}"
@@ -187,6 +187,7 @@
 
                                 </Grid>
                             </Frame>
+                            
                             <Frame Grid.Column="1"
                                    Grid.Row="0"
                                    Style="{StaticResource FRegistroGeneral}"
@@ -235,6 +236,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="35"/>
                             </Grid.ColumnDefinitions>
+                            
                             <Frame Grid.Column="0"
                                    Style="{StaticResource FRegistroGeneral}"
                                    CornerRadius="20"
@@ -252,6 +254,7 @@
                                        Style="{StaticResource ERegistroGeneralTexto}"
                                        Completed="EntryBsq_Completed"/>
                             </Frame>
+                            
                             <ImageButton Grid.Column="1"
                                          CornerRadius="18"
                                          HorizontalOptions="End"
@@ -267,15 +270,13 @@
                         </Grid>
 
                         <Grid Padding="10,0,7,0"
-                              Margin="0,0,0,0"
+                              Margin="0,0,0,5"
                               ColumnSpacing="5"
                               HeightRequest="35">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-
-
 
                             <Frame x:Name="FrameCalendario"
                                    HasShadow="False"
@@ -363,6 +364,7 @@
                                                 Format="dd/MM/yyyy"/>
                                 </Grid>
                             </Frame>
+                            
                             <Frame Grid.Column="1"
                                    Grid.Row="0"
                                    Style="{StaticResource FRegistroGeneral}"
@@ -436,16 +438,39 @@
                             </Frame>
                         </Grid>
 
-                        <ImageButton CornerRadius="18"
-                                     HorizontalOptions="End"
-                                     WidthRequest="36"
-                                     HeightRequest="36"
-                                     Margin="0,5,7,0"
-                                     BorderColor="{StaticResource BtnBoderIconoObscuro}"
-                                     Source="ic_ordenar_claro.png"
-                                     Padding="8"
-                                     Command="{Binding OrdenarAgenda}"
-                                     BackgroundColor="{StaticResource BtnFondoIconoObscuro}"/>
+                        <Grid Padding="10,0,7,0"
+                              Margin="10,0,0,0"
+                              ColumnSpacing="5"
+                              HeightRequest="35">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackLayout Orientation="Horizontal" Spacing="8">
+                                <CheckBox HorizontalOptions="Start" VerticalOptions="Center"
+                                          IsChecked="{Binding ProgramacionCheck}" Color="#9C9C9C" BackgroundColor="#F0F0F0"
+                                          Margin="0,0,0,0" MaximumWidthRequest="15" MaximumHeightRequest="15" />
+                                <Label Text="Programación" FontSize="11" VerticalOptions="CenterAndExpand" TextColor="{StaticResource TextoEntrada}"/>
+                            </StackLayout>
+
+
+                            <ImageButton CornerRadius="18" Grid.Column="1"
+                HorizontalOptions="End"
+                WidthRequest="36"
+                HeightRequest="36"
+                Margin="0,5,7,0"
+                BorderColor="{StaticResource BtnBoderIconoObscuro}"
+                Source="ic_ordenar_claro.png"
+                Padding="8"
+                Command="{Binding OrdenarAgenda}"
+                BackgroundColor="{StaticResource BtnFondoIconoObscuro}"/>
+                        </Grid>
+                        
+
+
+                     
                     </StackLayout>
                     <Label TextColor="{StaticResource TextoGeneral}"
                            Text="{Binding CantidadAgenda}"
@@ -597,6 +622,14 @@
                                            MaxLines="1"
                                            HorizontalOptions="Center"
                                            FontFamily="NotoRegular"/>
+
+                                    <Label FontSize="12"
+         FontAttributes="Bold"
+         TextColor="Green"
+         Text="{Binding TextoProgramacionOficial}"
+         MaxLines="1"
+         HorizontalOptions="Center"
+         FontFamily="NotoRegular"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
