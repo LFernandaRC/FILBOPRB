@@ -237,6 +237,7 @@ namespace EventosCorferias.Models
                     TextoProgramacionOficial = "";
                 }
             }
+            ProgramacionOficial = programacionOficial;
         }
     }
 }

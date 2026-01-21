@@ -57,6 +57,7 @@ namespace EventosCorferias.ViewModel.PopUp
         private bool _flechaCalendario;
         private bool _equisFranja;
         private bool _flechaFranja;
+        public bool ProgramacionCheck_;
 
         private bool _isReadOnlyEntryConfe;
 
@@ -241,6 +242,19 @@ namespace EventosCorferias.ViewModel.PopUp
             set { _equisFranja = value; OnPropertyChanged(nameof(EquisFranja)); }
         }
 
+        public bool ProgramacionCheck
+        {
+            get { return ProgramacionCheck_; }
+            set
+            {
+                ProgramacionCheck_ = value; OnPropertyChanged(nameof(ProgramacionCheck));
+                if (auxFecha.Equals(true))
+                {
+                    FiltradoGeneral_MtoAsync();
+                }
+            }
+        }
+
         public List<Agenda> ListaAgenda
         {
             get { return listaAgenda; }
@@ -394,7 +408,7 @@ namespace EventosCorferias.ViewModel.PopUp
                     Franja = "0"
                 };
 
-                string urli = logicaWs.Moviel_select_consultaagendasuceso_Mtd("0", "3", EmailUsuario, Preferences.Get("IdSuceso", "0"), LenguajeBase, "0", idSitio_, "0");
+                string urli = logicaWs.Moviel_select_consultaagendasuceso_Mtd("0", "3", EmailUsuario, Preferences.Get("IdSuceso", "0"), LenguajeBase, "0", idSitio_, "-1");
 
                 string json = JsonConvert.SerializeObject(consultaAgenda);
                 string jsonProcedimiento = await logicaWs.ConectionPost(json, urli);
@@ -447,7 +461,7 @@ namespace EventosCorferias.ViewModel.PopUp
                             item.GetValue("fav")?.ToString() ?? string.Empty,
                             claseBase.ValidaString(item.GetValue("Franja")?.ToString() ?? string.Empty),
                             claseBase.ValidaString(item.GetValue("Organizador")?.ToString() ?? string.Empty),
-                            claseBase.ValidaString(item.GetValue("programacionoficial")?.ToString() ?? string.Empty));
+                            item.GetValue("programacionoficial")?.ToString());
 
                         if (!agenda.Estado.Equals(""))
                             agenda.Lugar = "";
@@ -676,6 +690,16 @@ namespace EventosCorferias.ViewModel.PopUp
                     ListaAgenda = ListaAgenda.Where(x => x.NameList.ToLower().Contains(EntConferencista.ToLower().Trim())
                     || x.Titulo.ToLower().Contains(EntConferencista.ToLower().Trim()) ||
                     x.Categoria.ToLower().Contains(EntConferencista.ToLower().Trim())).ToList();
+
+
+                if (ProgramacionCheck)
+                {
+                    ListaAgenda = ListaAgenda.Where(x => x.ProgramacionOficial.ToLower().Contains("1")).ToList();
+                }
+                else
+                {
+                    ListaAgenda = ListaAgenda.Where(x => x.ProgramacionOficial.ToLower().Contains("0")).ToList();
+                }
 
                 CantidadAgenda = ListaAgenda.Count.ToString() + " " + AppResources.resultados;
             }

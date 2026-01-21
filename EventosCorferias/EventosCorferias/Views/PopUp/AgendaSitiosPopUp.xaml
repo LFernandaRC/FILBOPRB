@@ -453,16 +453,35 @@
                                     </Grid>
                                 </Frame>
                             </Grid>
-                            <ImageButton CornerRadius="18"
-                                             HorizontalOptions="End"
-                                             WidthRequest="36"
-                                             HeightRequest="36"
-                                             BorderColor="#041B3B"
-                                             Margin="0,10,20,10"
-                                             Source="ic_ordenar_claro.png"
-                                             Padding="8"
-                                             Command="{Binding OrdenarAgenda}"
-                                             BackgroundColor="#041B3B"/>
+                            <Grid Padding="10,0,7,0"
+              Margin="10,0,0,0"
+              ColumnSpacing="5"
+              HeightRequest="35">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Orientation="Horizontal" Spacing="8">
+                                    <CheckBox HorizontalOptions="Start" VerticalOptions="Center"
+                          IsChecked="{Binding ProgramacionCheck}" Color="#9C9C9C" BackgroundColor="#F0F0F0"
+                          Margin="0,0,0,0" MaximumWidthRequest="15" MaximumHeightRequest="15" />
+                                    <Label   Text="Programación Oficial" FontSize="11" VerticalOptions="CenterAndExpand" TextColor="{StaticResource TextoEntrada}"/>
+                                </StackLayout>
+
+
+                                <ImageButton CornerRadius="18" Grid.Column="1"
+HorizontalOptions="End"
+WidthRequest="36"
+HeightRequest="36"
+Margin="0,5,7,0"
+BorderColor="{StaticResource BtnBoderIconoObscuro}"
+Source="ic_ordenar_claro.png"
+Padding="8"
+Command="{Binding OrdenarAgenda}"
+BackgroundColor="{StaticResource BtnFondoIconoObscuro}"/>
+                            </Grid>
                         </StackLayout>
                         <Label TextColor="{StaticResource TextoTarjetas}"
                                    Text="{Binding CantidadAgenda}"
@@ -626,6 +645,13 @@
                                                    HorizontalOptions="Center"
                                                    FontFamily="NotoRegular"
                                                    InputTransparent="True"/>
+                                        <Label FontSize="12"
+FontAttributes="Bold"
+TextColor="Green"
+Text="{Binding TextoProgramacionOficial}"
+MaxLines="1"
+HorizontalOptions="Center"
+FontFamily="NotoRegular"/>
                                     </StackLayout>
                                 </Grid>
                             </Frame>

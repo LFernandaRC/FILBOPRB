@@ -6,10 +6,10 @@ namespace EventosCorferias.Services
     class LogicaWs
     {
         /*Enlace marca blanca pruebas*/
-        private static readonly string url = "http://190.147.38.91:8891/CorferiasEventosServ/";
+        //private static readonly string url = "http://190.147.38.91:8891/CorferiasEventosServ/";
 
         /*Enlace marca blanca Productivo*/
-        //private static readonly string url = "https://servicioseventos.corferias.co/CorferiasEventosServ/";
+        private static readonly string url = "https://servicioseventos.corferias.co/CorferiasEventosServ/";
 
         //Imagenes transversales de uso en la app
         public string ImgMenuSuperior_Mtd()

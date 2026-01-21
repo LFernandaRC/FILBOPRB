@@ -458,7 +458,7 @@ namespace EventosCorferias.ViewModel.Suceso
                                 try
                                 {
                                     ConsultaAgenda consultaAgenda;
-                                    urli = logicaWS.Moviel_select_consultaagendasuceso_Mtd("0", "1", EmailUsuario, busqueda.IdSuceso, LenguajeBase, "0", "0", "0");
+                                    urli = logicaWS.Moviel_select_consultaagendasuceso_Mtd("0", "1", EmailUsuario, busqueda.IdSuceso, LenguajeBase, "0", "0", "-1");
                                     consultaAgenda = new ConsultaAgenda
                                     {
                                         Categoria = "0",

@@ -452,7 +452,7 @@
                                 <CheckBox HorizontalOptions="Start" VerticalOptions="Center"
                                           IsChecked="{Binding ProgramacionCheck}" Color="#9C9C9C" BackgroundColor="#F0F0F0"
                                           Margin="0,0,0,0" MaximumWidthRequest="15" MaximumHeightRequest="15" />
-                                <Label Text="Programación" FontSize="11" VerticalOptions="CenterAndExpand" TextColor="{StaticResource TextoEntrada}"/>
+                                <Label   Text="Programación Oficial" FontSize="11" VerticalOptions="CenterAndExpand" TextColor="{StaticResource TextoEntrada}"/>
                             </StackLayout>
 
 

@@ -505,11 +505,11 @@ namespace EventosCorferias.ViewModel.Usuario
 
                 if (esfavorti)
                 {
-                    urli = logicaWs.Moviel_select_consultaagendasuceso_Mtd("0", "5", EmailUsuario, idSuceso, LenguajeBase, idConferencista, IdContenido_, "0");
+                    urli = logicaWs.Moviel_select_consultaagendasuceso_Mtd("0", "5", EmailUsuario, idSuceso, LenguajeBase, idConferencista, IdContenido_, "-1");
                 }
                 else
                 {
-                    urli = logicaWs.Moviel_select_consultaagendasuceso_Mtd("0", "1", EmailUsuario, idSuceso, LenguajeBase, idConferencista, IdContenido_, "0");
+                    urli = logicaWs.Moviel_select_consultaagendasuceso_Mtd("0", "1", EmailUsuario, idSuceso, LenguajeBase, idConferencista, IdContenido_, "-1");
                 }
 
                 string json = JsonConvert.SerializeObject(consultaAgenda);
@@ -563,7 +563,7 @@ namespace EventosCorferias.ViewModel.Usuario
                             item.GetValue("fav")?.ToString() ?? string.Empty,
                             claseBase.ValidaString(item.GetValue("Franja")?.ToString() ?? string.Empty),
                             claseBase.ValidaString(item.GetValue("Organizador")?.ToString() ?? string.Empty),
-                            claseBase.ValidaString(item.GetValue("programacionoficial")?.ToString() ?? string.Empty));
+                            item.GetValue("programacionoficial")?.ToString());
 
                         if (!agenda.Estado.Equals(""))
                             agenda.Lugar = "";
@@ -650,6 +650,10 @@ namespace EventosCorferias.ViewModel.Usuario
                 if (ProgramacionCheck)
                 {
                     ListaAgenda = ListaAgenda.Where(x => x.ProgramacionOficial.ToLower().Contains("1")).ToList();
+                }
+                else
+                {
+                    ListaAgenda = ListaAgenda.Where(x => x.ProgramacionOficial.ToLower().Contains("0")).ToList();
                 }
 
                 CantidadAgenda = ListaAgenda.Count.ToString() + " " + AppResources.resultados;
