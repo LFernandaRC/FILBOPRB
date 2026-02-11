@@ -15,7 +15,7 @@ using EventosCorferias.ViewModel.Usuario;
 
 
 #if IOS
-//using EventosCorferias.Platforms.iOS;
+using EventosCorferias.Platforms.iOS;
 using AuthenticationServices;
 #endif
 
@@ -660,7 +660,7 @@ namespace EventosCorferias.ViewModel.Shared
 
         private async void Ingresar_Apple_Mto()
         {
-            /*
+            
 #if IOS
             try
             {
@@ -752,7 +752,7 @@ namespace EventosCorferias.ViewModel.Shared
                 claseBase.InsertarLogs_Mtd("ERROR", ex.Message, "LoginVm", "Ingresar_Apple_Mto1", "n/a");
                 await pageServicio.DisplayAlert(AppResources.nombreMarca, ex.Message, AppResources.VMaceptar);
             }
-#endif*/
+#endif
         }
 
         private async void InicioSessionApple()

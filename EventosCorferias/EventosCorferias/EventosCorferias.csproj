@@ -75,6 +75,9 @@
 	  <GoogleServicesJson Include="Platforms\Android\google-services.json" />
 	</ItemGroup>
 
+	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0-ios'">
+		<MauiEntitlements Include="Platforms/iOS/Entitlements.plist" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
