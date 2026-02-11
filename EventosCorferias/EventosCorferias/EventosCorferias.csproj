@@ -258,5 +258,16 @@
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-ios'">
 		<BundleResource Include="GoogleService-Info.plist" />
 	</ItemGroup>
+
+	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Debug'">
+		<CodesignKey>Apple Development: Lina Reyes (YPW4L9886G)</CodesignKey>
+		<CodesignProvision>LinaDesarrolloFILBo</CodesignProvision>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
+		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+		<CodesignKey>Apple Distribution: CORPORACION DE FERIAS Y EXPOSICIONES S.A. USUARIO OPERADOR DE ZONA FRANCA (H38L3TT4ZY)</CodesignKey>
+		<CodesignProvision>LinaProduccionFILBo</CodesignProvision>
+	</PropertyGroup>
 	
 </Project>
