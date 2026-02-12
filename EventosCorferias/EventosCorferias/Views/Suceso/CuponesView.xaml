@@ -15,7 +15,7 @@
                    Margin="0,0,20,0"
                    VerticalOptions="Center"
                    BackgroundColor="Transparent"
-                   IsVisible="{OnPlatform iOS=true, Android=false, WinUI=false}">
+                   IsVisible="{OnPlatform iOS=false, Android=false, WinUI=false}">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding AbrirMenu}"/>
                 </Image.GestureRecognizers>
