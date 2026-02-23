@@ -566,7 +566,7 @@ namespace EventosCorferias.ViewModel.Shared
 
         private async void Ingresar_Google_MtdiOS()
         {
-            /*
+
             try
             {
                 IsBusy = true;
@@ -607,7 +607,7 @@ namespace EventosCorferias.ViewModel.Shared
             {
                 IsBusy = false;
             }
-        */
+
         }
 
         private void GuardarPreferenciasUsuarioNuevo(GoogleUserDTO loggedUser)
@@ -660,7 +660,7 @@ namespace EventosCorferias.ViewModel.Shared
 
         private async void Ingresar_Apple_Mto()
         {
-            
+
 #if IOS
             try
             {

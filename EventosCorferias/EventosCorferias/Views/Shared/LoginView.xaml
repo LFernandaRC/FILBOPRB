@@ -144,7 +144,6 @@
                             </Grid>
                         </Frame>
 
-                        <!-- 
                         <Frame Style="{StaticResource FTipoIngreso}"
                                Margin="0,10,0,0" IsVisible="{Binding BtnGoogle}"
                                BorderColor="{StaticResource BordeEntrada}">
@@ -177,7 +176,6 @@
                                        FontFamily="NotoLight"/>
                             </Grid>
                         </Frame>
--->
 
                         <Frame Style="{StaticResource FTipoIngreso}"
                                IsVisible="{Binding BtnApple}"
