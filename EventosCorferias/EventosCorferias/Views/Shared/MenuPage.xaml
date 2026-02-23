@@ -10,7 +10,7 @@
              BackgroundColor="{StaticResource ColorFondoMenLat}"
              NavigationPage.HasNavigationBar="False"
              IconImageSource="menu.png">
-    <Grid BackgroundColor="Transparent">
+    <Grid BackgroundColor="{StaticResource ColorFondoMenLat}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>

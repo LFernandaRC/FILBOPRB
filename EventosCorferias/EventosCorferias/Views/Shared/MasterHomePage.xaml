@@ -11,7 +11,7 @@
     </FlyoutPage.Flyout>
 
     <FlyoutPage.Detail>
-        <NavigationPage BarBackgroundColor="Transparent">
+        <NavigationPage BarBackgroundColor="#EFEFEF" BarTextColor="Black">
             <x:Arguments>
                 <local:SucesoView/>
             </x:Arguments>
